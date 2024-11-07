@@ -8,6 +8,7 @@
   home.stateVersion = "24.05";
   home.packages = with pkgs; [
     vim
+    xsel
     tmux
     zoxide
     bat
@@ -20,6 +21,20 @@
   };
   home.sessionVariables = {
   };
+  # ssh
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+    extraConfig = ''
+      Host github.com
+        ForwardAgent yes
+
+      Host *.camops.veo.co
+        User veo
+        ForwardAgent yes
+    '';
+  };
+  services.ssh-agent.enable = true;
   # bash
   programs.bash = {
     enable = true;
@@ -60,8 +75,18 @@
           set -g @catppuccin_window_status_style "rounded"
         '';
       }
+      yank
+      resurrect
+      continuum
     ];
     extraConfig = ''
+      set -g @continuum-restore 'on'
+
+      set -g set-clipboard on
+      set -g @override_copy_command 'xsel --clipboard --input'
+      set -g @yank_selection 'clipboard'
+      set -as terminal-features ',*:clipboard'
+
       bind -Troot C-w switch-client -T VimWindowMovements
       bind -TVimWindowMovements h select-pane -L
       bind -TVimWindowMovements j select-pane -D
