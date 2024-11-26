@@ -5,7 +5,7 @@
 }: {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    /etc/nixos/hardware-configuration.nix
   ];
 
   # Bootloader.
@@ -91,8 +91,6 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
   # List packages
   environment.systemPackages = with pkgs; [
     spotify
