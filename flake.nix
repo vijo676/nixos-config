@@ -20,6 +20,14 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs {inherit system;};
   in {
+    nixosConfigurations = {
+      nixos = lib.nixosSystem {
+        inherit system pkgs;
+        modules = [
+          ./configuration.nix
+        ];
+      };
+    };
     homeConfigurations = {
       vijoprofile = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;

@@ -50,6 +50,7 @@
       gs = "git status";
       ".." = "cd ..";
       lzg = "lazygit";
+      man = "batman";
     };
   };
   # git
@@ -80,7 +81,9 @@
       continuum
     ];
     extraConfig = ''
+      set-option -g status-right ""
       set -g @continuum-restore 'on'
+      set -g @continuum-boot 'on'
 
       set -g set-clipboard on
       set -g @override_copy_command 'xsel --clipboard --input'
@@ -111,6 +114,7 @@
   # bat
   programs.bat = {
     enable = true;
+    extraPackages = [pkgs.bat-extras.batman pkgs.bat-extras.prettybat];
   };
   # fzf
   programs.fzf = {
@@ -120,6 +124,12 @@
       "--preview 'bat --color=always {}'"
       "--preview-window '~3'"
     ];
+  };
+  # direnv
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
   };
   catppuccin.flavor = "mocha";
   catppuccin.enable = true;
