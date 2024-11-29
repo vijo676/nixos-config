@@ -16,6 +16,7 @@
     oh-my-posh
     lsd
     lazygit
+    zed-editor
   ];
   home.file = {
   };
