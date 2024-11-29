@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -52,12 +49,6 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
-  # Enable Pulseaudio
-  #hardware.pulseaudio = {
-  # enable = true;
-  #   package = pkgs.pulseaudioFull;
-  # };
-
   # Enable sound with pipewire.
   security.rtkit.enable = true;
   services.pipewire = {
@@ -71,7 +62,6 @@
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
-
 
     wireplumber.extraConfig.bluetoothEnhancements = {
       "monitor.bluez.properties" = {
@@ -149,5 +139,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }

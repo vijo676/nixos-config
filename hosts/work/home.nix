@@ -4,7 +4,7 @@
 }: {
   home.username = "vijo";
   home.homeDirectory = "/home/vijo";
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
   home.packages = with pkgs; [
     vim
     xsel
