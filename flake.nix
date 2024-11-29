@@ -24,18 +24,18 @@
     };
   in {
     nixosConfigurations = {
-      nixos = lib.nixosSystem {
+      work = lib.nixosSystem {
         inherit system pkgs;
         modules = [
-          ./configuration.nix
+          ./hosts/work/configuration.nix
         ];
       };
     };
     homeConfigurations = {
-      vijoprofile = home-manager.lib.homeManagerConfiguration {
+      work = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./home.nix
+          ./hosts/work/home.nix
           catppuccin.homeManagerModules.catppuccin
         ];
       };

@@ -17,6 +17,9 @@
     lsd
     lazygit
     zed-editor
+    rust-analyzer
+    youtube-music
+    btop
   ];
   home.file = {
   };
