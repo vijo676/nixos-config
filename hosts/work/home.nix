@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.username = "vijo";
   home.homeDirectory = "/home/vijo";
   home.stateVersion = "24.11";
@@ -19,6 +16,8 @@
     rust-analyzer
     youtube-music
     btop
+    tldr
+    nmap
   ];
   home.file = {
   };
@@ -77,13 +76,25 @@
         extraConfig = ''
           set -g @catppuccin_flavor "mocha"
           set -g @catppuccin_window_status_style "rounded"
+          set -g @catppuccin_status_background "none"
+          set -g @catppuccin_pane_status_enabled "off"
+          set -g @catppuccin_pane_border_status "off"
         '';
       }
       yank
       resurrect
       continuum
+      battery
+      cpu
     ];
     extraConfig = ''
+      # Enable focus events
+      set -g focus-events on
+
+      # Enable gapeless window
+      set -g renumber-windows on
+
+
       set-option -g status-right ""
       set -g @continuum-restore 'on'
       set -g @continuum-boot 'on'
@@ -123,9 +134,17 @@
   programs.fzf = {
     enable = true;
     enableBashIntegration = true;
+    changeDirWidgetOptions = [
+      "--preview 'tree -C {} | head -200'"
+    ];
     defaultOptions = [
       "--preview 'bat --color=always {}'"
       "--preview-window '~3'"
+      "--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 "
+      "--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc "
+      "--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 "
+      "--color=selected-bg:#45475a "
+      "--multi"
     ];
   };
   # direnv
