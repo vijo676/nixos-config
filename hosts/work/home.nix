@@ -18,6 +18,8 @@
     btop
     tldr
     nmap
+    librewolf
+    firefox
   ];
   home.file = {
   };
