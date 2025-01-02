@@ -76,6 +76,13 @@
     ];
   };
 
+  #printer stuff
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -92,7 +99,6 @@
 
   # System wide packages
   environment.systemPackages = with pkgs; [
-    spotify
     slack
     wget
     _1password-gui-beta

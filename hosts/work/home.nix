@@ -20,6 +20,7 @@
     nmap
     librewolf
     firefox
+    poetry
   ];
   home.file = {
   };
@@ -55,6 +56,7 @@
       ".." = "cd ..";
       lzg = "lazygit";
       man = "batman";
+      hmu = "home-manager switch --flake .#work";
     };
   };
   # git
@@ -90,12 +92,15 @@
       cpu
     ];
     extraConfig = ''
+      # Enable true color
+      set -g default-terminal "tmux-256color"
+      set-option -ga terminal-overrides ",xterm-256color:Tc"
+
       # Enable focus events
       set -g focus-events on
 
       # Enable gapeless window
       set -g renumber-windows on
-
 
       set-option -g status-right ""
       set -g @continuum-restore 'on'
@@ -140,9 +145,7 @@
       "--preview 'tree -C {} | head -200'"
     ];
     defaultOptions = [
-      "--preview 'bat --color=always {}'"
-      "--preview-window '~3'"
-      "--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 "
+      "--color=bg+:default,bg:default,spinner:#f5e0dc,hl:#f38ba8 "
       "--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc "
       "--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 "
       "--color=selected-bg:#45475a "
