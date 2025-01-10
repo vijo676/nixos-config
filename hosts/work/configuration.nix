@@ -130,6 +130,11 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  xdg.mime.defaultApplications = {
+    "text/html" = ["firefox.desktop"];
+    "x-scheme-handler/http" = ["firefox.desktop"];
+    "x-scheme-handler/https" = ["firefox.desktop"];
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
