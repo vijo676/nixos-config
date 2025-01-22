@@ -3,7 +3,6 @@
   home.homeDirectory = "/home/vijo";
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
-    vim
     xsel
     tmux
     zoxide
@@ -25,6 +24,14 @@
   home.file = {
   };
   home.sessionVariables = {
+  };
+  # vim
+  programs.vim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [vim-airline catppuccin-vim vim-closer nvim-treesitter];
+    settings = {
+      relativenumber = true;
+    };
   };
   # ssh
   programs.ssh = {
