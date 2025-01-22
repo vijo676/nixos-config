@@ -117,6 +117,7 @@
     remmina
     postman
     nixd
+    spotify
   ];
 
   #fonts.packages = with pkgs; [

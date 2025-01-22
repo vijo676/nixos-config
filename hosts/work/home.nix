@@ -57,6 +57,7 @@
       lzg = "lazygit";
       man = "batman";
       hmu = "home-manager switch --flake .#work";
+      nix-cleanup = "nix-collect-garbage -d";
     };
   };
   # git
@@ -83,6 +84,7 @@
           set -g @catppuccin_status_background "none"
           set -g @catppuccin_pane_status_enabled "off"
           set -g @catppuccin_pane_border_status "off"
+          set -g @catppuccin_status_background "none"
         '';
       }
       yank
@@ -140,16 +142,11 @@
   # fzf
   programs.fzf = {
     enable = true;
-    enableBashIntegration = true;
     changeDirWidgetOptions = [
       "--preview 'tree -C {} | head -200'"
     ];
     defaultOptions = [
-      "--color=bg+:default,bg:default,spinner:#f5e0dc,hl:#f38ba8 "
-      "--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc "
-      "--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 "
-      "--color=selected-bg:#45475a "
-      "--multi"
+      "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
     ];
   };
   # direnv
@@ -160,7 +157,7 @@
   };
   catppuccin.flavor = "mocha";
   catppuccin.enable = true;
-  programs.tmux.catppuccin.enable = true;
+  catppuccin.tmux.enable = true;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
