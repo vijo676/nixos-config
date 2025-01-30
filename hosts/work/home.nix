@@ -20,6 +20,7 @@
     librewolf
     firefox
     poetry
+    ncdu
   ];
   home.file = {
   };
