@@ -21,6 +21,7 @@
     firefox
     poetry
     ncdu
+    bluetui
   ];
   home.file = {
   };
