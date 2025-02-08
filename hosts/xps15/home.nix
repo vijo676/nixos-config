@@ -206,6 +206,18 @@
     enableBashIntegration = true;
     nix-direnv.enable = true;
   };
+  # ghostty
+  programs.ghostty = {
+    enable = true;
+    settings = {
+        theme = "catppuccin-mocha";
+        font-family = "JetBrainsMono NFM";
+        font-size = 10;
+        background-opacity = 0.7;
+        background-blur-radius = 0;
+        window-decoration = false;
+    };
+  };
   # catppuccin.flavor = "mocha";
   # catppuccin.enable = true;
   catppuccin.tmux.enable = true;
