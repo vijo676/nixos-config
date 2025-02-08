@@ -49,14 +49,30 @@
           }
         ];
       };
+      # laptop system configuration
+      xps15 = lib.nixosSystem {
+        inherit system pkgs;
+        modules = [
+          ./hosts/xps15/configuration.nix
+          {
+            environment.systemPackages = [ghostty.packages.${system}.default];
+          }
+        ];
+      };
     };
-
     # Home-manager configurations
     homeConfigurations = {
       work = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           ./hosts/work/home.nix
+          catppuccin.homeManagerModules.catppuccin
+        ];
+      };
+      xps15 = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./hosts/xps15/home.nix
           catppuccin.homeManagerModules.catppuccin
         ];
       };
