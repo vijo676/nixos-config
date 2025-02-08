@@ -210,12 +210,20 @@
   programs.ghostty = {
     enable = true;
     settings = {
-        theme = "catppuccin-mocha";
-        font-family = "JetBrainsMono NFM";
-        font-size = 10;
-        background-opacity = 0.7;
-        background-blur-radius = 0;
-        window-decoration = false;
+      theme = "catppuccin-mocha";
+      font-family = "JetBrainsMono NFM";
+      font-size = 10;
+      background-opacity = 0.7;
+      background-blur-radius = 0;
+      window-decoration = false;
+    };
+  };
+  # btop
+  programs.btop = {
+    enable = true;
+    settings = {
+      color_theme = "Default";
+      theme_background = false;
     };
   };
   # catppuccin.flavor = "mocha";
