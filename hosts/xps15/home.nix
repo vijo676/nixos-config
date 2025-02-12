@@ -210,10 +210,10 @@
   programs.ghostty = {
     enable = true;
     settings = {
-      theme = "catppuccin-mocha";
+      theme = "GruvboxDarkHard";
       font-family = "JetBrainsMono NFM";
       font-size = 10;
-      background-opacity = 0.7;
+      background-opacity = 0.85;
       background-blur-radius = 0;
       window-decoration = false;
     };
