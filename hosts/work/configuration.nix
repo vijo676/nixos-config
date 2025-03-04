@@ -15,6 +15,9 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  # networking.firewall.enable = false;
+  # networking.firewall.trustedInterfaces = ["enp195s0f3u2"];
+
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.

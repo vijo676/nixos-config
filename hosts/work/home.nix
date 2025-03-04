@@ -216,6 +216,63 @@
       theme_background = false;
     };
   };
+  # zed editor
+  programs.zed-editor = {
+    enable = true;
+    extensions = [
+      "nix"
+      "toml"
+      "kanagawa-themes"
+    ];
+    userSettings = {
+      features = {
+        copilot = true;
+      };
+      vim_mode = true;
+      base_keymap = "VSCode";
+      theme = {
+        mode = "dark";
+        dark = "Kanagawa Dragon";
+        light = "Kanagawa Dragon";
+      };
+      shell = "system";
+      line_height = "comfortable";
+      font_family = "NotoSans NF Mono";
+      font_size = 15;
+      ui_font_size = 15;
+      buffer_font_size = 15;
+      show_whitespaces = "all";
+      hour_format = "hour24";
+      env = {
+        TERM = "xterm-ghostty";
+      };
+      lsp = {
+        rust-analyzer = {
+          binary = {
+            path_lookup = true;
+          };
+          initialization_options = {
+            linkedProjects = [
+              "./apps/rust/barcode/Cargo.toml"
+              "./apps/rust/calibration-rs/Cargo.toml"
+              "./apps/rust/camcli/Cargo.toml"
+              "./apps/rust/eol-station-rs/Cargo.toml"
+              "./apps/rust/findveo-rs/Cargo.toml"
+              "./apps/rust/flashing-station-rs/Cargo.toml"
+              "./apps/rust/id-station-rs/Cargo.toml"
+              "./apps/rust/init_vc3_labels/Cargo.toml"
+              "./apps/rust/lib/ftdi_debug_boards/Cargo.toml"
+            ];
+          };
+        };
+        nix = {
+          binary = {
+            path_lookup = true;
+          };
+        };
+      };
+    };
+  };
   # catppuccin.flavor = "mocha";
   # catppuccin.enable = true;
   # gruvbox.tmux.enable = true;
