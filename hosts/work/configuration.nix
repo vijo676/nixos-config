@@ -93,11 +93,18 @@
   users.users.vijo = {
     isNormalUser = true;
     description = "VitaleJ";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "dialout"];
     packages = with pkgs; [
       kdePackages.kate
     ];
   };
+  # Udev rules
+  services.udev.enable = true;
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", MODE="0666"
+  '';
+  # needed because of findveo might need to look into alternatives
+  networking.firewall.trustedInterfaces = [ "enp195s0f3u2" ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # System wide packages
@@ -121,6 +128,7 @@
     postman
     nixd
     spotify
+    usbutils
   ];
 
   #fonts.packages = with pkgs; [
@@ -147,7 +155,6 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

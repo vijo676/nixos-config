@@ -18,7 +18,6 @@
     tldr
     nmap
     librewolf
-    firefox
     poetry
     ncdu
     bluetui
@@ -26,6 +25,10 @@
   home.file = {
   };
   home.sessionVariables = {
+  };
+  # firefox
+  programs.firefox = {
+    enable = true;
   };
   # vim
   programs.vim = {
