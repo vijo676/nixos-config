@@ -21,6 +21,7 @@
     poetry
     ncdu
     bluetui
+    ruff
   ];
   home.file = {
   };
@@ -226,6 +227,7 @@
       "nix"
       "toml"
       "kanagawa-themes"
+      "ruff"
     ];
     userSettings = {
       features = {
@@ -244,10 +246,15 @@
       font_size = 15;
       ui_font_size = 15;
       buffer_font_size = 15;
-      show_whitespaces = "all";
       hour_format = "hour24";
       env = {
         TERM = "xterm-ghostty";
+      };
+      languages = {
+        Python = {
+          language_servers = ["ruff"];
+          format_on_save = "on";
+        };
       };
       lsp = {
         rust-analyzer = {
