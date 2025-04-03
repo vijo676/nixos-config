@@ -104,7 +104,7 @@
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", MODE="0666"
   '';
   # needed because of findveo might need to look into alternatives
-  networking.firewall.trustedInterfaces = [ "enp195s0f3u2" ];
+  networking.firewall.trustedInterfaces = ["enp195s0f3u2"];
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # System wide packages
@@ -116,8 +116,6 @@
     cargo
     gcc
     libgcc
-    vscode
-    vscode-extensions.rust-lang.rust-analyzer
     nerdfonts
     python3
     python312Packages.pip

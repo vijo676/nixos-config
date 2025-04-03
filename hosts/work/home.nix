@@ -22,10 +22,48 @@
     ncdu
     bluetui
     ruff
+    protobuf
   ];
   home.file = {
   };
   home.sessionVariables = {
+  };
+  # vscode
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      kamadorueda.alejandra
+      bbenoist.nix
+      jnoortheen.nix-ide
+      charliermarsh.ruff
+      ms-python.python
+      ms-python.vscode-pylance
+      rust-lang.rust-analyzer
+      vscodevim.vim
+      github.copilot
+      github.vscode-github-actions
+      tamasfe.even-better-toml
+      usernamehw.errorlens
+      naumovs.color-highlight
+      tal7aouy.icons
+      jdinhlife.gruvbox
+    ];
+    userSettings = {
+      "rust-analyzer.linkedProjects" = [
+        "./apps/rust/barcode/Cargo.toml"
+        "./apps/rust/calibration-rs/Cargo.toml"
+        "./apps/rust/camcli/Cargo.toml"
+        "./apps/rust/eol-station-rs/Cargo.toml"
+        "./apps/rust/findveo-rs/Cargo.toml"
+        "./apps/rust/flashing-station-rs/Cargo.toml"
+        "./apps/rust/id-station-rs/Cargo.toml"
+        "./apps/rust/init_vc3_labels/Cargo.toml"
+        "./apps/rust/lib/ftdi_debug_boards/Cargo.toml"
+      ];
+      "workbench.colorTheme" = "Kanagawa Dragon";
+      "editor.fontFamily" = "NotoSans NF Mono";
+      "workbench.iconTheme" = "material-icon-theme";
+    };
   };
   # firefox
   programs.firefox = {
