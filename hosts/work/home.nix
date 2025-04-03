@@ -63,6 +63,7 @@
       "workbench.colorTheme" = "Kanagawa Dragon";
       "editor.fontFamily" = "NotoSans NF Mono";
       "workbench.iconTheme" = "material-icon-theme";
+      "editor.minimap.enabled" = false;
     };
   };
   # firefox
