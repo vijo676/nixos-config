@@ -127,6 +127,8 @@
     nixd
     spotify
     usbutils
+    pkg-config
+    firefox
   ];
 
   #fonts.packages = with pkgs; [

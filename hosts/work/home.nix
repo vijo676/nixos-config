@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  yazi-flavors = pkgs.fetchFromGitHub {
+    owner = "marcosvnmelo";
+    repo = "kanagawa-dragon.yazi";
+    rev = "main";
+    sha256 = "";
+  };
+in {
   home.username = "vijo";
   home.homeDirectory = "/home/vijo";
   home.stateVersion = "24.11";
@@ -23,10 +30,30 @@
     bluetui
     ruff
     protobuf
+    d-spy
+    bruno
+    bruno-cli
   ];
   home.file = {
   };
   home.sessionVariables = {
+  };
+  # yazi
+  programs.yazi = {
+    enable = true;
+    settings = {
+      manager = {
+        show_hidden = true;
+        show_symlink = true;
+        linemode = "permissions";
+        title_format = "";
+      };
+    };
+    theme = {
+      flavor = {
+        dark = "kanagawa-dragon";
+      };
+    };
   };
   # vscode
   programs.vscode = {
@@ -52,7 +79,6 @@
       "rust-analyzer.linkedProjects" = [
         "./apps/rust/barcode/Cargo.toml"
         "./apps/rust/calibration-rs/Cargo.toml"
-        "./apps/rust/camcli/Cargo.toml"
         "./apps/rust/eol-station-rs/Cargo.toml"
         "./apps/rust/findveo-rs/Cargo.toml"
         "./apps/rust/flashing-station-rs/Cargo.toml"
@@ -65,10 +91,6 @@
       "workbench.iconTheme" = "material-icon-theme";
       "editor.minimap.enabled" = false;
     };
-  };
-  # firefox
-  programs.firefox = {
-    enable = true;
   };
   # vim
   programs.vim = {
@@ -106,6 +128,7 @@
       tree = "lsd --tree";
       gs = "git status";
       ".." = "cd ..";
+      yz = "yazi";
       lzg = "lazygit";
       man = "batman";
       hmu = "home-manager switch --flake .#work";
@@ -244,8 +267,8 @@
     enable = true;
     settings = {
       theme = "GruvboxDarkHard";
-      font-family = "JetBrainsMono NFM";
-      font-size = 10;
+      font-family = "CaskaydiaCove Nerd Font";
+      font-size = 11;
       background-opacity = 0.85;
       background-blur-radius = 0;
       window-decoration = false;
@@ -281,7 +304,7 @@
       };
       shell = "system";
       line_height = "comfortable";
-      font_family = "NotoSans NF Mono";
+      font_family = "CaskaydiaCove Nerd Font";
       font_size = 15;
       ui_font_size = 15;
       buffer_font_size = 15;
@@ -304,7 +327,6 @@
             linkedProjects = [
               "./apps/rust/barcode/Cargo.toml"
               "./apps/rust/calibration-rs/Cargo.toml"
-              "./apps/rust/camcli/Cargo.toml"
               "./apps/rust/eol-station-rs/Cargo.toml"
               "./apps/rust/findveo-rs/Cargo.toml"
               "./apps/rust/flashing-station-rs/Cargo.toml"
