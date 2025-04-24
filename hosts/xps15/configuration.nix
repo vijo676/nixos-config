@@ -127,7 +127,6 @@
 
   # System wide packages
   environment.systemPackages = with pkgs; [
-    vim
     wget
     rustup
     cargo
@@ -136,10 +135,8 @@
     nerdfonts
     python3
     python312Packages.pip
-    git
     jq
     alejandra
-    postman
     nixd
     spotify
     usbutils
