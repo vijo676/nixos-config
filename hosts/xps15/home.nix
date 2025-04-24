@@ -1,5 +1,4 @@
 {pkgs, ...}: let
-  modules = ../modules/applications;
 in {
   home.username = "vijo";
   home.homeDirectory = "/home/vijo";
@@ -7,7 +6,7 @@ in {
 
   # Import applications modules
   imports = [
-    modules/default.nix
+    ../../modules/programs/default.nix
   ];
 
   # Enable specific modules

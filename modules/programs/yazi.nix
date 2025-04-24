@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  username,
   ...
 }: let
   module_name = "yazi";
@@ -13,16 +12,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home-manager.users.${username} = {
-      programs.yazi = {
-        enable = true;
-        settings = {
-          manager = {
-            show_hidden = true;
-            show_symlink = true;
-            linemode = "permissions";
-            title_format = "";
-          };
+    programs.yazi = {
+      enable = true;
+      settings = {
+        manager = {
+          show_hidden = true;
+          show_symlink = true;
+          linemode = "permissions";
+          title_format = "";
         };
       };
     };
