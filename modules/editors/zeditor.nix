@@ -10,6 +10,13 @@
 in {
   options.configured.programs."${module_name}" = {
     enable = mkEnableOption "Enable Zed";
+    # Add an option for rust-analyzer linkedProjects
+    rustAnalyzerLinkedProjects = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [];
+      description = "List of linked projects for rust-analyzer.";
+      example = ["path/to/project1.toml" "path/to/project2.toml"];
+    };
   };
   config = mkIf cfg.enable {
     programs.zed-editor = {
@@ -53,8 +60,7 @@ in {
               path_lookup = true;
             };
             initialization_options = {
-              linkedProjects = [
-              ];
+              linkedProjects = cfg.rustAnalyzerLinkedProjects;
             };
           };
           nix = {
