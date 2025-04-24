@@ -10,6 +10,13 @@
 in {
   options.configured.programs."${module_name}" = {
     enable = mkEnableOption "Enable Visual Studio Code";
+    # Add an option for rust-analyzer linkedProjects
+    rustAnalyzerLinkedProjects = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [];
+      description = "List of linked projects for rust-analyzer.";
+      example = ["path/to/project1.toml" "path/to/project2.toml"];
+    };
   };
 
   config = mkIf cfg.enable {
@@ -33,7 +40,7 @@ in {
         jdinhlife.gruvbox
       ];
       userSettings = {
-        "rust-analyzer.linkedProjects" = [];
+        "rust-analyzer.linkedProjects" = cfg.rustAnalyzerLinkedProjects;
         "workbench.colorTheme" = "Kanagawa Dragon";
         "editor.fontFamily" = "CaskaydiaCove Nerd Font";
         "workbench.iconTheme" = "material-icon-theme";
