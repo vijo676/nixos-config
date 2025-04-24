@@ -1,7 +1,24 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  modules = ../modules/applications;
+in {
   home.username = "vijo";
   home.homeDirectory = "/home/vijo";
   home.stateVersion = "24.11";
+
+  # Import applications modules
+  imports = [
+    modules/default.nix
+  ];
+
+  # Enable specific modules
+  configured.programs = {
+    vim.enable = true;
+    vscode.enable = true;
+    tmux.enable = true;
+    yazi.enable = true;
+  };
+
+  # Home packages
   home.packages = with pkgs; [
     xsel
     tmux
@@ -18,21 +35,18 @@
     tldr
     nmap
     librewolf
-    firefox
     poetry
     ncdu
+    bluetui
+    ruff
+    protobuf
+    d-spy
+    bruno
+    bruno-cli
   ];
   home.file = {
   };
   home.sessionVariables = {
-  };
-  # vim
-  programs.vim = {
-    enable = true;
-    plugins = with pkgs.vimPlugins; [vim-airline catppuccin-vim vim-closer nvim-treesitter];
-    settings = {
-      relativenumber = true;
-    };
   };
   # ssh
   programs.ssh = {
@@ -62,9 +76,10 @@
       tree = "lsd --tree";
       gs = "git status";
       ".." = "cd ..";
+      yz = "yazi";
       lzg = "lazygit";
       man = "batman";
-      hmu = "home-manager switch --flake .#work";
+      hmu = "home-manager switch --flake .#xps15";
       nix-cleanup = "nix-collect-garbage -d";
     };
   };
@@ -91,11 +106,7 @@
       battery
       cpu
       prefix-highlight
-      {
-        plugin = catppuccin;
-        extraConfig = ''
-        '';
-      }
+      gruvbox
     ];
     extraConfig = ''
       # Enable true color
@@ -122,13 +133,6 @@
       bind -TVimWindowMovements j select-pane -D
       bind -TVimWindowMovements k select-pane -U
       bind -TVimWindowMovements l select-pane -R
-
-      # Configure Catppuccin
-      set -g @catppuccin_flavor "macchiato"
-      set -g @catppuccin_status_background "none"
-      set -g @catppuccin_window_status_style "none"
-      set -g @catppuccin_pane_status_enabled "off"
-      set -g @catppuccin_pane_border_status "off"
 
       # status left look and feel
       set -g status-left-length 100
@@ -159,16 +163,16 @@
       set -wg automatic-rename on
       set -g automatic-rename-format "Window"
 
+      # Window status formatting
       set -g window-status-format " #I#{?#{!=:#{window_name},Window},: #W,} "
-      set -g window-status-style "bg=#{@thm_bg},fg=#{@thm_rosewater}"
-      set -g window-status-last-style "bg=#{@thm_bg},fg=#{@thm_peach}"
-      set -g window-status-activity-style "bg=#{@thm_red},fg=#{@thm_bg}"
-      set -g window-status-bell-style "bg=#{@thm_red},fg=#{@thm_bg},bold"
-      set -gF window-status-separator "#[bg=#{@thm_bg},fg=#{@thm_overlay_0}]│"
+      set -g window-status-style "bg=#282828,fg=#a89984"
+      set -g window-status-last-style "bg=#282828,fg=#fabd2f"
+      set -g window-status-activity-style "bg=#282828,fg=#8b8bb2"
+      set -gF window-status-separator "#[bg=#282828,fg=#a89984]│"  # Dark gray separator for subtle contrast
 
+      # Current window formatting (highlighted window)
       set -g window-status-current-format " #I#{?#{!=:#{window_name},Window},: #W,} "
-      set -g window-status-current-style "bg=#{@thm_peach},fg=#{@thm_bg},bold"
-
+      set -g window-status-current-style "bg=#98971a,fg=#282828,bold"
     '';
   };
   # starship
@@ -211,8 +215,8 @@
     enable = true;
     settings = {
       theme = "GruvboxDarkHard";
-      font-family = "JetBrainsMono NFM";
-      font-size = 10;
+      font-family = "CaskaydiaCove Nerd Font";
+      font-size = 11;
       background-opacity = 0.85;
       background-blur-radius = 0;
       window-decoration = false;
@@ -226,9 +230,60 @@
       theme_background = false;
     };
   };
-  # catppuccin.flavor = "mocha";
-  # catppuccin.enable = true;
-  catppuccin.tmux.enable = true;
+  # zed editor
+  programs.zed-editor = {
+    enable = true;
+    extensions = [
+      "nix"
+      "toml"
+      "kanagawa-themes"
+      "ruff"
+    ];
+    userSettings = {
+      features = {
+        copilot = true;
+      };
+      vim_mode = true;
+      base_keymap = "VSCode";
+      theme = {
+        mode = "dark";
+        dark = "Kanagawa Dragon";
+        light = "Kanagawa Dragon";
+      };
+      shell = "system";
+      line_height = "comfortable";
+      font_family = "CaskaydiaCove Nerd Font";
+      font_size = 15;
+      ui_font_size = 15;
+      buffer_font_size = 15;
+      hour_format = "hour24";
+      env = {
+        TERM = "xterm-ghostty";
+      };
+      languages = {
+        Python = {
+          language_servers = ["ruff"];
+          format_on_save = "on";
+        };
+      };
+      lsp = {
+        rust-analyzer = {
+          binary = {
+            path_lookup = true;
+          };
+          initialization_options = {
+            linkedProjects = [
+            ];
+          };
+        };
+        nix = {
+          binary = {
+            path_lookup = true;
+          };
+        };
+      };
+    };
+  };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

@@ -117,7 +117,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vijo = {
     isNormalUser = true;
-    description = "VitaleJ";
+    description = "vjxps";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       kdePackages.kate
@@ -133,8 +133,6 @@
     cargo
     gcc
     libgcc
-    vscode
-    vscode-extensions.rust-lang.rust-analyzer
     nerdfonts
     python3
     python312Packages.pip
@@ -144,8 +142,17 @@
     postman
     nixd
     spotify
+    usbutils
     firefox
+    discord
   ];
+  # steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
 
   xdg.mime.defaultApplications = {
     "text/html" = ["firefox.desktop"];
