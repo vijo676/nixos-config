@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   config,
   ...
@@ -14,22 +15,22 @@ in {
   config = mkIf cfg.enable {
     programs.vscode = {
       enable = true;
-      extensions = [
-        "kamadorueda.alejandra"
-        "bbenoist.nix"
-        "jnoortheen.nix-ide"
-        "charliermarsh.ruff"
-        "ms-python.python"
-        "ms-python.vscode-pylance"
-        "rust-lang.rust-analyzer"
-        "vscodevim.vim"
-        "github.copilot"
-        "github.vscode-github-actions"
-        "tamasfe.even-better-toml"
-        "usernamehw.errorlens"
-        "naumovs.color-highlight"
-        "tal7aouy.icons"
-        "jdinhlife.gruvbox"
+      extensions = with pkgs.vscode-extensions; [
+        kamadorueda.alejandra
+        bbenoist.nix
+        jnoortheen.nix-ide
+        charliermarsh.ruff
+        ms-python.python
+        ms-python.vscode-pylance
+        rust-lang.rust-analyzer
+        vscodevim.vim
+        github.copilot
+        github.vscode-github-actions
+        tamasfe.even-better-toml
+        usernamehw.errorlens
+        naumovs.color-highlight
+        tal7aouy.icons
+        jdinhlife.gruvbox
       ];
       userSettings = {
         "rust-analyzer.linkedProjects" = [];
