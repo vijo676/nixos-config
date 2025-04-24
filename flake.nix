@@ -1,35 +1,34 @@
-# Vijo NixOS Configuration
 {
-  description = "Vijo NixOS configuration";
+  description = "vijo NixOS configuration";
 
-  # Inputs
   inputs = {
+    # Pin primary nixpkgs repository
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-24.11";
+    };
+    # Enable option to use the unstable nixpkgs repo
+    nixpkgs-unstable = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
     };
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    catppuccin = {
-      url = "github:catppuccin/nix";
     };
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
   };
 
-  # Outputs
   outputs = {
     nixpkgs,
     home-manager,
-    catppuccin,
     ghostty,
     ...
   }: let
     # Common library and system definitions
     lib = nixpkgs.lib;
     system = "x86_64-linux";
+    username = "vijo";
 
     # Import nixpkgs with configurations
     pkgs = import nixpkgs {
@@ -66,14 +65,12 @@
         inherit pkgs;
         modules = [
           ./hosts/work/home.nix
-          catppuccin.homeManagerModules.catppuccin
         ];
       };
       xps15 = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           ./hosts/xps15/home.nix
-          catppuccin.homeManagerModules.catppuccin
         ];
       };
     };
