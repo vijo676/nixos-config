@@ -12,9 +12,9 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "vj-xps"; # Define your hostname.
 
   # Enable networking
+  networking.hostName = "vj-xps";
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -34,7 +34,6 @@
   };
 
   # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
@@ -44,11 +43,14 @@
   services.xserver = {
     xkb.layout = "us,dk";
     xkb.options = "grp:win_space_toggle";
+    videoDrivers = ["nvidia"];
   };
 
   # Nvidia GPU
   hardware.nvidia = {
     prime = {
+      # Sync Mode
+      sync.enable = true;
       # Bus ID of the Intel GPU.
       intelBusId = lib.mkDefault "PCI:0:2:0";
       # Bus ID of the NVIDIA GPU.
@@ -77,8 +79,6 @@
     enable32Bit = lib.mkDefault true;
     extraPackages = with pkgs; [intel-media-driver intel-compute-runtime];
   };
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
