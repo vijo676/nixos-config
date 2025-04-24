@@ -11,29 +11,32 @@ in {
 
   # Enable specific modules
   configured.programs = {
+    # editors
     vim.enable = true;
     vscode.enable = true;
+    # programs
     tmux.enable = true;
     yazi.enable = true;
+    starship.enable = true;
+    direnv.enable = true;
+    fzf.enable = true;
+    git.enable = true;
+    ssh.enable = true;
+    zoxide.enable = true;
+    btop.enable = true;
+    # shell and terminals
+    ghostty.enable = true;
+    bash.enable = true;
   };
 
   # Home packages
   home.packages = with pkgs; [
     xsel
-    tmux
-    zoxide
-    bat
-    fzf
-    oh-my-posh
-    lsd
     lazygit
-    zed-editor
     rust-analyzer
     youtube-music
-    btop
     tldr
     nmap
-    librewolf
     poetry
     ncdu
     bluetui
@@ -48,15 +51,6 @@ in {
   home.sessionVariables = {
   };
   services.ssh-agent.enable = true;
-  # btop
-  programs.btop = {
-    enable = true;
-    settings = {
-      color_theme = "Default";
-      theme_background = false;
-    };
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

@@ -8,5 +8,6 @@
     ./tmux.nix
     ./yazi.nix
     ./zoxide.nix
+    ./btop.nix
   ];
 }
