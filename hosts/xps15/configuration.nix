@@ -85,7 +85,7 @@
   services.fwupd.enable = true;
   hardware.enableAllFirmware = true;
   # Bluetooth
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.enable = true;
   # Enable sound with pipewire
   security.rtkit.enable = true;
   hardware.pulseaudio.enable = lib.mkForce false;
@@ -106,8 +106,7 @@
       '')
     ];
   };
-
-  #printer stuff
+  # Printer stuff
   services.avahi = {
     enable = true;
     nssmdns4 = true;
@@ -159,6 +158,5 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
   system.stateVersion = "24.11";
 }
