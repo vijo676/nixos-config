@@ -45,6 +45,10 @@ in {
         "editor.fontFamily" = "CaskaydiaCove Nerd Font";
         "workbench.iconTheme" = "material-icon-theme";
         "editor.minimap.enabled" = false;
+        "github.copilot.enable" = {
+          "*" = true;
+          "markdown" = true;
+        };
       };
     };
   };
