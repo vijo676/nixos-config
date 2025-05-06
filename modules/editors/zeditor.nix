@@ -31,6 +31,20 @@ in {
         features = {
           copilot = true;
         };
+        assistants = {
+          enable = true;
+          version = "2";
+          default_open_ai_model = null;
+          default_model = {
+            provider = "copilot_chat";
+            model = "gpt-4";
+          };
+        };
+        node = {
+          path = lib.getExe pkgs.nodejs;
+          npm_path = lib.getExe' pkgs.nodejs "npm";
+        };
+        load_direnv = "shell_hook";
         vim_mode = true;
         base_keymap = "VSCode";
         theme = {

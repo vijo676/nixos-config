@@ -11,51 +11,44 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "vj-work"; # Define your hostname.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # Enable networking
+  # User account
+  users.users.vijo = {
+    isNormalUser = true;
+    description = "VitaleJ";
+    extraGroups = ["networkmanager" "wheel" "dialout"];
+    packages = with pkgs; [
+      kdePackages.kate
+    ];
+  };
+
+  # Udev rules
+  services.udev.enable = true;
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", MODE="0666"
+  '';
+
+  # Networking
+  networking.hostName = "vj-work";
+  networking.firewall.trustedInterfaces = ["enp195s0f3u2"];
   networking.networkmanager.enable = true;
-  # networking.firewall.enable = false;
-  # networking.firewall.trustedInterfaces = ["enp195s0f3u2"];
+  #networking.wireless.enable = true;
 
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # Firewall
+  networking.firewall.enable = false;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Copenhagen";
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_DK.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "da_DK.UTF-8";
-    LC_IDENTIFICATION = "da_DK.UTF-8";
-    LC_MEASUREMENT = "da_DK.UTF-8";
-    LC_MONETARY = "da_DK.UTF-8";
-    LC_NAME = "da_DK.UTF-8";
-    LC_NUMERIC = "da_DK.UTF-8";
-    LC_PAPER = "da_DK.UTF-8";
-    LC_TELEPHONE = "da_DK.UTF-8";
-    LC_TIME = "da_DK.UTF-8";
+  environment.variables = {
+    # NODE_PATH = "${pkgs.nodejs_18}/bin/node";
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "us,dk";
-    xkb.options = "grp:win_space_toggle";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
+  # Firmware updater
   services.fwupd.enable = true;
   hardware.enableAllFirmware = true;
+
   # Bluetooth
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.enable = true;
+
   # Enable sound with pipewire
   security.rtkit.enable = true;
   hardware.pulseaudio.enable = lib.mkForce false;
@@ -79,33 +72,54 @@
     ];
   };
 
-  #printer stuff
+  # Printer stuff
   services.avahi = {
     enable = true;
     nssmdns4 = true;
     openFirewall = true;
   };
+  services.printing.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.vijo = {
-    isNormalUser = true;
-    description = "VitaleJ";
-    extraGroups = ["networkmanager" "wheel" "dialout"];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
+  # Nix settings
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    auto-optimise-store = true;
   };
-  # Udev rules
-  services.udev.enable = true;
-  services.udev.extraRules = ''
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", MODE="0666"
-  '';
-  # needed because of findveo might need to look into alternatives
-  networking.firewall.trustedInterfaces = ["enp195s0f3u2"];
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  # Nixpkgs settings
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnsupportedSystem = true;
+  };
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+
+  # Timezone and language settings
+  time.timeZone = "Europe/Copenhagen";
+  i18n.defaultLocale = "en_DK.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "da_DK.UTF-8";
+    LC_IDENTIFICATION = "da_DK.UTF-8";
+    LC_MEASUREMENT = "da_DK.UTF-8";
+    LC_MONETARY = "da_DK.UTF-8";
+    LC_NAME = "da_DK.UTF-8";
+    LC_NUMERIC = "da_DK.UTF-8";
+    LC_PAPER = "da_DK.UTF-8";
+    LC_TELEPHONE = "da_DK.UTF-8";
+    LC_TIME = "da_DK.UTF-8";
+  };
+
+  # Enable the X11 windowing system.
+  services.xserver = {
+    enable = true;
+    xkb.layout = "us,dk";
+    xkb.options = "grp:win_space_toggle";
+  };
+
+  # Enable the KDE Plasma Desktop Environment.
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # System wide packages
   environment.systemPackages = with pkgs; [
@@ -135,26 +149,11 @@
   #  roboto
   #];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
   xdg.mime.defaultApplications = {
     "text/html" = ["firefox.desktop"];
     "x-scheme-handler/http" = ["firefox.desktop"];
     "x-scheme-handler/https" = ["firefox.desktop"];
   };
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -58,7 +58,6 @@ in {
     lazygit
     rust-analyzer
     youtube-music
-    btop
     tldr
     nmap
     poetry
