@@ -86,12 +86,6 @@
     auto-optimise-store = true;
   };
 
-  # Nixpkgs settings
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnsupportedSystem = true;
-  };
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 

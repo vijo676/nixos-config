@@ -34,6 +34,7 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
+      config.allowUnsupportedSystem = true;
     };
   in {
     # NixOS configurations
