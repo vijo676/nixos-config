@@ -15,11 +15,6 @@ in {
   config = mkIf cfg.enable {
     programs.rofi = {
       enable = true;
-      theme = "gruvbox-dark";
-      extraOptions = [
-        "-show drun"
-        "-modi drun,run"
-      ];
     };
   };
 }
