@@ -16,22 +16,84 @@ in {
     programs.kitty = {
       enable = true;
     };
+
+    # Theme
+    gtk = {
+      enable = true;
+      theme = {
+        package = pkgs.kanagawa-gtk-theme;
+        name = "Kanagawa";
+      };
+      iconTheme = {
+        package = pkgs.kanagawa-icon-theme;
+        name = "Kanagawa";
+      };
+    };
+    home.pointerCursor = {
+      gtk.enable = true;
+      x11.enable = true;
+      package = pkgs.volantes-cursors;
+      name = "volantes-cursors";
+      size = 24;
+    };
+
+    # Lock screen
+    programs.hyprlock = {
+      enable = true;
+      settings = {
+        general = {
+          disable_loading_bar = true;
+          grace = 5;
+          hide_cursor = false;
+          no_fade_in = false;
+        };
+        background = [
+            {
+            path = "wallpapers";
+            blur_passes = 2;
+            blur_size = 2;
+            }
+        ];
+      };
+    };
+
+    # Idle Daemon
+      services.hypridle.enable = true;
+      services.hypridle.settings = {
+        general = {
+          after_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+          lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+        };
+
+        listener = [
+          {
+            timeout = 300;
+            on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
+          }
+          {
+            timeout = 360;
+            on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+            on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+          }
+        ];
+      };
+
     wayland.windowManager.hyprland.enable = true;
 
     wayland.windowManager.hyprland.settings = {
+      # Auto start
+      exec-once = [
+        # "waybar &"
+        "swaybg -i ${../../wallpapers/japanese_pedestrian_street.png} -m fill&"
+
+        "hyprlock"
+      ];
+
+      # Env variables
       env = [
         "NIXOS_OZONE_WL, 1" # for ozone-based and electron apps to run on wayland
         "MOZ_ENABLE_WAYLAND, 1" # for firefox to run on wayland
         "MOZ_WEBRENDER, 1" # for firefox to run on wayland
-        "XDG_SESSION_TYPE, wayland"
-        "WLR_NO_HARDWARE_CURSORS, 1"
-        "WLR_RENDERER_ALLOW_SOFTWARE, 1"
-        "QT_QPA_PLATFORM, wayland"
-      ];
-      # Auto start
-      exec-once = [
-        "waybar &"
-        "hyprlock"
       ];
 
       input = {
