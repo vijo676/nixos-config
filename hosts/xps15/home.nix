@@ -14,6 +14,7 @@ in {
     # editors
     vim.enable = true;
     vscode.enable = true;
+    zeditor.enable = true;
     # programs
     tmux.enable = true;
     yazi.enable = true;

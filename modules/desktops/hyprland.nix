@@ -24,23 +24,24 @@ in {
       "$mod" = "SUPER";
       bind =
         [
+          "$mod, Q, killactive"
           "$mod, B, exec, firefox"
           "$mod, E, exec, ghostty"
-          "$mod, E, exec, rofi -show drun"
+          "$mod, D, exec, rofi -show drun"
           "$mod, V, togglefloating"
           "$mod, F, fullscreen"
 
           # Move focus
-          "$mod, left, movefocus, l"
-          "$mod, right, movefocus, r"
-          "$mod, up, movefocus, u"
-          "$mod, down, movefocus, d"
+          "$mod SHIFT ,H, movefocus, l"
+          "$mod SHIFT ,L, movefocus, r"
+          "$mod SHIFT ,K, movefocus, u"
+          "$mod SHIFT ,J, movefocus, d"
 
           # Move active window
-          "$mod, SHIFT, left, movewindow, l"
-          "$mod, SHIFT, right, movewindow, r"
-          "$mod, SHIFT, up, movewindow, u"
-          "$mod, SHIFT, down, movewindow, d"
+          "$mod SHIFT, left, movewindow, l"
+          "$mod SHIFT, right, movewindow, r"
+          "$mod SHIFT, up, movewindow, u"
+          "$mod SHIFT, down, movewindow, d"
         ]
         ++ (
           # workspaces
