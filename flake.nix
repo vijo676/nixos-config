@@ -17,12 +17,20 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
+    hyprland.url = {
+     url = "github:hyprwm/Hyprland";
+    };
+    split-monitor-workspaces = {
+      url = "github:Duckonaut/split-monitor-workspaces";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs = {
     nixpkgs,
     home-manager,
     ghostty,
+    split-monitor-workspaces,
     ...
   }: let
     # Common library and system definitions
@@ -69,7 +77,7 @@
         ];
       };
       xps15 = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        inherit pkgs split-monitor-workspaces;
         modules = [
           ./hosts/xps15/home.nix
         ];

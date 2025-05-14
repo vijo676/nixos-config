@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  split-monitor-workspaces,
   ...
 }: let
   module_name = "hyprland";
@@ -79,7 +80,12 @@ in {
       };
 
     wayland.windowManager.hyprland.enable = true;
-
+    wayland.windowManager.hyprland.plugins = [
+      split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+    ];
+    wayland.windowManager.hyprland.extraConfig = "
+        monitor=,preferred,auto,auto
+    ";
     wayland.windowManager.hyprland.settings = {
       # Auto start
       exec-once = [
