@@ -91,8 +91,6 @@ in {
       exec-once = [
         # "waybar &"
         "swaybg -i ${wallpaper_path} -m fill&"
-
-        "hyprlock"
       ];
 
       # Env variables
