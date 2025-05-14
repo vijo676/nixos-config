@@ -27,6 +27,17 @@ in {
     programs.kitty = {
       enable = true;
     };
+    # hyprpaper
+    services.hyprpaper = {
+      enable = true;
+      settings = {
+        ipc = "on";
+        splash = false;
+        splash_offset = 2.0;
+        preload = [cfg.wallpaper_path];
+        wallpaper = ", ${cfg.wallpaper_path}";
+      };
+    };
     # Theme
     gtk = {
       enable = true;
@@ -41,7 +52,6 @@ in {
     };
     home.pointerCursor = {
       gtk.enable = true;
-      x11.enable = true;
       package = pkgs.volantes-cursors;
       name = "volantes-cursors";
       size = 24;
@@ -98,8 +108,8 @@ in {
     wayland.windowManager.hyprland.settings = {
       # Auto start
       exec-once = [
-        # "waybar &"
-        "swaybg -i ${cfg.wallpaper_path} -m fill&"
+        "hyprpaper"
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
 
       # Monitors
@@ -120,7 +130,7 @@ in {
       };
 
       decoration = {
-        rounding = 0;
+        rounding = 10;
         shadow = {
           enabled = false;
           ignore_window = true;
