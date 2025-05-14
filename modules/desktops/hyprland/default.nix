@@ -11,8 +11,8 @@ in {
   options.configured.programs."${module_name}" = {
     enable = mkEnableOption "Enable Hyprland configuration";
     wallpaper_path = lib.mkOption {
-      type = lib.types.str;
-      default = "../../../wallpapers/japanese_pedestrian_street.png";
+      type = lib.types.path;
+      default = builtins.toPath ../../../wallpapers/japanese_pedestrian_street.png;
       description = "path to the wallpaper";
     };
     monitors_config = lib.mkOption{
@@ -27,7 +27,11 @@ in {
     programs.kitty = {
       enable = true;
     };
-    # hyprpaper
+    # Notification daemon
+    services.dunst= {
+      enable = true;
+    };
+    # Wallpaper
     services.hyprpaper = {
       enable = true;
       settings = {
@@ -38,7 +42,7 @@ in {
         wallpaper = ", ${cfg.wallpaper_path}";
       };
     };
-    # Theme
+    # Themes
     gtk = {
       enable = true;
       theme = {
@@ -49,15 +53,34 @@ in {
         package = pkgs.kanagawa-icon-theme;
         name = "Kanagawa";
       };
+      gtk3.extraConfig = {
+        Settings = ''
+            gtk-application-prefer-dark-theme=1
+        '';
+      };
+      gtk4.extraConfig = {
+        Settings = ''
+            gtk-application-prefer-dark-theme=1
+        '';
+      };
+      cursorTheme = {
+        name = "Bibata-Modern-Classic";
+        package = pkgs.bibata-cursors;
+      };
     };
     home.pointerCursor = {
       gtk.enable = true;
-      package = pkgs.volantes-cursors;
-      name = "volantes-cursors";
-      size = 24;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 25;
     };
 
     # Lock screen
+    security.pam.services.hyprlock = {};
+    security.pam.services.greetd.gnupg = {
+      enable = true;
+      noAutostart = true;
+    };
     programs.hyprlock = {
       enable = true;
       settings = {
@@ -99,6 +122,7 @@ in {
       };
 
     wayland.windowManager.hyprland.enable = true;
+    wayland.windowManager.hyprland.systemd.variables = ["--all"];
     wayland.windowManager.hyprland.plugins = [
       # inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
     ];
@@ -109,7 +133,6 @@ in {
       # Auto start
       exec-once = [
         "hyprpaper"
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
 
       # Monitors
@@ -167,7 +190,7 @@ in {
           "$mod, F1, exec, show-keybinds"
           "$mod, q, killactive"
           "$mod, b, exec, firefox"
-          "$mod, e, exec, ghostty"
+          "$mod, Return, exec, ghostty"
           "$mod, d, exec, rofi -show drun || pkill rofi"
           "$mod, v, togglefloating"
           "$mod, f, fullscreen"

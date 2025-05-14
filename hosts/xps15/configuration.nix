@@ -41,7 +41,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        command = "Hyprland -c ${pkgs.nwg-nwg-hello}/bin/nwg-hello";
         user = "greeter";
       };
     };
@@ -155,7 +155,9 @@
     usbutils
     firefox
     discord
-    swaybg
+    # needed for hyprland
+    hyprpolkitagent
+    nwg-hello
   ];
   # steam
   programs.steam = {
