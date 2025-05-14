@@ -9,5 +9,6 @@
     ./yazi.nix
     ./zoxide.nix
     ./btop.nix
+    ./rofi.nix
   ];
 }

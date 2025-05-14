@@ -27,6 +27,9 @@ in {
     # shell and terminals
     ghostty.enable = true;
     bash.enable = true;
+    # desktop
+    rofi.enable = true;
+    hyprland.enable = true;
   };
 
   # Home packages
