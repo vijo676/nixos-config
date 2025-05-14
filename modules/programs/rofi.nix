@@ -11,8 +11,8 @@ in {
   options.configured.programs."${module_name}" = {
     enable = mkEnableOption "Enable Rofi App Launcher";
     theme_path = lib.mkOption {
-        type = lib.types.str;
-        default = "../../themes/dark_default.rasi";
+        type = lib.types.path;
+        default = builtins.toPath ../../themes/dark_default.rasi;
         description = "path to the rasi rofi theme";
     };
   };
