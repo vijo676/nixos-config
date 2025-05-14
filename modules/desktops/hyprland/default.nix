@@ -5,19 +5,28 @@
   ...
 }: let
   module_name = "hyprland";
-  wallpaper_path = "../../../wallpapers/japanese_pedestrian_street.png";
   cfg = config.configured.programs."${module_name}";
   inherit (lib) mkEnableOption mkIf;
 in {
   options.configured.programs."${module_name}" = {
     enable = mkEnableOption "Enable Hyprland configuration";
+    wallpaper_path = lib.mkOption {
+      type = lib.types.str;
+      default = "../../../wallpapers/japanese_pedestrian_street.png";
+      description = "path to the wallpaper";
+    };
+    monitors_config = lib.mkOption{
+      type = lib.types.listOf lib.types.str;
+      default = [];
+      description = "List of the monitor configurations";
+      example = ["DP-1, 1920x1080, 0x0, 1" "DP-2, 1920x1080, 1920x0, 1"];
+    };
   };
   config = mkIf cfg.enable {
     # Kitty is required for the default Hyprland config
     programs.kitty = {
       enable = true;
     };
-
     # Theme
     gtk = {
       enable = true;
@@ -50,7 +59,7 @@ in {
         };
         background = [
             {
-            path = "wallpapers";
+            path = "${cfg.wallpaper_path}";
             blur_passes = 2;
             blur_size = 2;
             }
@@ -84,14 +93,17 @@ in {
       # inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
     ];
     wayland.windowManager.hyprland.extraConfig = "
-        monitor=,preferred,auto,auto
+        monitor = , preferred, auto, 1
     ";
     wayland.windowManager.hyprland.settings = {
       # Auto start
       exec-once = [
         # "waybar &"
-        "swaybg -i ${wallpaper_path} -m fill&"
+        "swaybg -i ${cfg.wallpaper_path} -m fill&"
       ];
+
+      # Monitors
+      monitor = cfg.monitors_config;
 
       # Env variables
       env = [
