@@ -30,7 +30,6 @@
     nixpkgs,
     home-manager,
     ghostty,
-    split-monitor-workspaces,
     ...
   }: let
     # Common library and system definitions

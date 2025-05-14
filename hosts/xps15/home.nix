@@ -49,6 +49,7 @@ in {
     d-spy
     bruno
     bruno-cli
+    swaybg
   ];
   home.file = {
   };
