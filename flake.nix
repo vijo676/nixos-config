@@ -17,7 +17,7 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
-    hyprland.url = {
+    hyprland = {
      url = "github:hyprwm/Hyprland";
     };
     split-monitor-workspaces = {
@@ -77,7 +77,7 @@
         ];
       };
       xps15 = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs split-monitor-workspaces;
+        inherit pkgs;
         modules = [
           ./hosts/xps15/home.nix
         ];
