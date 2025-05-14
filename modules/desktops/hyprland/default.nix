@@ -1,23 +1,44 @@
 {
   pkgs,
+  lib,
+  config,
   inputs,
   ...
-}: {
-  imports = [
-    ./binds.nix
-    ./settings.nix
-  ];
-
-  home.packages = with pkgs; [
-    swaybg
-  ];
-
-  wayland.windowManager.hyprland = {
-    enable = true;
+}: let
+  module_name = "hyprland";
+  cfg = config.configured.programs."${module_name}";
+  inherit (lib) mkEnableOption mkIf;
+in {
+  options.configured.programs."${module_name}" = {
+    enable = mkEnableOption "Enable Hyprland configuration";
   };
+  config =
+    mkIf cfg.enable {
+      imports = [
+        ./binds.nix
+        ./settings.nix
+        ./themes.nix
+      ];
+      # Kitty is required for the default Hyprland config
+      programs.kitty = {
+        enable = true;
+      };
 
-  home.sessionVariables = {
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-  };
+      home.packages = with pkgs; [
+        swaybg
+      ];
+
+      wayland.windowManager.hyprland = {
+        enable = true;
+      };
+
+      wayland.windowManager.hyprland.extraConfig = "
+      monitor=,preferred,auto,auto
+  ";
+
+      home.sessionVariables = {
+        XDG_CURRENT_DESKTOP = "Hyprland";
+        XDG_SESSION_DESKTOP = "Hyprland";
+      };
+    };
 }
