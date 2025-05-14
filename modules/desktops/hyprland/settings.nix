@@ -1,16 +1,38 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  wallpaperPath = "../../../wallpapers/japanese_pedestrain_street.png";
+in {
   wayland.windowManager.hyprland.settings = {
     # Auto start
     exec-once = [
-      "swaybg -i ${../../wallpapers/japanese_pedestrian_street.png} -m fill&"
+      "swaybg -i ${wallpaperPath} -m fill&"
     ];
-
     input = {
       kb_layout = "us,dk";
       kb_options = "grp:alt_caps_toggle";
       repeat_delay = 300;
       sensitivity = 0;
     };
+
+    # Theme
+    gtk = {
+      enable = true;
+      theme = {
+        package = pkgs.kanagawa-gtk-theme;
+        name = "Kanagawa";
+      };
+      iconTheme = {
+        package = pkgs.kanagawa-icon-theme;
+        name = "Kanagawa";
+      };
+    };
+    home.pointerCursor = {
+      gtk.enable = true;
+      x11.enable = true;
+      package = pkgs.volantes-cursors;
+      name = "volantes-cursors";
+      size = 24;
+    };
+
     # Lock screen
     programs.hyprlock = {
       enable = true;
@@ -23,7 +45,7 @@
         };
         background = [
           {
-            path = "wallpapers";
+            path = "${wallpaperPath}";
             blur_passes = 2;
             blur_size = 2;
           }
@@ -51,6 +73,8 @@
         }
       ];
     };
+
+    # Style
     decoration = {
       rounding = 0;
       shadow = {
@@ -73,7 +97,6 @@
         xray = true;
       };
     };
-
     animations = {
       enabled = true;
     };

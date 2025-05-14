@@ -1,4 +1,4 @@
-{pkgs, split-monitor-workspaces, ...}: let
+{pkgs,...}: let
 in {
   home.username = "vijo";
   home.homeDirectory = "/home/vijo";

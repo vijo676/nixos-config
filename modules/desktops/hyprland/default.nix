@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  inputs,
   ...
 }: let
   module_name = "hyprland";
@@ -14,24 +13,20 @@ in {
   };
   config =
     mkIf cfg.enable {
-      imports = [
+      lib.imports = [
         ./binds.nix
         ./settings.nix
-        ./themes.nix
       ];
       # Kitty is required for the default Hyprland config
       programs.kitty = {
         enable = true;
       };
-
       home.packages = with pkgs; [
         swaybg
       ];
-
       wayland.windowManager.hyprland = {
         enable = true;
       };
-
       wayland.windowManager.hyprland.extraConfig = "
       monitor=,preferred,auto,auto
   ";
