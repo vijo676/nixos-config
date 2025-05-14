@@ -19,7 +19,7 @@ in {
         theme = "GruvboxDarkHard";
         font-family = "CaskaydiaCove Nerd Font";
         font-size = 11;
-        background-opacity = 0.85;
+        background-opacity = 0.55;
         background-blur-radius = 0;
         window-decoration = false;
       };

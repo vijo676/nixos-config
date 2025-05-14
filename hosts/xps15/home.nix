@@ -32,7 +32,7 @@ in {
     hyprland = {
       enable = true;
       wallpaper_path = "../../wallpapers/japanese_pedestrian_street.png";
-      monitors_config = ["eDP-1, 1920x1200@59.95, 0x0, 1" "DP-2, 2560x1440@164, 1920x0,1"];
+      monitors_config = ["eDP-1, 1920x1200@59.95, 0x1440, 1" "DP-2, 2560x1440@164, 0x0,1"];
     };
     rofi.enable = true;
   };
