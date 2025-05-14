@@ -28,8 +28,8 @@ in {
     ghostty.enable = true;
     bash.enable = true;
     # desktop
-    rofi.enable = true;
     hyprland.enable = true;
+    rofi.enable = true;
   };
 
   # Home packages

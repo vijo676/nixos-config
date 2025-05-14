@@ -7,31 +7,13 @@
   module_name = "hyprland";
   cfg = config.configured.programs."${module_name}";
   inherit (lib) mkEnableOption mkIf;
-  # Display Manager
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
-        user = "greeter";
-      };
-    };
-  };
 in {
   options.configured.programs."${module_name}" = {
     enable = mkEnableOption "Enable Hyprland configuration";
   };
   config = mkIf cfg.enable {
-    # Check if Hyprland is enabled in the host configuration
-    assertions = [
-      {
-        assertion = config.programs.hyprland.enable;
-        message = "Hyprland must be enabled in the host configuration (programs.hyprland.enable = true) to use this module.";
-      }
-    ];
-
     # Kitty is required for the default Hyprland config
-    programs.kitty.enable = {
+    programs.kitty = {
       enable = true;
     };
     # Hints the electron apps to use wayland
