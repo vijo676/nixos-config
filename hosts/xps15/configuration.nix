@@ -41,7 +41,8 @@
     enable = true;
     settings = {
       default_session = {
-        command = "Hyprland -c ${pkgs.nwg-nwg-hello}/bin/nwg-hello";
+        # command = "Hyprland -c ${pkgs.nwg-hello}/bin/nwg-hello";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
         user = "greeter";
       };
     };
@@ -49,6 +50,11 @@
   programs.hyprland = {
     enable = true;
     withUWSM = true;
+  };
+  security.pam.services.hyprlock = {};
+  security.pam.services.greetd.gnupg = {
+    enable = true;
+    noAutostart = true;
   };
 
   # Enable the X11 windowing system.

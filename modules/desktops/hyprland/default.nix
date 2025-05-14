@@ -76,11 +76,6 @@ in {
     };
 
     # Lock screen
-    security.pam.services.hyprlock = {};
-    security.pam.services.greetd.gnupg = {
-      enable = true;
-      noAutostart = true;
-    };
     programs.hyprlock = {
       enable = true;
       settings = {
@@ -194,8 +189,7 @@ in {
           "$mod, d, exec, rofi -show drun || pkill rofi"
           "$mod, v, togglefloating"
           "$mod, f, fullscreen"
-          "$mod, Escape, exec, swaylock"
-          "ALT, Escape, exec, hyperlock"
+          "$mod, Escape, exec, hyperlock"
 
           # Move focus
           "$mod, h, movefocus, l"
