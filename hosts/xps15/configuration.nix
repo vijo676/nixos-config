@@ -42,7 +42,8 @@
     settings = {
       default_session = {
         # command = "Hyprland -c ${pkgs.nwg-hello}/bin/nwg-hello";
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        command = "${pkgs.hyprland}/bin/Hyprland -c ${pkgs.nwg-hello}/etc/nwg-hello/hyprland.conf";
         user = "greeter";
       };
     };
@@ -62,7 +63,7 @@
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us,dk";
-    xkb.options = "grp:win_space_toggle";
+    xkb.options = "grp:alt_caps_toggle";
     videoDrivers = ["nvidia"];
   };
 
@@ -133,7 +134,6 @@
     openFirewall = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vijo = {
     isNormalUser = true;
     description = "vjxps";
@@ -165,6 +165,7 @@
     hyprpolkitagent
     nwg-hello
   ];
+
   # steam
   programs.steam = {
     enable = true;

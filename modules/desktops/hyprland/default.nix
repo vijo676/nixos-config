@@ -23,10 +23,6 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    # Kitty is required for the default Hyprland config
-    programs.kitty = {
-      enable = true;
-    };
     # Notification daemon
     services.dunst= {
       enable = true;
@@ -123,22 +119,36 @@ in {
     ];
     wayland.windowManager.hyprland.extraConfig = "
         monitor = , preferred, auto, 1
+        $terminal = xterm-ghostty
     ";
     wayland.windowManager.hyprland.settings = {
-      # Auto start
+      ##################
+      ### AUTOSTART ###
+      #################
+
       exec-once = [
         "hyprpaper"
       ];
 
-      # Monitors
+      ################
+      ### MONITORS ###
+      ################
+
       monitor = cfg.monitors_config;
 
-      # Env variables
+      #############################
+      ### ENVIRONMENT VARIABLES ###
+      #############################
+
       env = [
         "NIXOS_OZONE_WL, 1" # for ozone-based and electron apps to run on wayland
         "MOZ_ENABLE_WAYLAND, 1" # for firefox to run on wayland
         "MOZ_WEBRENDER, 1" # for firefox to run on wayland
       ];
+
+      #############
+      ### INPUT ###
+      #############
 
       input = {
         kb_layout = "us,dk";
@@ -146,6 +156,10 @@ in {
         repeat_delay = 300;
         sensitivity = 0;
       };
+
+      #####################
+      ### LOOK AND FEEL ###
+      #####################
 
       decoration = {
         rounding = 10;
@@ -174,7 +188,10 @@ in {
         enabled = true;
       };
 
-      # Bindings
+      ###################
+      ### KEYBINDINGS ###
+      ###################
+
       "$mod" = "SUPER";
       bindm = [
         "$mod, mouse:272, movewindow"
