@@ -89,6 +89,7 @@ in {
             }
         ];
         input-field = {
+            monitor = "";
             size = "300, 40";
             outline_thickness = 2;
             dots_size = 0.2; # Scale of input-field height, 0.2 - 0.8
@@ -99,15 +100,18 @@ in {
             font_color = "rgb(200, 200, 200)";
             fade_on_empty = false;
             font_family = "CaskaydiaCove Nerd Font";
-            placeholder_text = "";
+            fail_color = "rgb(237, 135, 150)";
+            fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
+            placeholder_text = "Password...";
             hide_input = false;
             position = "0, -200";
             halign = "center";
             valign = "center";
         };
         label = {
-            text = "cmd[update:1000] date +\"%H\"";
-            color = "rgba(140, 228, 255, 1)";
+            monitor = "";
+            text = "$TIME";
+            color = "rgb(198, 160, 246)";
             font_family = "Caskaydia Cove Nerd Font Bold";
             font_size = 180;
             position = "0, 300";
@@ -144,8 +148,17 @@ in {
       # inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
     ];
     wayland.windowManager.hyprland.extraConfig = "
+
         monitor = , preferred, auto, 1
+
         $terminal = xterm-ghostty
+
+        binds {
+            workspace_back_and_forth = 1
+            #allow_workspace_cycles=1
+            #pass_mouse_when_bound=0
+        }
+
     ";
     wayland.windowManager.hyprland.settings = {
       ##################
@@ -211,8 +224,10 @@ in {
         gaps_in = 4;
         gaps_out = 9;
         border_size = 2;
-        "col.active_border" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
-        "col.inactive_border" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
+        "col.active_border" = "rgba(81a1c1ff)";
+        "col.inactive_border" = "rgba(4c566aff)";
+        # "col.active_border" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
+        # "col.inactive_border" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
         resize_on_border = true;
         layout = "dwindle"; # dwindle or master
         # allow_tearing = true; # Allow tearing for games (use immediate window rules for specific games or all titles)
@@ -235,10 +250,12 @@ in {
       };
 
       group = {
-        "col.border_active" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
-        "col.border_inactive" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
-        "col.border_locked_active" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
-        "col.border_locked_inactive" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
+        "col.border_active" = "rgba(81a1c1ff)";
+        "col.border_inactive" = "rgba(4c566aff)";
+        # "col.border_active" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
+        # "col.border_inactive" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
+        # "col.border_locked_active" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
+        # "col.border_locked_inactive" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
       };
 
       layerrule = [
@@ -327,7 +344,7 @@ in {
           "$mod, F1, exec, show-keybinds"
           "$mod, q, killactive"
           "$mod, b, exec, firefox"
-          "$mod, Return, exec, ghostty"
+          "$mod, t, exec, ghostty"
           "$mod, d, exec, rofi -show drun || pkill rofi"
           "$mod, v, togglefloating"
           "$mod, f, fullscreen"
@@ -353,6 +370,13 @@ in {
           "$mod SHIFT, up, movewindow, u"
           "$mod SHIFT, down, movewindow, d"
 
+          # Switch between windows in a floating workspace
+          "$mod, Tab, cyclenext"
+          "$mod, Tab, bringactivetotop"
+
+          # Scroll through existing workspaces with mainMod + scroll
+          "$mod, mouse_down, workspace, e+1"
+          "$mod, mouse_up, workspace, e-1"
         ]
         ++ (
           # workspaces
