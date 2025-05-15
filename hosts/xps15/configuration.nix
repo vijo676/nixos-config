@@ -52,6 +52,17 @@
     enable = true;
     withUWSM = true;
   };
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = ["gtk"];
+      hyprland.default = [
+        "gtk"
+        "hyprland"
+      ];
+    };
+  };
   security.pam.services.hyprlock = {};
   security.pam.services.greetd.gnupg = {
     enable = true;

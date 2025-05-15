@@ -83,6 +83,7 @@ in {
         };
         background = [
             {
+            monitor = "";
             path = "${cfg.wallpaper_path}";
             blur_passes = 2;
             blur_size = 2;
@@ -111,7 +112,7 @@ in {
         label = {
             monitor = "";
             text = "$TIME";
-            color = "rgb(198, 160, 246)";
+            color = "rgb(191, 186, 159)";
             font_family = "Caskaydia Cove Nerd Font Bold";
             font_size = 180;
             position = "0, 300";
@@ -352,7 +353,7 @@ in {
           "$mod, d, exec, rofi -show drun || pkill rofi"
           "$mod, v, togglefloating"
           "$mod, f, fullscreen"
-          "$mod, ESCAPE, exec, hyperlock --immediate"
+          "$mod, ESCAPE, exec, hyprlock"
 
           # Move focus
           "$mod, h, movefocus, l"
