@@ -76,7 +76,7 @@ in {
       enable = true;
       settings = {
         general = {
-          grace = 5;
+          grace = 0;
           disable_loading_bar = true;
           hide_cursor = false;
           no_fade_in = false;
@@ -102,7 +102,6 @@ in {
             fade_on_empty = false;
             font_family = "CaskaydiaCove Nerd Font";
             fail_color = "rgb(237, 135, 150)";
-            fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
             placeholder_text = "Password...";
             hide_input = false;
             position = "0, -200";
