@@ -143,6 +143,7 @@ in {
             on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
             }
         ];
+      };
     };
 
     wayland.windowManager.hyprland.enable = true;
