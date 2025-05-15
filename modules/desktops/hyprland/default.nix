@@ -97,8 +97,8 @@ in {
             dots_spacing = 0.2; # Scale of dots' absolute size, 0.0 - 1.0
             dots_center = true;
             outer_color = "rgba(0, 0, 0, 0)";
-            inner_color = "rgba(76, 86, 106, 0.5)";
-            font_color = "rgb(200, 200, 200)";
+            inner_color = "rgba(76, 86, 106, 0.1)";
+            font_color = "rgb(191, 186, 159)";
             fade_on_empty = false;
             font_family = "CaskaydiaCove Nerd Font";
             fail_color = "rgb(237, 135, 150)";
@@ -113,7 +113,7 @@ in {
             text = "$TIME";
             color = "rgb(191, 186, 159)";
             font_family = "Caskaydia Cove Nerd Font Bold";
-            font_size = 180;
+            font_size = 64;
             position = "0, 300";
             halign = "center";
             valign = "center";
