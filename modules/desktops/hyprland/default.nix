@@ -96,25 +96,25 @@ in {
     };
 
     # Idle Daemon
-      services.hypridle.enable = true;
-      services.hypridle.settings = {
-        general = {
-          after_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
-          lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
-        };
+    services.hypridle.enable = true;
+    services.hypridle.settings = {
+    general = {
+        after_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+        lock_cmd = "hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+    };
 
-        listener = [
-          {
-            timeout = 300;
-            on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
-          }
-          {
-            timeout = 360;
-            on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-            on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
-          }
-        ];
-      };
+    listener = [
+        {
+        timeout = 300;
+        on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
+        }
+        {
+        timeout = 360;
+        on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+        on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+        }
+    ];
+    };
 
     wayland.windowManager.hyprland.enable = true;
     wayland.windowManager.hyprland.systemd.variables = ["--all"];
@@ -180,6 +180,10 @@ in {
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
+      bindl = [
+        ", switch:on:Lid Switch, exec, hyprlock --immediate"
+        ", switch:off:Lid Switch, exec, hyprlock --immediate"
+      ];
       bind =
         [
           "$mod, F1, exec, show-keybinds"
@@ -189,7 +193,7 @@ in {
           "$mod, d, exec, rofi -show drun || pkill rofi"
           "$mod, v, togglefloating"
           "$mod, f, fullscreen"
-          "$mod, Escape, exec, hyperlock"
+          "$mod, ESCAPE, exec, hyperlock --immediate"
 
           # Move focus
           "$mod, h, movefocus, l"
@@ -210,6 +214,7 @@ in {
           "$mod SHIFT, right, movewindow, r"
           "$mod SHIFT, up, movewindow, u"
           "$mod SHIFT, down, movewindow, d"
+
         ]
         ++ (
           # workspaces
