@@ -155,6 +155,11 @@
   };
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  # fonts
+  fonts.packages = with pkgs; [
+    nerdfonts
+  ];
+
   # System wide packages
   environment.systemPackages = with pkgs; [
     wget
@@ -162,7 +167,6 @@
     cargo
     gcc
     libgcc
-    nerdfonts
     python3
     python312Packages.pip
     jq

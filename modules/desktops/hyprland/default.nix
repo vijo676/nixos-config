@@ -173,6 +173,7 @@ in {
       #################
 
       exec-once = [
+        "waybar"
         "hyprpaper"
         "hypridle"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
@@ -227,8 +228,8 @@ in {
     }
     // (import ./keybindings.nix {inherit pkgs;})
     // (import ./style.nix);
-    imports = [
-      ./waybar.nix
-    ];
   };
+  imports = [
+    ./waybar.nix
+  ];
 }
