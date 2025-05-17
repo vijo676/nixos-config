@@ -13,7 +13,7 @@ in {
     enable = mkEnableOption "Enable Rofi App Launcher";
     theme_path = lib.mkOption {
         type = lib.types.path;
-        default = builtins.toPath ../../../themes/dark_default.rasi;
+        default = builtins.toPath ./dark_default.rasi;
         description = "path to the rasi rofi theme";
     };
   };
