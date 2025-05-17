@@ -1,14 +1,14 @@
 {...}: {
   imports = [
-    ./direnv.nix
-    ./fzf.nix
-    ./git.nix
-    ./ssh.nix
-    ./starship.nix
-    ./tmux.nix
-    ./yazi.nix
-    ./zoxide.nix
-    ./btop.nix
-    ./rofi.nix
+    ./btop
+    ./direnv
+    ./fzf
+    ./git
+    ./rofi
+    ./ssh
+    ./starship
+    ./tmux
+    ./yazi
+    ./zoxide
   ];
 }
