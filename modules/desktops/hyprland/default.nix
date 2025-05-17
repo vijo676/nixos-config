@@ -230,6 +230,6 @@ in {
     // (import ./style.nix);
   };
   imports = [
-    ./waybar.nix
+    ../../programs/waybar
   ];
 }
