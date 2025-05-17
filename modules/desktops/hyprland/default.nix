@@ -227,5 +227,8 @@ in {
     }
     // (import ./keybindings.nix {inherit pkgs;})
     // (import ./style.nix);
+    imports = [
+      ./waybar.nix
+    ];
   };
 }
