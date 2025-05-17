@@ -53,6 +53,11 @@ in {
     d-spy
     bruno
     bruno-cli
+    pavucontrol
+    networkmanagerapplet
+    blueman
+    playerctl
+    brightnessctl
   ];
   home.file = {
   };

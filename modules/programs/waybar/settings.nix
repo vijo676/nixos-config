@@ -26,7 +26,7 @@
     "memory"
     "backlight"
     "pulseaudio"
-    "pulseaudio#microphone"
+    # "pulseaudio#microphone"
     "bluetooth"
     "network"
     "battery"
@@ -147,6 +147,11 @@
     format-plugged = " {capacity}%";
     format-alt = "{time} {icon}";
     format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+    };
+
+    "hyprland/language" = {
+      format = "{short}"; # can use {short} and {variant}
+      on-click = "${../../scripts/keyboardswitch.sh}";
     };
 
     "custom/power" = {
