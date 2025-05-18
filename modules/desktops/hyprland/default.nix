@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: let
   module_name = "hyprland";
@@ -104,6 +105,7 @@ in {
           "waybar"
           "hyprpaper"
           "hypridle"
+          # "hyprpm reload -n"
         ];
 
         ################
