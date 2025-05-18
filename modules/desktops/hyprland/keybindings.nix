@@ -17,7 +17,7 @@
       "$mod, d, exec, rofi -show drun || pkill rofi"
       "$mod, v, togglefloating"
       "$mod, f, fullscreen"
-      "$mod, e, exec, yazi"
+      "$mod, e, exec, nautilus"
       "$mod, ESCAPE, exec, hyprlock"
 
       # Move focus

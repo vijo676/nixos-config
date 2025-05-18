@@ -174,6 +174,8 @@
     firefox
     discord
     # needed for hyprland
+    # dolphin
+    nautilus
     hyprpolkitagent
     nwg-hello
     nixd
