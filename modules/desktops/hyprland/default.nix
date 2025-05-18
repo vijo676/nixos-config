@@ -39,9 +39,13 @@ in {
         wallpaper = ", ${cfg.wallpaper_path}";
       };
     };
+
     # Themes
+    services.xsettingsd.enable = true;
     gtk = {
       enable = true;
+      font.name = "Caskaydia Cove Nerd Font";
+      font.size = 11;
       theme = {
         package = pkgs.kanagawa-gtk-theme;
         name = "Kanagawa";
@@ -51,20 +55,19 @@ in {
         name = "Kanagawa";
       };
       gtk3.extraConfig = {
-        Settings = ''
-          gtk-application-prefer-dark-theme=1
-        '';
+        gtk-decoration-layout = menu:close;
+        gtk-application-prefer-dark-theme = true;
       };
       gtk4.extraConfig = {
-        Settings = ''
-          gtk-application-prefer-dark-theme=1
-        '';
+        gtk-decoration-layout = menu:close;
+        gtk-application-prefer-dark-theme = true;
       };
       cursorTheme = {
         name = "Bibata-Modern-Classic";
         package = pkgs.bibata-cursors;
       };
     };
+    qt.style.name = "Kanagawa";
     home.pointerCursor = {
       gtk.enable = true;
       package = pkgs.bibata-cursors;
@@ -129,7 +132,7 @@ in {
 
           "GDK_BACKEND,wayland,x11,*"
           "NIXOS_OZONE_WL,1"
-          "ELECTRON_OZONE_PLATFORM_HINT,auto"
+
           "MOZ_ENABLE_WAYLAND,1"
           "OZONE_PLATFORM,wayland"
           "EGL_PLATFORM,wayland"
@@ -141,6 +144,7 @@ in {
           "QT_AUTO_SCREEN_SCALE_FACTOR,1"
           "WLR_RENDERER_ALLOW_SOFTWARE,1"
           "NIXPKGS_ALLOW_UNFREE,1"
+          "GTK_THEME,Kanagawa"
         ];
 
         #############

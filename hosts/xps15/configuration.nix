@@ -69,6 +69,7 @@
     enable = true;
     noAutostart = true;
   };
+  services.blueman.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -174,7 +175,6 @@
     firefox
     discord
     # needed for hyprland
-    # dolphin
     nautilus
     hyprpolkitagent
     nwg-hello

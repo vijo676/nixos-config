@@ -55,7 +55,6 @@ in {
     bruno-cli
     pavucontrol
     networkmanagerapplet
-    blueman
     playerctl
     brightnessctl
   ];
