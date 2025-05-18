@@ -51,6 +51,7 @@
   programs.hyprland = {
     enable = true;
     withUWSM = true;
+    xwayland.enable = true;
   };
   xdg.portal = {
     enable = true;
@@ -75,7 +76,7 @@
   services.xserver = {
     xkb.layout = "us,dk";
     xkb.options = "grp:alt_caps_toggle";
-    videoDrivers = ["nvidia"];
+    videoDrivers = lib.mkDefault ["nvidia"];
   };
 
   # Nvidia GPU
@@ -105,9 +106,8 @@
   };
   # D-Bus service to check the availability of dual-GPU
   services.switcherooControl.enable = lib.mkDefault true;
-  # Enable OpenGL
   hardware.graphics = {
-    enable = true;
+    enable = lib.mkDefault true;
     enable32Bit = lib.mkDefault true;
     extraPackages = with pkgs; [intel-media-driver intel-compute-runtime];
   };
