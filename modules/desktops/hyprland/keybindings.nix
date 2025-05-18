@@ -1,4 +1,4 @@
-{...}:{
+{...}: {
   "$mod" = "SUPER";
   bindm = [
     "$mod, mouse:272, movewindow"
@@ -8,7 +8,8 @@
     ", switch:on:Lid Switch, exec, hyprlock --immediate"
     ", switch:off:Lid Switch, exec, hyprlock --immediate"
   ];
-  bind = [
+  bind =
+    [
       "$mod, F1, exec, show-keybinds"
       "$mod, q, killactive"
       "$mod, b, exec, firefox"

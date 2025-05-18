@@ -171,7 +171,6 @@
     python312Packages.pip
     jq
     alejandra
-    nixd
     spotify
     usbutils
     firefox
@@ -179,6 +178,7 @@
     # needed for hyprland
     hyprpolkitagent
     nwg-hello
+    nixd
   ];
 
   # steam

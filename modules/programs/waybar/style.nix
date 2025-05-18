@@ -1,7 +1,5 @@
-{...}:
-{
-  programs.waybar.style =
-  ''
+{...}: {
+  programs.waybar.style = ''
     * {
     font-family: "CaskaydiaMono Nerd Font Mono";
     font-size: 14px;
@@ -70,25 +68,25 @@
 
     /* This section can be use if you want to separate waybar modules */
     .modules-left {
-   	background: @theme_base_color;
-   	border: 1px solid @blue;
-   	padding-right: 15px;
-   	padding-left: 2px;
-   	border-radius: 10px;
+    background: @theme_base_color;
+    border: 1px solid @blue;
+    padding-right: 15px;
+    padding-left: 2px;
+    border-radius: 10px;
     }
     .modules-center {
-   	background: @theme_base_color;
+    background: @theme_base_color;
     border: 0.5px solid @overlay0;
-   	padding-right: 5px;
-   	padding-left: 5px;
-   	border-radius: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-radius: 10px;
     }
     .modules-right {
-   	background: @theme_base_color;
-   	border: 1px solid @blue;
-   	padding-right: 15px;
-   	padding-left: 15px;
-   	border-radius: 10px;
+    background: @theme_base_color;
+    border: 1px solid @blue;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 10px;
     }
 
     #backlight,
@@ -135,10 +133,10 @@
     #custom-weather.showyIcyDay,
     #custom-weather.snowyIcyNight,
     #custom-weather.sunnyDay {
-   	padding-top: 3px;
-   	padding-bottom: 3px;
-   	padding-right: 6px;
-   	padding-left: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 6px;
+    padding-left: 6px;
     }
 
     #idle_inhibitor {
@@ -232,7 +230,7 @@
 
     #workspaces button {
         box-shadow: none;
-   	text-shadow: none;
+    text-shadow: none;
         padding: 0px;
         border-radius: 9px;
         padding-left: 4px;
@@ -242,23 +240,23 @@
     }
 
     #workspaces button:hover {
-   	border-radius: 10px;
-   	color: @overlay0;
-   	background-color: @surface0;
-   	padding-left: 2px;
+    border-radius: 10px;
+    color: @overlay0;
+    background-color: @surface0;
+    padding-left: 2px;
         padding-right: 2px;
         animation: gradient_f 20s ease-in infinite;
         transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
     }
 
     #workspaces button.persistent {
-   	color: @surface1;
-   	border-radius: 10px;
+    color: @surface1;
+    border-radius: 10px;
     }
 
     #workspaces button.active {
-   	color: @peach;
-   	border-radius: 10px;
+    color: @peach;
+    border-radius: 10px;
         padding-left: 8px;
         padding-right: 8px;
         animation: gradient_f 20s ease-in infinite;
@@ -266,8 +264,8 @@
     }
 
     #workspaces button.urgent {
-   	color: @red;
-   	border-radius: 0px;
+    color: @red;
+    border-radius: 0px;
     }
 
     #taskbar button.active {
@@ -285,15 +283,15 @@
     }
 
     #custom-cava_mviz {
-   	color: @pink;
+    color: @pink;
     }
 
     #cava {
-   	color: @pink;
+    color: @pink;
     }
 
     #mpris {
-   	color: @pink;
+    color: @pink;
     }
 
     #custom-menu {
@@ -348,43 +346,43 @@
     color: @text;
     }
     #pulseaudio-slider slider {
-   	min-width: 0px;
-   	min-height: 0px;
-   	opacity: 0;
-   	background-image: none;
-   	border: none;
-   	box-shadow: none;
+    min-width: 0px;
+    min-height: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
     }
 
     #pulseaudio-slider trough {
-   	min-width: 80px;
-   	min-height: 5px;
-   	border-radius: 5px;
+    min-width: 80px;
+    min-height: 5px;
+    border-radius: 5px;
     }
 
     #pulseaudio-slider highlight {
-   	min-height: 10px;
-   	border-radius: 5px;
+    min-height: 10px;
+    border-radius: 5px;
     }
 
     #backlight-slider slider {
-   	min-width: 0px;
-   	min-height: 0px;
-   	opacity: 0;
-   	background-image: none;
-   	border: none;
-   	box-shadow: none;
+    min-width: 0px;
+    min-height: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
     }
 
     #backlight-slider trough {
-   	min-width: 80px;
-   	min-height: 10px;
-   	border-radius: 5px;
+    min-width: 80px;
+    min-height: 10px;
+    border-radius: 5px;
     }
 
     #backlight-slider highlight {
-   	min-width: 10px;
-   	border-radius: 5px;
+    min-width: 10px;
+    border-radius: 5px;
     }
   '';
 }

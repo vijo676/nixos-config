@@ -1,4 +1,4 @@
-{pkgs,...}: let
+{pkgs, ...}: let
 in {
   home.username = "vijo";
   home.homeDirectory = "/home/vijo";

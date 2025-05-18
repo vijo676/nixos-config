@@ -77,17 +77,10 @@ in {
               linkedProjects = cfg.rustAnalyzerLinkedProjects;
             };
           };
-          nix = {
+          nixd = {
             binary = {
               path_lookup = true;
             };
-            initialization_options = {
-              formatting = {
-                command = ["alejandra" "--quiet" "--"];
-              };
-            };
-          };
-          nil = {
             initialization_options = {
               formatting = {
                 command = ["alejandra" "--quiet" "--"];
