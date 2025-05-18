@@ -3,8 +3,8 @@
     gaps_in = 4;
     gaps_out = 9;
     border_size = 2;
-    "col.active_border" = "rgba(81a1c1ff)";
-    "col.inactive_border" = "rgba(4c566aff)";
+    "col.active_border" = "rgba(fffef7ff)";
+    "col.inactive_border" = "rgba(938056ff)";
     # "col.active_border" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
     # "col.inactive_border" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
     resize_on_border = true;
@@ -29,8 +29,8 @@
   };
 
   group = {
-    "col.border_active" = "rgba(81a1c1ff)";
-    "col.border_inactive" = "rgba(4c566aff)";
+    "col.border_active" = "rgba(fffef7ff)";
+    "col.border_inactive" = "rgba(938056ff)";
     # "col.border_active" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
     # "col.border_inactive" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
     # "col.border_locked_active" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";

@@ -9,7 +9,7 @@
     padding: 0px;
     }
 
-    @define-color base   #1f1f28;
+    @define-color base   #16161D;
     @define-color mantle #181820;
     @define-color crust  #1a1a22;
 
@@ -39,6 +39,7 @@
     @define-color pink      #d27e99;
     @define-color flamingo  #d27e99;
     @define-color rosewater #f4d2c5;
+    @define-color kanagawa #938056;
 
     @define-color theme_base_color @base;
     @define-color theme_text_color @text;
@@ -69,7 +70,7 @@
     /* This section can be use if you want to separate waybar modules */
     .modules-left {
     background: @theme_base_color;
-    border: 1px solid @blue;
+    border: 1px solid @kanagawa;
     padding-right: 15px;
     padding-left: 2px;
     border-radius: 10px;
@@ -80,10 +81,11 @@
     padding-right: 5px;
     padding-left: 5px;
     border-radius: 10px;
+    border: 1px solid @kanagawa;
     }
     .modules-right {
     background: @theme_base_color;
-    border: 1px solid @blue;
+    border: 1px solid @kanagawa;
     padding-right: 15px;
     padding-left: 15px;
     border-radius: 10px;
