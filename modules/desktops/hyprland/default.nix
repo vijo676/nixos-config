@@ -149,7 +149,9 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
+      systemd.enable = true;
     };
+    services.displayManager.defaultSession = "hyprland";
     wayland.windowManager.hyprland.systemd.variables = ["--all"];
     wayland.windowManager.hyprland.plugins = [
       # inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
