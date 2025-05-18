@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: let
   module_name = "rofi";
@@ -12,7 +13,7 @@ in {
     enable = mkEnableOption "Enable Rofi App Launcher";
     theme_path = lib.mkOption {
       type = lib.types.path;
-      default = builtins.toPath ./dark_default.rasi;
+      default = ./dark_default.rasi;
       description = "path to the rasi rofi theme";
     };
   };
@@ -21,6 +22,7 @@ in {
     programs.rofi = {
       enable = true;
       theme = cfg.theme_path;
+      terminal = "${inputs.ghostty.packages.${pkgs.system}.default}/bin/ghostty";
     };
   };
 }
