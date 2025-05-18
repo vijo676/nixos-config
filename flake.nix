@@ -3,7 +3,7 @@
 
   inputs = {
     # Pin primary nixpkgs repository
-    nixpkgs = {
+    nixpkgs-stable = {
       url = "github:NixOS/nixpkgs/nixos-24.11";
     };
     # Enable option to use the unstable nixpkgs repo
@@ -12,7 +12,7 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     ghostty = {
       url = "github:ghostty-org/ghostty";
@@ -24,29 +24,38 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
+    kanagawa-yazi = {
+      url = "github:marcosvnmelo/kanagawa-dragon.yazi";
+      flake = false;
+    };
   };
 
-  outputs = {
-    nixpkgs,
+  outputs = inputs @ {
+    self,
+    nixpkgs-stable,
+    nixpkgs-unstable,
     home-manager,
     ghostty,
     ...
   }: let
     # Common library and system definitions
-    lib = nixpkgs.lib;
+    lib = nixpkgs-stable.lib;
     system = "x86_64-linux";
     username = "vijo";
-
     # Import nixpkgs with configurations
-    pkgs = import nixpkgs {
+    pkgs = import nixpkgs-stable {
       inherit system;
       config.allowUnfree = true;
       config.allowUnsupportedSystem = true;
     };
+    # Import nixpkgs-unstable
+    pkgsUnstable = import nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
+    };
   in {
     # NixOS configurations
     nixosConfigurations = {
-      # Work system configuration
       work = lib.nixosSystem {
         inherit system pkgs;
         modules = [
@@ -56,7 +65,6 @@
           }
         ];
       };
-      # laptop system configuration
       xps15 = lib.nixosSystem {
         inherit system pkgs;
         modules = [
@@ -77,6 +85,9 @@
       };
       xps15 = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        extraSpecialArgs = {
+          inherit inputs;
+        };
         modules = [
           ./hosts/xps15/home.nix
         ];

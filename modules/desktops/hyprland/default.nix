@@ -194,6 +194,7 @@ in {
         env = [
           "MOZ_ENABLE_WAYLAND, 1" # for firefox to run on wayland
           "MOZ_WEBRENDER, 1" # for firefox to run on wayland
+          "EDITOR, vim"
 
           "XDG_CURRENT_DESKTOP,Hyprland"
           "XDG_SESSION_DESKTOP,Hyprland"
