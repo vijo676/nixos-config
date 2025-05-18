@@ -84,9 +84,7 @@
     prime = {
       # Sync Mode
       sync.enable = true;
-      # Bus ID of the Intel GPU.
       intelBusId = lib.mkDefault "PCI:0:2:0";
-      # Bus ID of the NVIDIA GPU.
       nvidiaBusId = lib.mkDefault "PCI:1:0:0";
     };
     # Modesetting is required.
@@ -109,7 +107,7 @@
   hardware.graphics = {
     enable = lib.mkDefault true;
     enable32Bit = lib.mkDefault true;
-    extraPackages = with pkgs; [intel-media-driver intel-compute-runtime];
+    extraPackages = with pkgs; [intel-media-driver intel-compute-runtime nvidia-vaapi-driver];
   };
 
   # Enable CUPS to print documents.

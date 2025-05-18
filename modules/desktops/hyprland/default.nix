@@ -151,7 +151,6 @@ in {
       xwayland.enable = true;
       systemd.enable = true;
     };
-    services.displayManager.defaultSession = "hyprland";
     wayland.windowManager.hyprland.systemd.variables = ["--all"];
     wayland.windowManager.hyprland.plugins = [
       # inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
@@ -176,10 +175,10 @@ in {
         #################
 
         exec-once = [
+          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "waybar"
           "hyprpaper"
           "hypridle"
-          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         ];
 
         ################
