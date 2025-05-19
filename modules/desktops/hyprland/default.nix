@@ -48,30 +48,32 @@ in {
       font.size = 11;
       theme = {
         package = pkgs.kanagawa-gtk-theme;
-        name = "Kanagawa";
+        name = "Kanagawa-BL";
       };
       iconTheme = {
         package = pkgs.kanagawa-icon-theme;
         name = "Kanagawa";
       };
       gtk2.extraConfig = "
-        gtk-decoration-layout = menu:close
-        gtk-application-prefer-dark-theme = true
+        gtk-application-prefer-dark-theme=1
       ";
       gtk3.extraConfig = {
-        gtk-decoration-layout = menu:close;
-        gtk-application-prefer-dark-theme = true;
+        gtk-application-prefer-dark-theme = 1;
       };
       gtk4.extraConfig = {
-        gtk-decoration-layout = menu:close;
-        gtk-application-prefer-dark-theme = true;
+        gtk-application-prefer-dark-theme = 1;
       };
       cursorTheme = {
         name = "Bibata-Modern-Classic";
         package = pkgs.bibata-cursors;
       };
     };
-    qt.style.name = "Kanagawa";
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
+    };
+    qt.style.name = "Kanagawa-BL";
     home.pointerCursor = {
       gtk.enable = true;
       package = pkgs.bibata-cursors;
