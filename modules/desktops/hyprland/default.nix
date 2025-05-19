@@ -54,6 +54,10 @@ in {
         package = pkgs.kanagawa-icon-theme;
         name = "Kanagawa";
       };
+      gtk2.extraConfig = "
+        gtk-decoration-layout = menu:close
+        gtk-application-prefer-dark-theme = true
+      ";
       gtk3.extraConfig = {
         gtk-decoration-layout = menu:close;
         gtk-application-prefer-dark-theme = true;

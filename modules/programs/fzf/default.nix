@@ -19,7 +19,7 @@ in {
         "--preview 'tree -C {} | head -200'"
       ];
       defaultOptions = [
-        "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+        # "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
       ];
     };
     programs.bat = {
