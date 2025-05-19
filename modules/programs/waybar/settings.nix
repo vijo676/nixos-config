@@ -20,6 +20,7 @@
       "clock"
     ];
     modules-right = [
+      "hyprland/language"
       "custom/gpuinfo"
       "cpu"
       "memory"
@@ -29,7 +30,6 @@
       "bluetooth"
       "network"
       "battery"
-      "hyprland/language"
       "custom/power"
     ];
     "hyprland/workspaces" = {
@@ -43,8 +43,8 @@
     };
     "clock" = {
       format = "{:%a %d %b %R}";
-      # format = "{:%R 󰃭 %d·%m·%y}";
-      format-alt = "{:%I:%M %p}";
+      format-alt = "{:󰃭 %d·%m·%y %R}";
+      # format-alt = "{:%I:%M %p}";
       tooltip-format = "<tt>{calendar}</tt>";
       calendar = {
         mode = "month";
@@ -132,8 +132,8 @@
     };
 
     "tray" = {
-      icon-size = 12;
-      spacing = 5;
+      icon-size = 36;
+      spacing = 20;
     };
 
     "battery" = {
@@ -151,13 +151,13 @@
     };
 
     "hyprland/language" = {
-      format = "{short}"; # can use {short} and {variant}
+      format = " {short}"; # can use {short} and {variant}
       on-click = "${../../desktops/hyprland/scripts/keyboardswitch.sh}";
     };
 
     "custom/power" = {
-      format = "{}";
-      on-click = "wlogout -b 4";
+      format = "  {}";
+      on-click = "wlogout -b 3";
       interval = 86400; # once every day
       tooltip = true;
     };
