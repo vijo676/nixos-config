@@ -8,9 +8,9 @@
     # switch toggled
     ", switch:Lid Switch, exec, hyprlock"
     # switch is turning on
-    ", switch:onLid Switch, exec, hyprctl keyword monitor eDP-1, disable"
+    ", switch:on:Lid Switch, exec, hyprctl keyword monitor eDP-1, disable"
     # switch is turning off
-    ", switch:offLid Switch, exec, hyprctl keyword monitor eDP-1, eDP-1, 1920x1200@60, 0x0, 1"
+    ", switch:off:Lid Switch, exec, hyprctl keyword monitor eDP-1, preferred, 0x0, 1"
   ];
   bind =
     [
