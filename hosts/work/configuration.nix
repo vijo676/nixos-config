@@ -42,6 +42,41 @@
     # NODE_PATH = "${pkgs.nodejs_18}/bin/node";
   };
 
+  # Enable Hyprland with login manager
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        # command = "Hyprland -c ${pkgs.nwg-hello}/bin/nwg-hello";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        # command = "${pkgs.hyprland}/bin/Hyprland -c ${pkgs.nwg-hello}/etc/nwg-hello/hyprland.conf";
+        user = "greeter";
+      };
+    };
+  };
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+    xwayland.enable = true;
+  };
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = ["gtk"];
+      hyprland.default = [
+        "gtk"
+        "hyprland"
+      ];
+    };
+  };
+  security.pam.services.hyprlock = {};
+  security.pam.services.greetd.gnupg = {
+    enable = true;
+    noAutostart = true;
+  };
+  services.blueman.enable = true;
+
   # Firmware updater
   services.fwupd.enable = true;
   hardware.enableAllFirmware = true;
@@ -115,6 +150,10 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  fonts.packages = with pkgs; [
+    nerdfonts
+  ];
+
   # System wide packages
   environment.systemPackages = with pkgs; [
     slack
@@ -137,6 +176,9 @@
     usbutils
     pkg-config
     firefox
+    nautilus
+    hyprpolkitagent
+    nixd
   ];
 
   #fonts.packages = with pkgs; [

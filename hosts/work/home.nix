@@ -51,6 +51,13 @@ in {
     # shell and terminals
     ghostty.enable = true;
     bash.enable = true;
+
+    # desktop
+    hyprland = {
+      enable = true;
+      wallpaper_path = builtins.toPath ../../wallpapers/zen.jpg;
+    };
+    rofi.enable = true;
   };
 
   # Home packages
