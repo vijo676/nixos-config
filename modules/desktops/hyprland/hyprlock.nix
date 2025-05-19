@@ -32,7 +32,8 @@
         font_color = "rgb(191, 186, 159)";
         fade_on_empty = false;
         font_family = "CaskaydiaCove Nerd Font";
-        fail_color = "rgb(237, 135, 150)";
+        fail_color = "rgba(253, 143, 160, 1.0)";
+        check_color = "rgb(0,0,0)";
         placeholder_text = "Password...";
         hide_input = false;
         position = "0, -200";
