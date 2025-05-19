@@ -25,10 +25,12 @@
       "memory"
       "backlight"
       "pulseaudio"
-      # "pulseaudio#microphone"
+      "pulseaudio#microphone"
       "bluetooth"
       "network"
       "battery"
+      "hyprland/language"
+      "custom/power"
     ];
     "hyprland/workspaces" = {
       disable-scroll = true;

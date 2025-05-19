@@ -176,5 +176,6 @@ in {
     ../../programs/waybar
     (import ./hyprlock.nix {inherit pkgs cfg;})
     (import ./hypridle.nix {inherit pkgs;})
+    (import ./wlogout.nix {inherit pkgs;})
   ];
 }
