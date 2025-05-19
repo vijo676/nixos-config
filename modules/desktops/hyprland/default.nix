@@ -86,14 +86,19 @@ in {
     ];
     wayland.windowManager.hyprland.extraConfig = "
 
-        monitor = , preferred, auto, 1
+        monitor= , preferred, auto, 1
 
-        $terminal = xterm-ghostty
+        $terminal=xterm-ghostty
 
         binds {
-            workspace_back_and_forth = 1
+            workspace_back_and_forth=1
             #allow_workspace_cycles=1
             #pass_mouse_when_bound=0
+        }
+
+        device {
+          name=logitech-mx-master-3s
+          sensitivity=0.0
         }
 
     ";
@@ -156,7 +161,7 @@ in {
           kb_options = "grp:alt_caps_toggle";
           repeat_delay = 300;
           sensitivity = 0;
-          force_no_accel = true;
+          # force_no_accel = true;
           follow_mouse = 1;
         };
       }
