@@ -7,14 +7,14 @@
     };
     settings = {
       global = {
-        frame_color = "#7E9CD8"; # Kanagawa Wave Blue
+        frame_color = "#938056";
         separator_color = "frame";
-        highlight = "#957FB8"; # Kanagawa Sakura Pink
+        highlight = "#957FB8";
         rounded = "yes";
         origin = "top-right";
         alignment = "left";
         vertical_alignment = "center";
-        width = "400";
+        width = "600";
         height = "400";
         scale = 0;
         gap_size = 0;
@@ -34,7 +34,7 @@
         always_run_script = true;
         corner_radius = 10;
         follow = "mouse";
-        font = "jetbrainsmono nerd font 10";
+        font = "Caskaydia Cove Nerd Font 12";
         format = "<b>%s</b>\\n%b";
         frame_width = 1;
         offset = "15x15";
@@ -52,24 +52,23 @@
         show_indicators = "yes";
         shrink = "no";
         word_wrap = "yes";
-        browser = "${browser} --new-tab";
       };
 
       fullscreen_delay_everything = {fullscreen = "delay";};
 
       urgency_critical = {
-        background = "#2A2A37"; # Kanagawa Storm Gray
+        background = "#16161D"; # Kanagawa Storm Gray
         foreground = "#E46876"; # Kanagawa Autumn Red
         frame_color = "#E46876"; # Kanagawa Autumn Red
         timeout = "0";
       };
       urgency_low = {
-        background = "#1F1F28"; # Kanagawa Background
+        background = "#16161D"; # Kanagawa Background
         foreground = "#DCD7BA"; # Kanagawa Ivory
         timeout = "4";
       };
       urgency_normal = {
-        background = "#1F1F28"; # Kanagawa Background
+        background = "#16161D"; # Kanagawa Background
         foreground = "#DCD7BA"; # Kanagawa Ivory
         timeout = "8";
       };
