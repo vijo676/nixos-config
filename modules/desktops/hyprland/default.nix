@@ -24,10 +24,6 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    # Notification daemon
-    services.dunst = {
-      enable = true;
-    };
     # Wallpaper
     services.hyprpaper = {
       enable = true;
@@ -116,6 +112,7 @@ in {
 
         exec-once = [
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "waybar"
           "hyprpaper"
           "hypridle"
@@ -176,6 +173,7 @@ in {
   };
   imports = [
     ../../programs/waybar
+    (import ../../programs/dunst {inherit pkgs;})
     (import ./hyprlock.nix {inherit pkgs cfg;})
     (import ./hypridle.nix {inherit pkgs;})
     (import ./wlogout.nix {inherit pkgs;})
