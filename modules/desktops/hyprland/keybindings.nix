@@ -17,12 +17,14 @@
       "$mod, F1, exec, show-keybinds"
       "$mod, q, killactive"
       "$mod, b, exec, firefox"
-      "$mod, t, exec, ghostty"
+      "$mod, RETURN, exec, ghostty"
       "$mod, d, exec, rofi -show drun || pkill rofi"
       "$mod, v, togglefloating"
       "$mod, f, fullscreen"
       "$mod, e, exec, nautilus"
       "$mod, ESCAPE, exec, hyprlock"
+      "$mod, s, exec, hyprshot -m region"
+      "$mod SHIFT, s, exec, hyprshot -m window"
 
       # Move focus
       "$mod, h, movefocus, l"

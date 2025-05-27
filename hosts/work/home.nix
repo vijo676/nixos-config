@@ -55,7 +55,7 @@ in {
     # desktop
     hyprland = {
       enable = true;
-      wallpaper_path = builtins.toPath ../../wallpapers/space.jpg;
+      wallpaper_path = builtins.toPath ../../wallpapers/space2.png;
       monitors_config = ["HDMI-A-1, 2160x3840@59.99,0x0,1, transform,1" "DP-2, 3840x2160@59.99,2160x0,1"];
     };
     rofi.enable = true;

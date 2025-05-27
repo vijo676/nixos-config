@@ -179,6 +179,8 @@
     nautilus
     hyprpolkitagent
     nixd
+    hyprshot
+    wl-clipboard
   ];
 
   #fonts.packages = with pkgs; [
