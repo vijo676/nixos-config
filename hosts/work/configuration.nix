@@ -152,6 +152,7 @@
 
   fonts.packages = with pkgs; [
     nerdfonts
+    noto-fonts
   ];
 
   # System wide packages
@@ -163,7 +164,6 @@
     cargo
     gcc
     libgcc
-    nerdfonts
     python3
     python312Packages.pip
     git
