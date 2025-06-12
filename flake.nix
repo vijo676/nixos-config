@@ -4,14 +4,14 @@
   inputs = {
     # Pin primary nixpkgs repository
     nixpkgs-stable = {
-      url = "github:NixOS/nixpkgs/nixos-24.11";
+      url = "github:NixOS/nixpkgs/nixos-25.05";
     };
     # Enable option to use the unstable nixpkgs repo
     nixpkgs-unstable = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     ghostty = {

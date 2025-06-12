@@ -86,7 +86,6 @@
 
   # Enable sound with pipewire
   security.rtkit.enable = true;
-  hardware.pulseaudio.enable = lib.mkForce false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -151,8 +150,10 @@
   services.desktopManager.plasma6.enable = true;
 
   fonts.packages = with pkgs; [
-    nerdfonts
-    noto-fonts
+    nerd-fonts.caskaydia-cove
+    nerd-fonts.caskaydia-mono
+    nerd-fonts.caskaydia-mono
+    nerd-fonts.jetbrains-mono
   ];
 
   # System wide packages
@@ -181,11 +182,8 @@
     nixd
     hyprshot
     wl-clipboard
+    marktext
   ];
-
-  #fonts.packages = with pkgs; [
-  #  roboto
-  #];
 
   xdg.mime.defaultApplications = {
     "text/html" = ["firefox.desktop"];

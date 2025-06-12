@@ -41,14 +41,21 @@ in {
       ];
       userSettings = {
         "rust-analyzer.linkedProjects" = cfg.rustAnalyzerLinkedProjects;
-        "workbench.colorTheme" = "Kanagawa Dragon";
         "editor.fontFamily" = "CaskaydiaCove Nerd Font";
-        "workbench.iconTheme" = "material-icon-theme";
         "editor.minimap.enabled" = false;
         "github.copilot.enable" = {
           "*" = true;
           "markdown" = true;
         };
+        "workbench.sideBar.location" = "right";
+        "workbench.iconTheme" = "material-icon-theme";
+        "workbench.colorTheme" = "Kanagawa Dragon";
+
+        # Testing settings for Python
+        "python.testing.pytestEnabled" = true;
+        "python.testing.unittestEnabled" = false;
+        "python.testing.cwd" = "\${workspaceFolder}/autotest/tests";
+        "python.envFolders" = "\${workspaceFolder}/autotest/.autotest-venv";
       };
     };
   };
