@@ -22,7 +22,7 @@ in {
   config = mkIf cfg.enable {
     programs.vscode = {
       enable = true;
-      extensions = with pkgs.vscode-extensions; [
+      profiles.default.extensions = with pkgs.vscode-extensions; [
         kamadorueda.alejandra
         bbenoist.nix
         jnoortheen.nix-ide
@@ -39,7 +39,7 @@ in {
         tal7aouy.icons
         jdinhlife.gruvbox
       ];
-      userSettings = {
+      profiles.default.userSettings = {
         "rust-analyzer.linkedProjects" = cfg.rustAnalyzerLinkedProjects;
         "editor.fontFamily" = "CaskaydiaCove Nerd Font";
         "editor.minimap.enabled" = false;

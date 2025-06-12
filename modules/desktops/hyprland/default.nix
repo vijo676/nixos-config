@@ -67,6 +67,7 @@ in {
     dconf.settings = {
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
+        gtk-theme = "Kanagawa-BL";
       };
     };
     qt.style.name = "Kanagawa-BL";
