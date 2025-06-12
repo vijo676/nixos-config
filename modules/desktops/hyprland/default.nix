@@ -59,10 +59,10 @@ in {
       gtk4.extraConfig = {
         gtk-application-prefer-dark-theme = 1;
       };
-      cursorTheme = {
-        name = "Bibata-Modern-Classic";
-        package = pkgs.bibata-cursors;
-      };
+      # cursorTheme = {
+      #   name = "Bibata-Modern-Classic";
+      #   package = pkgs.bibata-cursors;
+      # };
     };
     dconf.settings = {
       "org/gnome/desktop/interface" = {
@@ -73,6 +73,7 @@ in {
     qt.style.name = "Kanagawa-BL";
     home.pointerCursor = {
       gtk.enable = true;
+      x11.enable = true;
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";
       size = 25;
