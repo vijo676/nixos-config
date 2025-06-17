@@ -60,16 +60,15 @@
     withUWSM = true;
     xwayland.enable = true;
   };
+  xdg.mime.defaultApplications = {
+    "default-web-browser" = ["firefox.desktop"];
+    "text/html" = ["firefox.desktop"];
+    "x-scheme-handler/http" = ["firefox.desktop"];
+    "x-scheme-handler/https" = ["firefox.desktop"];
+  };
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    config = {
-      common.default = ["gtk"];
-      hyprland.default = [
-        "gtk"
-        "hyprland"
-      ];
-    };
   };
   security.pam.services.hyprlock = {};
   security.pam.services.greetd.gnupg = {
@@ -185,12 +184,6 @@
     wl-clipboard
     marktext
   ];
-
-  xdg.mime.defaultApplications = {
-    "text/html" = ["firefox.desktop"];
-    "x-scheme-handler/http" = ["firefox.desktop"];
-    "x-scheme-handler/https" = ["firefox.desktop"];
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

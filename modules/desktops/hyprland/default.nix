@@ -83,28 +83,28 @@ in {
       enable = true;
       xwayland.enable = true;
       systemd.enable = true;
+      package = null;
+      portalPackage = null;
     };
     wayland.windowManager.hyprland.systemd.variables = ["--all"];
     wayland.windowManager.hyprland.plugins = [
       # inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
     ];
     wayland.windowManager.hyprland.extraConfig = "
+    monitor= , preferred, auto, 1
 
-        monitor= , preferred, auto, 1
+    $terminal=xterm-ghostty
 
-        $terminal=xterm-ghostty
+    binds {
+        workspace_back_and_forth=1
+        #allow_workspace_cycles=1
+        #pass_mouse_when_bound=0
+    }
 
-        binds {
-            workspace_back_and_forth=1
-            #allow_workspace_cycles=1
-            #pass_mouse_when_bound=0
-        }
-
-        device {
-          name=logitech-mx-master-3s
-          sensitivity=0.0
-        }
-
+    device {
+      name=logitech-mx-master-3s
+      sensitivity=0.0
+    }
     ";
     wayland.windowManager.hyprland.settings =
       {
@@ -139,9 +139,12 @@ in {
           "XDG_CURRENT_DESKTOP,Hyprland"
           "XDG_SESSION_DESKTOP,Hyprland"
           "XDG_SESSION_TYPE,wayland"
+          "GTK_USE_PORTAL,1"
+          "NIXOS_XDG_OPEN_USE_PORTAL,1"
 
           "GDK_BACKEND,wayland,x11,*"
           "NIXOS_OZONE_WL,1"
+          "BROWSER,firefox"
 
           "MOZ_ENABLE_WAYLAND,1"
           "OZONE_PLATFORM,wayland"
@@ -150,7 +153,7 @@ in {
           "SDL_VIDEODRIVER,wayland"
           "QT_QPA_PLATFORM,wayland;xcb"
           "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-          "QT_QPA_PLATFORMTHEME,qt6ct"
+          "QT_QPA_PLATFORMTHEME,gtk3"
           "QT_AUTO_SCREEN_SCALE_FACTOR,1"
           "WLR_RENDERER_ALLOW_SOFTWARE,1"
           "NIXPKGS_ALLOW_UNFREE,1"
