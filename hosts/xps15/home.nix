@@ -6,7 +6,7 @@ in {
 
   # Import applications modules
   imports = [
-    ../../modules/default.nix
+    ../../home/default.nix
   ];
 
   # Enable specific modules

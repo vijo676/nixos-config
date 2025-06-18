@@ -19,9 +19,6 @@
     isNormalUser = true;
     description = "VitaleJ";
     extraGroups = ["networkmanager" "wheel" "dialout"];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
   };
 
   # Udev rules

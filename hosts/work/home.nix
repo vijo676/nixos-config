@@ -5,7 +5,7 @@ in {
   home.stateVersion = "24.11";
   # Import applications modules
   imports = [
-    ../../modules/default.nix
+    ../../home/default.nix
   ];
 
   # Enable specific modules

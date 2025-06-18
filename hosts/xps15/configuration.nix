@@ -137,9 +137,6 @@
     isNormalUser = true;
     description = "vjxps";
     extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
   };
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
