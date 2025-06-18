@@ -32,9 +32,6 @@
     LC_TELEPHONE = "da_DK.UTF-8";
     LC_TIME = "da_DK.UTF-8";
   };
-  # Enable the KDE Plasma Desktop Environment.
-  # services.displayManager.sddm.enable = true;
-  # services.desktopManager.plasma6.enable = true;
 
   # Enable Hyprland with login manager
   services.greetd = {
@@ -56,13 +53,6 @@
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    config = {
-      common.default = ["gtk"];
-      hyprland.default = [
-        "gtk"
-        "hyprland"
-      ];
-    };
   };
   security.pam.services.hyprlock = {};
   security.pam.services.greetd.gnupg = {
@@ -119,7 +109,6 @@
   hardware.bluetooth.enable = true;
   # Enable sound with pipewire
   security.rtkit.enable = true;
-  hardware.pulseaudio.enable = lib.mkForce false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -156,11 +145,15 @@
 
   # fonts
   fonts.packages = with pkgs; [
-    nerdfonts
+    nerd-fonts.caskaydia-cove
+    nerd-fonts.caskaydia-mono
+    nerd-fonts.caskaydia-mono
+    nerd-fonts.jetbrains-mono
   ];
 
   # System wide packages
   environment.systemPackages = with pkgs; [
+    slack
     wget
     rustup
     cargo
@@ -179,6 +172,8 @@
     hyprpolkitagent
     nwg-hello
     nixd
+    hyprshot
+    wl-clipboard
   ];
 
   # steam
