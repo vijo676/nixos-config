@@ -25,8 +25,19 @@ in {
     programs.yazi = {
       enable = true;
       enableBashIntegration = true;
+
+      plugins = {
+        bypass = pkgs.yaziPlugins.bypass;
+        git = pkgs.yaziPlugins.git;
+        lazygit = pkgs.yaziPlugins.lazygit;
+        mediainfo = pkgs.yaziPlugins.mediainfo;
+        piper = pkgs.yaziPlugins.piper;
+        vcs-files = pkgs.yaziPlugins.vcs-files;
+      };
+
       settings = {
         mgr = {
+          sort_dir_first = true;
           show_hidden = true;
           show_symlink = true;
           linemode = "size";
@@ -44,15 +55,60 @@ in {
           max_height = 1080;
           image_quality = 90;
         };
+        plugin = {
+          # prepend_preloaders = [
+          #   {
+          #     mime = "{audio,video,image}/*";
+          #     run = "mediainfo";
+          #   }
+          #   {
+          #     mime = "application/subrip";
+          #     run = "mediainfo";
+          #   }
+          # ];
+
+          # prepend_previewers = [
+          #   {
+          #     mime = "{audio,video,image}/*";
+          #     run = "mediainfo";
+          #   }
+
+          #   {
+          #     mime = "application/subrip";
+          #     run = "mediainfo";
+          #   }
+
+          #   {
+          #     name = "*.md";
+          #     run = "piper";
+          #   }
+          # ];
+        };
         keymap = {
-          manager.prepend_keymap = [
+          mgr.prepend_keymap = [
             {
               on = ["e"];
-              run = "open";
+              run = "vim ";
             }
             {
               on = ["d"];
               run = "remove --force";
+            }
+            {
+              on = [
+                "g"
+                "c"
+              ];
+              run = "plugin vcs-files";
+              desc = "Show Git file changes";
+            }
+            {
+              on = [
+                "g"
+                "i"
+              ];
+              run = "plugin lazygit";
+              desc = "run lazygit";
             }
           ];
         };
