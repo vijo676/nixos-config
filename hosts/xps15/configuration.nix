@@ -11,43 +11,15 @@
       inherit pkgs lib;
       username = "vijo";
     })
+    ../../modules/steam
+    ../../modules/greetd
+    ../../modules/hyprland
   ];
 
-  # Enable networking
-  networking.hostName = "vj-xps";
-
-  # Enable Hyprland with login manager
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        # command = "Hyprland -c ${pkgs.nwg-hello}/bin/nwg-hello";
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
-        # command = "${pkgs.hyprland}/bin/Hyprland -c ${pkgs.nwg-hello}/etc/nwg-hello/hyprland.conf";
-        user = "greeter";
-      };
-    };
-  };
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    xwayland.enable = true;
-  };
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-  };
-  security.pam.services.hyprlock = {};
-  security.pam.services.greetd.gnupg = {
-    enable = true;
-    noAutostart = true;
-  };
-
+  # Nvidia stuff
   services.xserver = {
     videoDrivers = lib.mkDefault ["nvidia"];
   };
-
-  # Nvidia GPU
   hardware.nvidia = {
     prime = {
       # Sync Mode
@@ -78,13 +50,7 @@
     extraPackages = with pkgs; [intel-media-driver intel-compute-runtime nvidia-vaapi-driver];
   };
 
-  # steam
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  };
+  networking.hostName = "vj-xps";
 
   system.stateVersion = "24.11";
 }

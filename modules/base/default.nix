@@ -123,10 +123,13 @@
     };
   };
 
+  # FW updater
+  hardware.enableAllFirmware = true;
+  services.fwupd.enable = true;
+
   # Bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
-  services.fwupd.enable = true;
 
   # Networking
   networking.networkmanager.enable = true;
