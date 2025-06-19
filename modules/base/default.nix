@@ -9,7 +9,6 @@
     auto-optimise-store = true;
     warn-dirty = false;
   };
-  nixpkgs.config.allowUnfree = true;
 
   # Remember to set password with passwd
   users.users.${username} = {
@@ -45,7 +44,7 @@
     xkb.options = "grp:alt_caps_toggle";
   };
   security = {
-    rkit.enable = true;
+    rtkit.enable = true;
   };
 
   # Enable dconf for home-manager
@@ -118,7 +117,6 @@
   # Bootloader
   boot = {
     tmp.cleanOnBoot = true; # Clean /tmp on boot
-    kernelPackages = pkgs.linuxPackages_latest; # Use latest kernel packages
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;

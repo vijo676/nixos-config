@@ -7,7 +7,10 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/base
+    (import ../../modules/base {
+      inherit pkgs lib;
+      username = "vijo";
+    })
   ];
 
   # Enable networking
