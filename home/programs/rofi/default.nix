@@ -22,7 +22,7 @@ in {
     programs.rofi = {
       enable = true;
       theme = cfg.theme_path;
-      terminal = "${inputs.ghostty.packages.${pkgs.system}.default}/bin/ghostty";
+      terminal = "${pkgs.ghostty}/bin/ghostty";
     };
   };
 }

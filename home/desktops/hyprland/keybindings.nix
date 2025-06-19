@@ -25,6 +25,8 @@
       "$mod, ESCAPE, exec, hyprlock"
       "$mod, s, exec, hyprshot -m region"
       "$mod SHIFT, s, exec, hyprshot -m window"
+      # Screenshot a monitor
+      ", PRINT, exec, hyprshot -m output"
 
       # Move focus
       "$mod, h, movefocus, l"

@@ -49,7 +49,7 @@ in {
         };
       };
       flavors = {
-        kanagawa-dragon = inputs.kanagawa-yazi;
+        # kanagawa-dragon = inputs.kanagawa-yazi;
       };
       theme = {
         flavor = {
