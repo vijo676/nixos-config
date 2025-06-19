@@ -14,17 +14,6 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-    };
-    split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland";
-    };
-    kanagawa-yazi = {
-      url = "github:marcosvnmelo/kanagawa-dragon.yazi";
-      flake = false;
-    };
   };
 
   outputs = inputs @ {
