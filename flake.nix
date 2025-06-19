@@ -39,6 +39,18 @@
       config.allowUnfree = true;
     };
   in {
+    # Shells
+    devShells = {
+      x86_64-linux.default = pkgs.mkShell {
+        name = "default";
+        buildInputs = [
+          # nothing special for now
+        ];
+        shellHook = ''
+          echo "💻 Default shell loaded!"
+        '';
+      };
+    };
     # NixOS configurations
     nixosConfigurations = {
       work = lib.nixosSystem {

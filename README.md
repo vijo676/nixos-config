@@ -31,7 +31,7 @@ Mainly used for consistent configurations and portability. `flake.nix` is the ba
 ├──📁modules/                       # NixOS modules
 ├──📁wallapapers/                   # Wallpapers png,jpg etc.
 ├──💻.envrc
-└──❄️flake.lock
+├──❄️flake.lock
 └──❄️flake.nix
 ```
 
