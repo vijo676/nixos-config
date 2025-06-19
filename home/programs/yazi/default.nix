@@ -1,10 +1,19 @@
 {
+  pkgs,
   lib,
   config,
   inputs,
   ...
 }: let
   module_name = "yazi";
+  kanagawa-yazi = (
+    pkgs.fetchFromGitHub {
+      owner = "marcosvnmelo";
+      repo = "kanagawa-dragon.yazi";
+      rev = "49055274ff53772a13a8c092188e4f6d148d1694";
+      hash = "sha256-gkzJytN0TVgz94xIY3K08JsOYG/ny63Oj2eyGWiWH4s=";
+    }
+  );
   cfg = config.configured.programs."${module_name}";
   inherit (lib) mkEnableOption mkIf;
 in {
@@ -17,7 +26,7 @@ in {
       enable = true;
       enableBashIntegration = true;
       settings = {
-        manager = {
+        mgr = {
           show_hidden = true;
           show_symlink = true;
           linemode = "size";
@@ -49,7 +58,7 @@ in {
         };
       };
       flavors = {
-        # kanagawa-dragon = inputs.kanagawa-yazi;
+        kanagawa-dragon = "${kanagawa-yazi}";
       };
       theme = {
         flavor = {

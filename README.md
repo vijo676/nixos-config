@@ -29,7 +29,7 @@ Mainly used for consistent configurations and portability. `flake.nix` is the ba
 ├──📁hosts/                         # Hosts configurations
 ├──📁home/                          # Home-Manager modules
 ├──📁modules/                       # NixOS modules
-├──📁wallapapers/                   # Wallpapers png,jpg etc.
+├──📁wallpapers/                    # Wallpapers png,jpg etc.
 ├──💻.envrc
 ├──❄️flake.lock
 └──❄️flake.nix
