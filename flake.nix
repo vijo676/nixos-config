@@ -14,9 +14,6 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
     hyprland = {
       url = "github:hyprwm/Hyprland";
     };
@@ -35,7 +32,6 @@
     nixpkgs-stable,
     nixpkgs-unstable,
     home-manager,
-    ghostty,
     ...
   }: let
     # Common library and system definitions
@@ -60,18 +56,12 @@
         inherit system pkgs;
         modules = [
           ./hosts/work/configuration.nix
-          {
-            environment.systemPackages = [ghostty.packages.${system}.default];
-          }
         ];
       };
       xps15 = lib.nixosSystem {
         inherit system pkgs;
         modules = [
           ./hosts/xps15/configuration.nix
-          {
-            environment.systemPackages = [ghostty.packages.${system}.default];
-          }
         ];
       };
     };
