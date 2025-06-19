@@ -39,8 +39,8 @@ Mainly used for consistent configurations and portability. `flake.nix` is the ba
 
 1. **Clone this repository:**
    ```sh
-   git clone https://github.com/yourusername/NixOS-config.git
-   cd NixOS-config
+   git clone https://github.com/vijo676/nixos-config.git
+   cd ~/nixos-config
    ```
 
 2. **Switch to a host configuration:**
