@@ -41,7 +41,7 @@ in {
       ];
       profiles.default.userSettings = {
         "rust-analyzer.linkedProjects" = cfg.rustAnalyzerLinkedProjects;
-        "editor.fontFamily" = "CaskaydiaCove Nerd Font";
+        "editor.fontFamily" = "JetBrainsMono Nerd Font";
         "editor.minimap.enabled" = false;
         "github.copilot.enable" = {
           "*" = true;
@@ -56,6 +56,9 @@ in {
         "python.testing.unittestEnabled" = false;
         "python.testing.cwd" = "\${workspaceFolder}/autotest/tests";
         "python.envFolders" = "\${workspaceFolder}/autotest/.autotest-venv";
+
+        # Enable auto-formatting on save
+        "editor.formatOnSave" = true;
       };
     };
   };
