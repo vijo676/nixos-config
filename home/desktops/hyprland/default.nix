@@ -117,6 +117,7 @@ in {
           "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "hyprpaper"
           "hypridle"
+          "waybar"
           # "hyprpm reload -n"
         ];
 
