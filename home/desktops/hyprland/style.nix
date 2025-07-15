@@ -101,7 +101,7 @@
   windowrule = [
     "opacity 1.00 1.00,class:^(firefox)$"
     "opacity 0.80 0.80,class:^(Spotify)$"
-    "opacity 0.80 0.80,class:^(code)$"
-    "opacity 0.80 0.80,class:^(zeditor)$"
+    "opacity 0.50 0.50,class:^(code)$"
+    "opacity 0.50 0.50,class:^(zeditor)$"
   ];
 }
