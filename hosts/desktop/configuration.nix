@@ -16,6 +16,10 @@
     ../../modules/hyprland
   ];
 
+  environment.systemPackages = with pkgs; [
+    obs-studio
+  ];
+
   networking.hostName = "nixos-desktop";
   system.stateVersion = "25.05";
 }
