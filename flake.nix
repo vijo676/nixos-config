@@ -23,23 +23,32 @@
     home-manager,
     ...
   }: let
-    # Common library and system definitions
+    # common library and system definitions
     lib = nixpkgs-stable.lib;
     system = "x86_64-linux";
     username = "vijo";
-    # Import nixpkgs with configurations
+    # nixpkgs
     pkgs = import nixpkgs-stable {
       inherit system;
       config.allowUnfree = true;
       config.allowUnsupportedSystem = true;
     };
-    # Import nixpkgs-unstable
     pkgsUnstable = import nixpkgs-unstable {
       inherit system;
       config.allowUnfree = true;
     };
+    # make hosts configurations
+    mkHost = name: {
+      config = ./hosts/${name}/configuration.nix;
+      home = ./hosts/${name}/home.nix;
+    };
+    hosts = {
+      desktop = mkHost "desktop";
+      work = mkHost "work";
+      xps15 = mkHost "xps15";
+    };
   in {
-    # Shells
+    # Dev shells
     devShells = {
       x86_64-linux.default = pkgs.mkShell {
         name = "default";
@@ -52,73 +61,33 @@
       };
     };
     # NixOS configurations
-    nixosConfigurations = {
-      desktop = lib.nixosSystem {
-        inherit system pkgs;
-        modules = [
-          ./hosts/desktop/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.vijo = import ./hosts/desktop/home.nix;
+    nixosConfigurations =
+      lib.mapAttrs (
+        name: host:
+          lib.nixosSystem {
+            inherit system pkgs;
+            modules = [
+              host.config
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.${username} = import host.home;
+              }
+            ];
           }
-        ];
-      };
-      work = lib.nixosSystem {
-        inherit system pkgs;
-        modules = [
-          ./hosts/work/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.vijo = import ./hosts/work/home.nix;
-          }
-        ];
-      };
-      xps15 = lib.nixosSystem {
-        inherit system pkgs;
-        modules = [
-          ./hosts/xps15/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.vijo = import ./hosts/xps15/home.nix;
-          }
-        ];
-      };
-    };
+      )
+      hosts;
     # Home-manager configurations
-    homeConfigurations = {
-      desktop = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {
-          inherit inputs;
-        };
-        modules = [
-          ./hosts/desktop/home.nix
-        ];
-      };
-      work = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {
-          inherit inputs;
-        };
-        modules = [
-          ./hosts/work/home.nix
-        ];
-      };
-      xps15 = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {
-          inherit inputs;
-        };
-        modules = [
-          ./hosts/xps15/home.nix
-        ];
-      };
-    };
+    homeConfigurations =
+      lib.mapAttrs (
+        name: host:
+          home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = {inherit inputs pkgsUnstable;};
+            modules = [host.home];
+          }
+      )
+      hosts;
   };
 }

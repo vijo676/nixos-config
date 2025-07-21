@@ -50,7 +50,7 @@
     extraPackages = with pkgs; [intel-media-driver intel-compute-runtime nvidia-vaapi-driver];
   };
 
-  networking.hostName = "vj-xps";
+  networking.hostName = "xps";
 
   system.stateVersion = "24.11";
 }

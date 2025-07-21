@@ -59,10 +59,6 @@ in {
       gtk4.extraConfig = {
         gtk-application-prefer-dark-theme = 1;
       };
-      # cursorTheme = {
-      #   name = "Bibata-Modern-Classic";
-      #   package = pkgs.bibata-cursors;
-      # };
     };
     dconf.settings = {
       "org/gnome/desktop/interface" = {

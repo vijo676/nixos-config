@@ -22,7 +22,7 @@
   '';
 
   # Networking
-  networking.hostName = "vj-work";
+  networking.hostName = "work";
   networking.firewall.trustedInterfaces = ["enp195s0f3u2"];
 
   # System wide packages
@@ -31,6 +31,6 @@
     pkg-config
     marktext
   ];
-  
+
   system.stateVersion = "24.11";
 }

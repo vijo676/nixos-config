@@ -152,6 +152,8 @@
     firefox
     discord
     fastfetch
+    imv
+    mpv
     # needed for hyprland
     nautilus
     hyprpolkitagent
