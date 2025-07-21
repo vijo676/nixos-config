@@ -53,21 +53,54 @@
     };
     # NixOS configurations
     nixosConfigurations = {
+      desktop = lib.nixosSystem {
+        inherit system pkgs;
+        modules = [
+          ./hosts/desktop/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.vijo = import ./hosts/desktop/home.nix;
+          }
+        ];
+      };
       work = lib.nixosSystem {
         inherit system pkgs;
         modules = [
           ./hosts/work/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.vijo = import ./hosts/work/home.nix;
+          }
         ];
       };
       xps15 = lib.nixosSystem {
         inherit system pkgs;
         modules = [
           ./hosts/xps15/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.vijo = import ./hosts/xps15/home.nix;
+          }
         ];
       };
     };
     # Home-manager configurations
     homeConfigurations = {
+      desktop = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          ./hosts/desktop/home.nix
+        ];
+      };
       work = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {

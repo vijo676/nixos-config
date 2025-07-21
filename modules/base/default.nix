@@ -159,6 +159,7 @@
     nixd
     hyprshot
     wl-clipboard
+    kitty
   ];
 
   xdg.mime.defaultApplications = {
