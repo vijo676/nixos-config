@@ -65,24 +65,22 @@
       material-design-icons
 
       # normal fonts
-      noto-fonts
+      # noto-fonts
 
       # nerd font
       nerd-fonts.caskaydia-cove
-      nerd-fonts.caskaydia-mono
-      nerd-fonts.caskaydia-mono
       nerd-fonts.jetbrains-mono
     ];
     # disable this to use specified fonts by user instead of default ones
-    enableDefaultPackages = false;
+    # enableDefaultPackages = false;
 
     # user fonts
-    fontconfig.defaultFonts = {
-      serif = ["Noto Serif" "Noto Color Emoji"];
-      sansSerif = ["Noto Sans" "Noto Color Emoji"];
-      monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
-      emoji = ["Noto Color Emoji"];
-    };
+    # fontconfig.defaultFonts = {
+    #   serif = ["Noto Serif"];
+    #   sansSerif = ["Noto Sans"];
+    #   monospace = ["CaskaydiaCove Nerd Font"];
+    #   emoji = ["Noto Color Emoji"];
+    # };
   };
 
   # Enable the OpenSSH daemon.

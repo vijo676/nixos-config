@@ -41,7 +41,7 @@ in {
       ];
       profiles.default.userSettings = {
         "rust-analyzer.linkedProjects" = cfg.rustAnalyzerLinkedProjects;
-        "editor.fontFamily" = "JetBrainsMono Nerd Font";
+        "editor.fontFamily" = "CaskaydiaCove Nerd Font";
         "editor.minimap.enabled" = false;
         "github.copilot.enable" = {
           "*" = true;
