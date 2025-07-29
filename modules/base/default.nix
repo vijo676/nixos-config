@@ -162,6 +162,9 @@
     hyprshot
     wl-clipboard
     kitty
+    cyme # Modern "lsusb"
+    caligula # TUI burning tool
+    nh # nix helper tool
   ];
 
   xdg.mime.defaultApplications = {
