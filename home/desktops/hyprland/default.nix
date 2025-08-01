@@ -43,12 +43,12 @@ in {
       font.name = "Caskaydia Cove Nerd Font";
       font.size = 11;
       theme = {
-        package = pkgs.kanagawa-gtk-theme;
-        name = "Kanagawa-BL";
+        package = pkgs.everforest-gtk-theme;
+        name = "Everforest-Dark-BL";
       };
       iconTheme = {
-        package = pkgs.kanagawa-icon-theme;
-        name = "Kanagawa";
+        package = pkgs.everforest-gtk-theme;
+        name = "Everforest-Dark";
       };
       gtk2.extraConfig = "
         gtk-application-prefer-dark-theme=1
@@ -63,10 +63,11 @@ in {
     dconf.settings = {
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
-        gtk-theme = "Kanagawa-BL";
+        enable-hot-corners = false;
       };
     };
-    qt.style.name = "Kanagawa-BL";
+    qt.style.name = "Everforest-Dark-BL";
+    home.sessionVariables.GTK_THEME = "Everforest-Dark-BL";
     home.pointerCursor = {
       gtk.enable = true;
       x11.enable = true;
