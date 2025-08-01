@@ -154,7 +154,6 @@ in {
           "QT_AUTO_SCREEN_SCALE_FACTOR,1"
           "WLR_RENDERER_ALLOW_SOFTWARE,1"
           "NIXPKGS_ALLOW_UNFREE,1"
-          "GTK_THEME,Kanagawa"
         ];
 
         #############
