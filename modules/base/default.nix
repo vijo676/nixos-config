@@ -141,6 +141,8 @@
     rustup
     cargo
     gcc
+    zig
+    zls
     git
     libgcc
     python3

@@ -59,6 +59,13 @@ in {
 
         # Enable auto-formatting on save
         "editor.formatOnSave" = true;
+        "zig.zls.enabled" = "on";
+        "[zig]" = {
+          "editor.formatOnSave" = true;
+          "editor.defaultFormatter" = "ziglang.vscode-zig";
+          "editor.stickyScroll.defaultModel" = "foldingProviderModel";
+          "files.eol" = "\n";
+        };
       };
     };
   };
