@@ -6,12 +6,14 @@
   };
   xdg.portal = {
     enable = true;
-    # xdgOpenUsePortal = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
-    configPackages = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
+    xdgOpenUsePortal = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland];
+    configPackages = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland];
     config.common = {
-      default = ["gnome" "hyprland" "gtk"];
-      "org.freedesktop.impl.portal.Settings" = "gnome";
+      default = ["hyprland" "gtk"];
+      "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
+      "org.freedesktop.impl.portal.OpenURI" = ["gtk"];
+      "org.freedesktop.impl.portal.Settings" = ["gtk"];
     };
   };
   security.pam.services.hyprlock = {};

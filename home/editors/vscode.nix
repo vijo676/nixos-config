@@ -49,13 +49,12 @@ in {
         };
         "workbench.sideBar.location" = "right";
         "workbench.iconTheme" = "material-icon-theme";
-        "workbench.colorTheme" = "Kanagawa Dragon";
+        "workbench.colorTheme" = "Gruvbox Dark Hard";
 
         # Testing settings for Python
         "python.testing.pytestEnabled" = true;
         "python.testing.unittestEnabled" = false;
         "python.testing.cwd" = "\${workspaceFolder}/autotest/tests";
-        "python.envFolders" = "\${workspaceFolder}/autotest/.autotest-venv";
 
         # Enable auto-formatting on save
         "editor.formatOnSave" = true;
