@@ -135,6 +135,7 @@
 
   # System wide packages
   environment.systemPackages = with pkgs; [
+    iperf # measure network performance
     slack
     curl
     wget
