@@ -51,11 +51,6 @@ in {
         "workbench.iconTheme" = "material-icon-theme";
         "workbench.colorTheme" = "Gruvbox Dark Hard";
 
-        # Testing settings for Python
-        "python.testing.pytestEnabled" = true;
-        "python.testing.unittestEnabled" = false;
-        "python.testing.cwd" = "\${workspaceFolder}/autotest/tests";
-
         # Enable auto-formatting on save
         "editor.formatOnSave" = true;
         "zig.zls.enabled" = "on";
@@ -66,6 +61,90 @@ in {
           "files.eol" = "\n";
         };
       };
+      profiles.default.keybindings = [
+        {
+          key = "ctrl+w";
+          command = "workbench.action.closeActiveEditor";
+          when = "editorTextFocus";
+        }
+        {
+          key = "ctrl+shift+w";
+          command = "workbench.action.closeAllEditors";
+          when = "editorTextFocus";
+        }
+        {
+          key = "ctrl+alt+e";
+          command = "workbench.view.explorer";
+        }
+        {
+          key = "alt+s";
+          command = "workbench.action.splitEditor";
+          when = "editorTextFocus";
+        }
+        {
+          key = "alt+v";
+          command = "workbench.action.splitEditorDown";
+          when = "editorTextFocus";
+        }
+        {
+          key = "alt+h";
+          command = "workbench.action.focusLeftGroup";
+          when = "editorTextFocus";
+        }
+        {
+          key = "alt+j";
+          command = "workbench.action.focusBelowGroup";
+          when = "editorTextFocus";
+        }
+        {
+          key = "alt+k";
+          command = "workbench.action.focusAboveGroup";
+          when = "editorTextFocus";
+        }
+        {
+          key = "alt+l";
+          command = "workbench.action.focusRightGroup";
+          when = "editorTextFocus";
+        }
+        {
+          key = "alt+e";
+          command = "workbench.action.showAllEditors";
+        }
+        {
+          key = "ctrl+alt+f";
+          command = "workbench.view.search";
+        }
+        {
+          key = "ctrl+n";
+          command = "editor.action.nextMatchFindAction";
+          when = "editorFocus && findInputFocussed";
+        }
+        {
+          key = "ctrl+p";
+          command = "editor.action.previousMatchFindAction";
+          when = "editorFocus && findInputFocussed";
+        }
+        {
+          key = "alt+shift+h";
+          command = "workbench.action.moveEditorToLeftGroup";
+          when = "editorTextFocus";
+        }
+        {
+          key = "alt+shift+j";
+          command = "workbench.action.moveEditorToBelowGroup";
+          when = "editorTextFocus";
+        }
+        {
+          key = "alt+shift+k";
+          command = "workbench.action.moveEditorToAboveGroup";
+          when = "editorTextFocus";
+        }
+        {
+          key = "alt+shift+l";
+          command = "workbench.action.moveEditorToRightGroup";
+          when = "editorTextFocus";
+        }
+      ];
     };
   };
 }

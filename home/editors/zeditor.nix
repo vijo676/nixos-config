@@ -89,6 +89,49 @@ in {
           };
         };
       };
+      userKeymaps = [
+        {
+          context = "Pane";
+          bindings = {
+            # Close editor
+            "ctrl-w" = ["pane::CloseActiveItem" {"close_pinned" = false;}];
+            "ctrl-shift-w" = ["pane::CloseAllItems" {"close_pinned" = false;}];
+
+            # Split windows
+            "alt-s" = "pane::SplitRight";
+            "alt-v" = "pane::SplitDown";
+          };
+        }
+        {
+          context = "Workspace";
+          bindings = {
+            # Navigate between panes
+            "alt-h" = "workspace::ActivatePaneLeft";
+            "alt-j" = "workspace::ActivatePaneDown";
+            "alt-k" = "workspace::ActivatePaneUp";
+            "alt-l" = "workspace::ActivatePaneRight";
+
+            # Move editor to adjacent groups
+            "alt-shift-h" = "workspace::SwapPaneLeft";
+            "alt-shift-j" = "workspace::SwapPaneDown";
+            "alt-shift-k" = "workspace::SwapPaneUp";
+            "alt-shift-l" = "workspace::SwapPaneRight";
+
+            # Search and navigation
+            "ctrl-alt-f" = "pane::DeploySearch";
+            "alt-e" = "file_finder::Toggle";
+            "ctrl-alt-e" = "project_panel::ToggleFocus";
+          };
+        }
+        {
+          context = "BufferSearchBar && !in_replace > Editor";
+          bindings = {
+            # Search result navigation
+            "ctrl-n" = "search::NextHistoryQuery";
+            "ctrl-p" = "search::PreviousHistoryQuery";
+          };
+        }
+      ];
     };
   };
 }
