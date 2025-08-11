@@ -150,6 +150,7 @@
     python312Packages.pip
     jq
     alejandra
+    nil
     spotify
     usbutils
     firefox
