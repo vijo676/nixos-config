@@ -14,6 +14,7 @@ in {
 
   config = mkIf cfg.enable {
     programs.ghostty = {
+      # enableZshIntegration = true;
       enable = true;
       settings = {
         theme = "GruvboxDarkHard";

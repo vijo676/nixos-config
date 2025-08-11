@@ -29,7 +29,6 @@ in {
         yz = "yazi";
         lzg = "lazygit";
         man = "batman";
-        hmu = "home-manager switch --flake .#xps15";
         nix-cleanup = "nix-collect-garbage -d";
       };
     };
