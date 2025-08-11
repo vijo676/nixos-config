@@ -2,17 +2,18 @@
   description = "vijo NixOS configuration";
 
   inputs = {
-    # Pin primary nixpkgs repository
     nixpkgs-stable = {
       url = "github:NixOS/nixpkgs/nixos-25.05";
     };
-    # Enable option to use the unstable nixpkgs repo
     nixpkgs-unstable = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
     };
   };
 
@@ -21,13 +22,12 @@
     nixpkgs-stable,
     nixpkgs-unstable,
     home-manager,
+    zen-browser,
     ...
   }: let
-    # common library and system definitions
     lib = nixpkgs-stable.lib;
     system = "x86_64-linux";
     username = "vijo";
-    # nixpkgs
     pkgs = import nixpkgs-stable {
       inherit system;
       config.allowUnfree = true;
@@ -37,7 +37,6 @@
       inherit system;
       config.allowUnfree = true;
     };
-    # make hosts configurations
     mkHost = name: {
       config = ./hosts/${name}/configuration.nix;
       home = ./hosts/${name}/home.nix;
@@ -73,6 +72,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.${username} = import host.home;
+                home-manager.extraSpecialArgs = {inherit inputs pkgsUnstable;};
               }
             ];
           }
@@ -89,5 +89,6 @@
           }
       )
       hosts;
+    formatter.${system} = pkgs.alejandra;
   };
 }

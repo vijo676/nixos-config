@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./browsers/default.nix
     ./desktops/default.nix
     ./editors/default.nix
     ./programs/default.nix

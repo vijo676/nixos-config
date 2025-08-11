@@ -11,6 +11,7 @@ in {
 
   # Enable specific modules
   configured.programs = {
+    zen.enable = true;
     # editors
     vim.enable = true;
     vscode.enable = true;
