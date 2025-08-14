@@ -169,6 +169,7 @@
     cyme # Modern "lsusb"
     caligula # TUI burning tool
     nh # nix helper tool
+    picocom # terminal emulator for serial
   ];
 
   xdg.mime.defaultApplications = {
