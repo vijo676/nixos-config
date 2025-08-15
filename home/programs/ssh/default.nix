@@ -16,6 +16,9 @@ in {
       enable = true;
       addKeysToAgent = "yes";
       extraConfig = ''
+        Host vc3-*
+          StrictHostKeyChecking no
+
         Host github.com
           ForwardAgent yes
 
