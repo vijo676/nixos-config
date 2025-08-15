@@ -17,7 +17,10 @@ in {
       addKeysToAgent = "yes";
       extraConfig = ''
         Host vc3-*
+          User root
           StrictHostKeyChecking no
+          UserKnownHostFile /dev/null
+          ForwardAgent yes
 
         Host github.com
           ForwardAgent yes
