@@ -114,8 +114,7 @@ in {
           "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "hyprpaper"
           "hypridle"
-          "waybar"
-          # "hyprpm reload -n"
+          "sleep 1 && systemctl --user restart waybar.service" # Delayed waybar start for NVIDIA
         ];
 
         ################
