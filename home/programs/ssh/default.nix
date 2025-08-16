@@ -19,7 +19,7 @@ in {
         Host vc3-*
           User root
           StrictHostKeyChecking no
-          UserKnownHostFile /dev/null
+          UserKnownHostsFile /dev/null
           ForwardAgent yes
 
         Host github.com
