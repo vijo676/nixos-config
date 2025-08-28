@@ -170,6 +170,9 @@
     caligula # TUI burning tool
     nh # nix helper tool
     picocom # terminal emulator for serial
+    protonvpn-gui # ProtonVPN GUI
+    ripgrep # modern grep
+    fd # modern find
   ];
 
   xdg.mime.defaultApplications = {
