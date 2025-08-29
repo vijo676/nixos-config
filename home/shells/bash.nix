@@ -31,6 +31,9 @@ in {
         man = "batman";
         nix-cleanup = "nix-collect-garbage -d";
       };
+      bashrcExtra = ''
+        export TERM=xterm-256color
+      '';
     };
   };
 }
