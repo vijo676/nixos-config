@@ -25,5 +25,12 @@ in {
         window-decoration = false;
       };
     };
+    programs.eza = {
+      enable = true;
+      colors = "always";
+      icons = "always";
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+    };
   };
 }

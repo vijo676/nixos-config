@@ -16,19 +16,20 @@ in {
     programs.bash = {
       enable = true;
       enableCompletion = true;
-      historyIgnore = ["ls" "cd" "exit" "ll" "clear" "cl"];
+      historyIgnore = ["ls" "cd" "exit" "ll" "clear"];
       shellAliases = {
-        ll = lib.mkForce "lsd -la --date relative";
-        c = "clear";
-        l = "ls -CF";
-        ls = lib.mkForce "lsd";
+        ls = lib.mkForce "eza --oneline --group-directories-first --show-symlinks";
+        lsa = lib.mkForce "eza --all --group-directories-first --show-symlinks";
+        ll = lib.mkForce "eza --long --all --group-directories-first --show-symlinks --changed";
+        ff = "fzf --preview 'bat --style=numbers --color=always {}'";
         cd = "z";
-        tree = "lsd --tree";
-        gs = "git status";
         ".." = "cd ..";
+        "..." = "cd ../..";
+        "...." = "cd ../../..";
         yz = "yazi";
         lzg = "lazygit";
         man = "batman";
+        gs = "git status";
         nix-cleanup = "nix-collect-garbage -d";
       };
       bashrcExtra = ''
