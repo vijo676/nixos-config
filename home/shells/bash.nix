@@ -19,9 +19,10 @@ in {
       historyIgnore = ["ls" "cd" "exit" "ll" "clear"];
       shellAliases = {
         ls = lib.mkForce "eza --oneline --group-directories-first --show-symlinks";
-        lsa = lib.mkForce "eza --all --group-directories-first --show-symlinks";
-        ll = lib.mkForce "eza --long --all --group-directories-first --show-symlinks --changed";
+        lsa = lib.mkForce "ls --all";
+        ll = lib.mkForce "ls --long --all --changed";
         ff = "fzf --preview 'bat --style=numbers --color=always {}'";
+        env = "env | tspin";
         cd = "z";
         ".." = "cd ..";
         "..." = "cd ../..";

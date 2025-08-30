@@ -173,6 +173,7 @@
     protonvpn-gui # ProtonVPN GUI
     ripgrep # modern grep
     fd # modern find
+    tailspin # modern tail
   ];
 
   xdg.mime.defaultApplications = {
