@@ -28,17 +28,19 @@ in {
       historySubstringSearch.enable = true;
 
       shellAliases = {
-        ll = lib.mkForce "lsd -la --date relative";
-        c = "clear";
-        l = "ls -CF";
-        ls = lib.mkForce "lsd";
+        ls = lib.mkForce "eza --oneline --group-directories-first --show-symlinks";
+        lsa = lib.mkForce "ls --all";
+        ll = lib.mkForce "ls --long --all --changed";
+        ff = "fzf --preview 'bat --style=numbers --color=always {}'";
+        env = "env | tspin";
         cd = "z";
-        tree = "lsd --tree";
-        gs = "git status";
         ".." = "cd ..";
+        "..." = "cd ../..";
+        "...." = "cd ../../..";
         yz = "yazi";
         lzg = "lazygit";
         man = "batman";
+        gs = "git status";
         nix-cleanup = "nix-collect-garbage -d";
       };
 
@@ -48,14 +50,6 @@ in {
         setopt CORRECT_ALL          # autocorrect commands
         setopt SHARE_HISTORY        # share history between shells
         setopt HIST_VERIFY          # show command with history expansion to user before running it
-
-        # Key bindings
-        bindkey "^[[1;5C" forward-word
-        bindkey "^[[1;5D" backward-word
-
-        # History substring search bindings
-        bindkey '^[[A' history-substring-search-up
-        bindkey '^[[B' history-substring-search-down
       '';
     };
   };

@@ -10,11 +10,14 @@
     warn-dirty = false;
   };
 
+  programs.zsh.enable = true;
+
   # Remember to set password with passwd
   users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
     extraGroups = ["networkmanager" "wheel"];
+    shell = pkgs.zsh;
   };
 
   # Garbage collection weekly

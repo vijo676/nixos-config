@@ -15,8 +15,6 @@ in {
   config = mkIf cfg.enable {
     programs.starship = {
       enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
       settings = {
         format = lib.concatStrings [
           "$os"
@@ -35,8 +33,6 @@ in {
           "$nix_shell"
           "$character"
         ];
-
-        right_format = "$git_branch";
 
         add_newline = true;
         palette = "everforest";

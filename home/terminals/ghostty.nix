@@ -14,8 +14,8 @@ in {
 
   config = mkIf cfg.enable {
     programs.ghostty = {
-      # enableZshIntegration = true;
       enable = true;
+      enableZshIntegration = true;
       settings = {
         theme = "GruvboxDarkHard";
         font-family = "CaskaydiaCove Nerd Font";
