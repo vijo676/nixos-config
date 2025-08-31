@@ -43,6 +43,13 @@ in {
         gs = "git status";
         nix-cleanup = "nix-collect-garbage -d";
       };
+      plugins = [
+        {
+          name = "vi-mode";
+          src = pkgs.zsh-vi-mode;
+          file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        }
+      ];
 
       initContent = ''
         # Zsh options

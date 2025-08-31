@@ -95,6 +95,10 @@ in {
         character = {
           success_symbol = "\n[➜](bold green)";
           error_symbol = "\n[➜](bold red)";
+          vimcmd_symbol = "\n[➜](bold blue)"; # Block for vi normal mode
+          vimcmd_replace_one_symbol = "\n[➜](bold yellow)"; # Block for replace mode
+          vimcmd_replace_symbol = "\n[➜](bold purle)"; # Block for replace mode
+          vimcmd_visual_symbol = "\n[➜](bold magenta)"; # Block for visual mode
         };
         palettes = {
           everforest = {

@@ -15,7 +15,6 @@ in {
   config = mkIf cfg.enable {
     programs.ghostty = {
       enable = true;
-      enableZshIntegration = true;
       settings = {
         theme = "GruvboxDarkHard";
         font-family = "CaskaydiaCove Nerd Font";
@@ -23,6 +22,7 @@ in {
         background-opacity = 0.55;
         background-blur-radius = 0;
         window-decoration = false;
+        cursor-style = "block";
       };
     };
     programs.eza = {
