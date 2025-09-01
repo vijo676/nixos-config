@@ -9,25 +9,19 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   options.configured.programs."${module_name}" = {
-    enable = mkEnableOption "Enable FZF and BAT and LSD colors";
+    enable = mkEnableOption "Enable FZF and BAT";
   };
 
   config = mkIf cfg.enable {
     programs.fzf = {
       enable = true;
-      changeDirWidgetOptions = [
-        "--preview 'tree -C {} | head -200'"
-      ];
+      enableZshIntegration = true;
       defaultOptions = [
-        # "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
       ];
     };
     programs.bat = {
       enable = true;
       extraPackages = [pkgs.bat-extras.batman pkgs.bat-extras.prettybat];
-    };
-    programs.lsd = {
-      enable = true;
     };
   };
 }

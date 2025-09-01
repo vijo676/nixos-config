@@ -44,11 +44,11 @@ in {
         nix-cleanup = "nix-collect-garbage -d";
       };
       plugins = [
-        {
-          name = "vi-mode";
-          src = pkgs.zsh-vi-mode;
-          file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-        }
+        # {
+        #   name = "vi-mode";
+        #   src = pkgs.zsh-vi-mode;
+        #   file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        # }
       ];
 
       initContent = ''
@@ -57,6 +57,9 @@ in {
         setopt CORRECT_ALL          # autocorrect commands
         setopt SHARE_HISTORY        # share history between shells
         setopt HIST_VERIFY          # show command with history expansion to user before running it
+
+        # Make Ctrl+L accept autosuggestion
+        bindkey '^L' autosuggest-accept
       '';
     };
   };
