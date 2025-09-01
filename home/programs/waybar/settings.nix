@@ -2,161 +2,154 @@
   programs.waybar.settings.mainBar = {
     position = "top";
     layer = "top";
-    height = 34;
-    exclusive = true;
-    passthrough = false;
-    gtk-layer-shell = true;
-    # ipc = true;
-    fixed-center = true;
-    margin-top = 10;
-    margin-left = 10;
-    margin-right = 10;
+    height = 30;
+    ipc = true;
+    margin-top = 0;
+    margin-left = 0;
+    margin-right = 0;
     margin-bottom = 0;
 
     modules-left = [
       "hyprland/workspaces"
+      "hyprland/window"
     ];
     modules-center = [
-      "clock"
+      "group/time"
     ];
     modules-right = [
+      "privacy"
       "hyprland/language"
-      "custom/gpuinfo"
-      "cpu"
-      "memory"
-      "backlight"
-      "pulseaudio"
-      "pulseaudio#microphone"
-      "bluetooth"
-      "network"
+      "group/hardware"
+      "group/sound"
+      "group/network"
       "battery"
       "custom/power"
     ];
+    "hyprland/window" = {
+      format = "{initialTitle}";
+      max-length = 35;
+      rewrite = {
+        "" = "Hyprland";
+      };
+      seperate-outputs = false;
+    };
     "hyprland/workspaces" = {
       disable-scroll = true;
       all-outputs = true;
       active-only = false;
       on-click = "activate";
       persistent-workspaces = {
-        "*" = [1 2 3 4 5 6 7 8 9];
+        "*" = [1 2 3 4 5 6];
       };
+    };
+    "group/time" = {
+      orientation = "horizontal";
+      modules = ["clock" "clock#simple"];
     };
     "clock" = {
-      format = "{:%a %d %b %R}";
-      format-alt = "{:󰃭 %d·%m·%y %R}";
-      # format-alt = "{:%I:%M %p}";
-      tooltip-format = "<tt>{calendar}</tt>";
-      calendar = {
-        mode = "month";
-        mode-mon-col = 3;
-        on-scroll = 1;
-        on-click-right = "mode";
-        format = {
-          months = "<span color='#ffead3'><b>{}</b></span>";
-          weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-          today = "<span color='#ff6699'><b>{}</b></span>";
-        };
-      };
+      format = "{:L%a %d, %b %Y}";
+      format-alt = "{:%d-%m-%Y}";
+      tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+    };
+    "clock#simple" = {
+      format = "{:%H:%M:%S}";
+      tooltip = false;
+      interval = 1;
+    };
+    "privacy" = {
+      icon-size = 15;
+      spacing = 8;
+    };
+    "hyprland/language" = {
+      format = "<span color=\"#DCA561\"></span>  {}";
+      format-en = "EN";
+      format-dk = "DK";
+    };
+    "group/hardware" = {
+      orientation = "horizontal";
+      modules = ["cpu" "memory" "backlight"];
     };
     "cpu" = {
-      interval = 10;
-      format = "󰍛 {usage}%";
-      format-alt = "{icon0}{icon1}{icon2}{icon3}";
-      format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
+      format = "<span color=\"#DCA561\"></span>  {usage}%";
+      tooltip = false;
     };
     "memory" = {
       interval = 30;
-      format = "󰾆 {percentage}%";
-      format-alt = "󰾅 {used}GB";
-      max-length = 10;
+      format = "<span color=\"#DCA561\"></span>  {percentage}%";
       tooltip = true;
       tooltip-format = " {used:.1f}GB/{total:.1f}GB";
     };
-
     "backlight" = {
-      format = "{icon} {percent}%";
+      format = "<span color=\"#DCA561\"></span>  {percent}%";
       format-icons = ["" "" "" "" "" "" "" "" ""];
       on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl set 2%+";
       on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl set 2%-";
     };
-
-    "network" = {
-      # on-click = "nm-connection-editor";
-      # "interface" = "wlp2*"; # (Optional) To force the use of this interface
-      format-wifi = "󰤨 Wi-Fi";
-      # format-wifi = " {bandwidthDownBits}  {bandwidthUpBits}";
-      # format-wifi = "󰤨 {essid}";
-      format-ethernet = "󱘖 Wired";
-      # format-ethernet = " {bandwidthDownBits}  {bandwidthUpBits}";
-      format-linked = "󱘖 {ifname} (No IP)";
-      format-disconnected = "󰤮 Off";
-      # format-disconnected = "󰤮 Disconnected";
-      format-alt = "󰤨 {signalStrength}%";
-      tooltip-format = "󱘖 {ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}";
+    "group/sound" = {
+      orientation = "horizontal";
+      modules = ["pulseaudio" "pulseaudio#microphone"];
     };
-
-    "bluetooth" = {
-      format = "";
-      # format-disabled = ""; # an empty format will hide the module
-      format-connected = " {num_connections}";
-      tooltip-format = " {device_alias}";
-      tooltip-format-connected = "{device_enumerate}";
-      tooltip-format-enumerate-connected = " {device_alias}";
-      on-click = "blueman-manager";
-    };
-
     "pulseaudio" = {
-      format = "{icon} {volume}";
-      format-muted = " ";
-      on-click = "pavucontrol -t 3";
+      format = "<span color=\"#DCA561\">{icon}</span>  {volume}%";
       tooltip-format = "{icon} {desc} // {volume}%";
       scroll-step = 4;
+      on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+      format-muted = " ";
       format-icons = {
         headphone = "";
         hands-free = "";
         headset = "";
-        phone = "";
-        portable = "";
-        car = "";
         default = ["" "" ""];
       };
     };
-
     "pulseaudio#microphone" = {
       format = "{format_source}";
-      format-source = " {volume}%";
+      format-source = "<span color=\"#DCA561\"></span> {volume}%";
       format-source-muted = "";
-      on-click = "pavucontrol -t 4";
-      tooltip-format = "{format_source} {source_desc} // {source_volume}%";
+      on-click = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+      on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+";
+      on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-";
+      tooltip-format = "Fifine K680";
       scroll-step = 5;
     };
-
-    "tray" = {
-      icon-size = 36;
-      spacing = 20;
+    "group/network" = {
+      orientation = "horizontal";
+      modules = ["network" "bluetooth"];
     };
-
+    "bluetooth" = {
+      on-click = "blueman-manager";
+      format = "<span color=\"#DCA561\"></span>";
+      format-connected = "<span color=\"#DCA561\"> {num_connections}</span>";
+      format-disabled = "<span color=\"#DCA561\"></span>";
+      tooltip-format = " {device_alias}";
+      tooltip-format-connected = "{device_enumerate}";
+      tooltip-format-enumerate-connected = " {device_alias}";
+    };
+    "network" = {
+      # "interface" = "wlp2*"; # (Optional) To force the use of this interface
+      on-click = "nm-connection-editor";
+      format-wifi = "<span color=\"#DCA561\"> </span>";
+      format-ethernet = "<span color=\"#DCA561\"> </span>";
+      format-linked = "󱘖 {ifname} (No IP)";
+      format-disconnected = "<span color=\"#DCA561\">⚠</span>";
+      tooltip = false;
+    };
     "battery" = {
+      orientation = "horizontal";
+      modules = ["battery"];
       states = {
         good = 95;
         warning = 30;
         critical = 20;
       };
-      format = "{icon} {capacity}%";
-      # format-charging = " {capacity}%";
-      format-charging = " {capacity}%";
-      format-plugged = " {capacity}%";
+      format = "<span color=\"#DCA561\">{icon}</span>  {capacity}%";
+      format-charging = "<span color=\"#DCA561\"></span>  {capacity}%";
+      format-plugged = "<span color=\"#DCA561\"></span>  {capacity}%";
       format-alt = "{time} {icon}";
       format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
     };
-
-    "hyprland/language" = {
-      format = " {short}"; # can use {short} and {variant}
-      on-click = "${../../desktops/hyprland/scripts/keyboardswitch.sh}";
-    };
-
     "custom/power" = {
-      format = "  {}";
+      format = "<span color=\"#DCA561\">   </span>";
       on-click = "wlogout -b 3";
       interval = 86400; # once every day
       tooltip = true;

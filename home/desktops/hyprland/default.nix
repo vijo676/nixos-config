@@ -87,22 +87,22 @@ in {
     wayland.windowManager.hyprland.plugins = [
       # inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
     ];
-    wayland.windowManager.hyprland.extraConfig = "
-    monitor= , preferred, auto, 1
+    wayland.windowManager.hyprland.extraConfig = ''
+      monitor= , preferred, auto, 1
 
-    $terminal=xterm-ghostty
+      $terminal=xterm-ghostty
 
-    binds {
-        workspace_back_and_forth=1
-        #allow_workspace_cycles=1
-        #pass_mouse_when_bound=0
-    }
+      binds {
+          workspace_back_and_forth=1
+          #allow_workspace_cycles=1
+          #pass_mouse_when_bound=0
+      }
 
-    device {
-      name=logitech-mx-master-3s
-      sensitivity=0.0
-    }
-    ";
+      device {
+        name=logitech-mx-master-3s
+        sensitivity=0.0
+      }
+    '';
     wayland.windowManager.hyprland.settings =
       {
         ##################
