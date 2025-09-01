@@ -51,6 +51,7 @@ in {
     # shell and terminals
     ghostty.enable = true;
     bash.enable = true;
+    zsh.enable = true;
 
     # desktop
     hyprland = {
