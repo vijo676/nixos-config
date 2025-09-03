@@ -60,6 +60,7 @@ in {
 
         # Make Ctrl+L accept autosuggestion
         bindkey '^L' autosuggest-accept
+        export TERM=xterm-256color
       '';
     };
   };
