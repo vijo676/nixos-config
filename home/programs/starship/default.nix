@@ -83,8 +83,8 @@ in
         };
         directory = {
           disabled = false;
-          style = "fg:orange_waybar";
-          read_only_style = "fg:orange_waybar";
+          style = "fg:fg_waybar_dark";
+          read_only_style = "fg:fg_waybar_dark";
           truncation_length = 3;
           truncation_symbol = "…/";
           format = "[ $path]($style)[$read_only]($read_only_style) ";
