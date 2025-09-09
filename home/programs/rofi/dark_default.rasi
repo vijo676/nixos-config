@@ -1,5 +1,5 @@
 configuration {
-  font: "Cascadia Code 10";
+  font: "CaskaydiaMono Nerd Font Mono 10";
 
   drun {
     display-name: "";
@@ -14,7 +14,7 @@ configuration {
   }
 
   timeout {
-    delay: 10;
+    delay: 5;
     action: "kb-cancel";
   }
 }
@@ -25,18 +25,18 @@ configuration {
   padding: 0;
   spacing: 0;
 
-  bg: #1a1b26;
-  bg-alt: #232433;
-  fg: #6a6f87;
-  fg-alt: #a9b1d6;
+  bg: #1A1A1A;
+  bg-alt: #2A2A37;
+  fg: #DCD7BA;
+  fg-alt: #C8C093;
 
   background-color: @bg;
-  text-color: @fg;
+  text-color: @bg;
 }
 
 window {
   transparency: "real";
-  width: 700px;
+  width: 500px;
 }
 
 mainbox {
@@ -44,22 +44,24 @@ mainbox {
 }
 
 inputbar {
-  background-color: @bg-alt;
+  background-color: @fg-alt;
   children: [prompt, entry];
 }
 
 entry {
-  background-color: inherit;
+  background-color: @fg-alt;
+  text-color: @bg;
   padding: 12px 3px;
 }
 
 prompt {
-  background-color: inherit;
+  background-color: @fg-alt;
+  text-color: @bg;
   padding: 12px;
 }
 
 listview {
-  lines: 8;
+  lines: 5;
 }
 
 element {
@@ -71,10 +73,17 @@ element-icon {
   size: 20px;
 }
 
+element-icon selected {
+  background-color: @fg-alt;
+  text-color: @bg;
+}
+
 element-text {
   padding: 10px 0;
+  text-color: @fg;
 }
 
 element-text selected {
-  text-color: @fg-alt;
+  text-color: @bg;
+  background-color: @fg-alt;
 }

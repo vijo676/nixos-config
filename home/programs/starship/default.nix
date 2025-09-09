@@ -79,18 +79,18 @@ in
         nix_shell = {
           symbol = "";
           format = "[$symbol $name]($style) ";
-          style = "fg:nix_blue";
+          style = "fg:blue";
         };
         directory = {
           disabled = false;
-          style = "fg:blue";
-          read_only_style = "fg:blue";
+          style = "fg:orange_waybar";
+          read_only_style = "fg:orange_waybar";
           truncation_length = 3;
           truncation_symbol = "…/";
           format = "[ $path]($style)[$read_only]($read_only_style) ";
         };
         git_branch = {
-          style = "fg:green";
+          style = "fg:git";
           symbol = " ";
           format = "[$symbol$branch(:$remote_branch)]($style) ";
         };
@@ -119,6 +119,11 @@ in
 
             fg = "#d3c6aa";
             red = "#e67e80";
+
+            git = "#F1502F";
+            fg_waybar = "#DCD7BA";
+            fg_waybar_dark = "#C8C093";
+            orange_waybar = "#FF9E3B";
 
             orange = "#e69875";
             yellow = "#dbbc7f";

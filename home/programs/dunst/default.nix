@@ -8,7 +8,7 @@
     };
     settings = {
       global = {
-        frame_color = "#938056";
+        frame_color = "#1A1A1A";
         separator_color = "frame";
         highlight = "#957FB8";
         rounded = "yes";
@@ -60,19 +60,19 @@
       };
 
       urgency_critical = {
-        background = "#16161D"; # Kanagawa Storm Gray
-        foreground = "#E46876"; # Kanagawa Autumn Red
-        frame_color = "#E46876"; # Kanagawa Autumn Red
+        background = "#1A1A1A";
+        foreground = "#C34043";
+        frame_color = "#C34043";
         timeout = "0";
       };
       urgency_low = {
-        background = "#16161D"; # Kanagawa Background
-        foreground = "#DCD7BA"; # Kanagawa Ivory
+        background = "#1A1A1A";
+        foreground = "#DCD7BA";
         timeout = "4";
       };
       urgency_normal = {
-        background = "#16161D"; # Kanagawa Background
-        foreground = "#DCD7BA"; # Kanagawa Ivory
+        background = "#1A1A1A";
+        foreground = "#DCD7BA";
         timeout = "8";
       };
     };

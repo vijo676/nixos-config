@@ -1,10 +1,10 @@
 {
   general = {
-    gaps_in = 4;
-    gaps_out = 9;
-    border_size = 2;
-    "col.active_border" = "rgba(fffef7ff)";
-    "col.inactive_border" = "rgba(938056ff)";
+    gaps_in = 3;
+    gaps_out = 7;
+    border_size = 3;
+    "col.active_border" = "rgba(c8c093ff)";
+    "col.inactive_border" = "rgba(00000000)";
     # "col.active_border" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
     # "col.inactive_border" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
     resize_on_border = true;
@@ -31,24 +31,12 @@
   group = {
     "col.border_active" = "rgba(fffef7ff)";
     "col.border_inactive" = "rgba(938056ff)";
-    # "col.border_active" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
-    # "col.border_inactive" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
-    # "col.border_locked_active" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
-    # "col.border_locked_inactive" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
   };
 
   layerrule = [
     "blur, rofi"
     "ignorezero, rofi"
     "ignorealpha 0.7, rofi"
-
-    # "blur, swaync-control-center"
-    # "blur, swaync-notification-window"
-    # "ignorezero, swaync-control-center"
-    # "ignorezero, swaync-notification-window"
-    # "ignorealpha 0.7, swaync-control-center"
-    # "ignorealpha 0.8, swaync-notification-window"
-    # "dimaround, swaync-control-center"
   ];
 
   animations = {
@@ -103,5 +91,6 @@
     "opacity 0.70 0.70,class:^(spotify)$"
     "opacity 0.70 0.70,class:^(code)$"
     "opacity 0.70 0.70,class:^(dev.zed.Zed)$"
+    "opacity 0.80 0.80,class: ^(rofi)$"
   ];
 }
