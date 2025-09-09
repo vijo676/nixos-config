@@ -3,19 +3,24 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   module_name = "zeditor";
   cfg = config.configured.programs."${module_name}";
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.configured.programs."${module_name}" = {
     enable = mkEnableOption "Enable Zed";
     # Add an option for rust-analyzer linkedProjects
     rustAnalyzerLinkedProjects = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [];
+      default = [ ];
       description = "List of linked projects for rust-analyzer.";
-      example = ["path/to/project1.toml" "path/to/project2.toml"];
+      example = [
+        "path/to/project1.toml"
+        "path/to/project2.toml"
+      ];
     };
   };
   config = mkIf cfg.enable {
@@ -64,7 +69,7 @@ in {
         };
         languages = {
           Python = {
-            language_servers = ["ruff"];
+            language_servers = [ "ruff" ];
             format_on_save = "on";
           };
         };
@@ -83,7 +88,11 @@ in {
             };
             initialization_options = {
               formatting = {
-                command = ["alejandra" "--quiet" "--"];
+                command = [
+                  "alejandra"
+                  "--quiet"
+                  "--"
+                ];
               };
             };
           };
@@ -94,8 +103,14 @@ in {
           context = "Pane";
           bindings = {
             # Close editor
-            "ctrl-w" = ["pane::CloseActiveItem" {"close_pinned" = false;}];
-            "ctrl-shift-w" = ["pane::CloseAllItems" {"close_pinned" = false;}];
+            "ctrl-w" = [
+              "pane::CloseActiveItem"
+              { "close_pinned" = false; }
+            ];
+            "ctrl-shift-w" = [
+              "pane::CloseAllItems"
+              { "close_pinned" = false; }
+            ];
 
             # Split windows
             "alt-s" = "pane::SplitRight";

@@ -3,11 +3,13 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   module_name = "fzf";
   cfg = config.configured.programs."${module_name}";
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.configured.programs."${module_name}" = {
     enable = mkEnableOption "Enable FZF and BAT";
   };
@@ -21,7 +23,10 @@ in {
     };
     programs.bat = {
       enable = true;
-      extraPackages = [pkgs.bat-extras.batman pkgs.bat-extras.prettybat];
+      extraPackages = [
+        pkgs.bat-extras.batman
+        pkgs.bat-extras.prettybat
+      ];
     };
   };
 }

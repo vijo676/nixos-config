@@ -1,5 +1,7 @@
-{pkgs, ...}: let
-in {
+{ pkgs, ... }:
+let
+in
+{
   home.username = "vijo";
   home.homeDirectory = "/home/vijo";
   home.stateVersion = "24.11";
@@ -57,7 +59,10 @@ in {
     hyprland = {
       enable = true;
       wallpaper_path = builtins.toPath ../../wallpapers/space2.png;
-      monitors_config = ["DP-2, 3840x2160@60,0x0,1" "HDMI-A-1, 3840x2160@60,3840x0,1, transform,1"];
+      monitors_config = [
+        "DP-2, 3840x2160@60,0x0,1"
+        "HDMI-A-1, 3840x2160@60,3840x0,1, transform,1"
+      ];
     };
     rofi.enable = true;
   };

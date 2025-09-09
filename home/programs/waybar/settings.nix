@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.waybar.settings.mainBar = {
     position = "top";
     layer = "top";
@@ -39,12 +40,22 @@
       active-only = false;
       on-click = "activate";
       persistent-workspaces = {
-        "*" = [1 2 3 4 5 6];
+        "*" = [
+          1
+          2
+          3
+          4
+          5
+          6
+        ];
       };
     };
     "group/time" = {
       orientation = "horizontal";
-      modules = ["clock" "clock#simple"];
+      modules = [
+        "clock"
+        "clock#simple"
+      ];
     };
     "clock" = {
       format = "{:L%a %d, %b %Y}";
@@ -67,7 +78,11 @@
     };
     "group/hardware" = {
       orientation = "horizontal";
-      modules = ["cpu" "memory" "backlight"];
+      modules = [
+        "cpu"
+        "memory"
+        "backlight"
+      ];
     };
     "cpu" = {
       format = "<span color=\"#DCA561\"></span>  {usage}%";
@@ -81,13 +96,26 @@
     };
     "backlight" = {
       format = "<span color=\"#DCA561\"></span>  {percent}%";
-      format-icons = ["" "" "" "" "" "" "" "" ""];
+      format-icons = [
+        ""
+        ""
+        ""
+        ""
+        ""
+        ""
+        ""
+        ""
+        ""
+      ];
       on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl set 2%+";
       on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl set 2%-";
     };
     "group/sound" = {
       orientation = "horizontal";
-      modules = ["pulseaudio" "pulseaudio#microphone"];
+      modules = [
+        "pulseaudio"
+        "pulseaudio#microphone"
+      ];
     };
     "pulseaudio" = {
       format = "<span color=\"#DCA561\">{icon}</span>  {volume}%";
@@ -99,7 +127,11 @@
         headphone = "";
         hands-free = "";
         headset = "";
-        default = ["" "" ""];
+        default = [
+          ""
+          ""
+          ""
+        ];
       };
     };
     "pulseaudio#microphone" = {
@@ -114,7 +146,10 @@
     };
     "group/network" = {
       orientation = "horizontal";
-      modules = ["network" "bluetooth"];
+      modules = [
+        "network"
+        "bluetooth"
+      ];
     };
     "bluetooth" = {
       on-click = "blueman-manager";
@@ -136,7 +171,7 @@
     };
     "battery" = {
       orientation = "horizontal";
-      modules = ["battery"];
+      modules = [ "battery" ];
       states = {
         good = 95;
         warning = 30;
@@ -146,7 +181,19 @@
       format-charging = "<span color=\"#DCA561\"></span>  {capacity}%";
       format-plugged = "<span color=\"#DCA561\"></span>  {capacity}%";
       format-alt = "{time} {icon}";
-      format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+      format-icons = [
+        "󰂎"
+        "󰁺"
+        "󰁻"
+        "󰁼"
+        "󰁽"
+        "󰁾"
+        "󰁿"
+        "󰂀"
+        "󰂁"
+        "󰂂"
+        "󰁹"
+      ];
     };
     "custom/power" = {
       format = "<span color=\"#DCA561\">   </span>";

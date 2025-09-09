@@ -3,19 +3,24 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   module_name = "vscode";
   cfg = config.configured.programs."${module_name}";
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.configured.programs."${module_name}" = {
     enable = mkEnableOption "Enable Visual Studio Code";
     # Add an option for rust-analyzer linkedProjects
     rustAnalyzerLinkedProjects = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [];
+      default = [ ];
       description = "List of linked projects for rust-analyzer.";
-      example = ["path/to/project1.toml" "path/to/project2.toml"];
+      example = [
+        "path/to/project1.toml"
+        "path/to/project2.toml"
+      ];
     };
   };
 
@@ -23,7 +28,6 @@ in {
     programs.vscode = {
       enable = true;
       profiles.default.extensions = with pkgs.vscode-extensions; [
-        kamadorueda.alejandra
         bbenoist.nix
         jnoortheen.nix-ide
         charliermarsh.ruff
@@ -59,6 +63,18 @@ in {
           "editor.defaultFormatter" = "ziglang.vscode-zig";
           "editor.stickyScroll.defaultModel" = "foldingProviderModel";
           "files.eol" = "\n";
+        };
+
+        # nix settings
+        "[nix]" = {
+          "nix.enableLanguageServer" = true;
+          "nix.serverSettings" = {
+            "nil" = {
+              "formatting" = {
+                "command" = [ "nixfmt" ];
+              };
+            };
+          };
         };
       };
       profiles.default.keybindings = [

@@ -3,11 +3,13 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   module_name = "bash";
   cfg = config.configured.programs."${module_name}";
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.configured.programs."${module_name}" = {
     enable = mkEnableOption "Enable Bash";
   };
@@ -16,7 +18,13 @@ in {
     programs.bash = {
       enable = true;
       enableCompletion = true;
-      historyIgnore = ["ls" "cd" "exit" "ll" "clear"];
+      historyIgnore = [
+        "ls"
+        "cd"
+        "exit"
+        "ll"
+        "clear"
+      ];
       shellAliases = {
         ls = lib.mkForce "eza --oneline --group-directories-first --show-symlinks";
         lsa = lib.mkForce "ls --all";

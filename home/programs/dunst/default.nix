@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services.dunst = {
     enable = true;
     iconTheme = {
@@ -54,7 +55,9 @@
         word_wrap = "yes";
       };
 
-      fullscreen_delay_everything = {fullscreen = "delay";};
+      fullscreen_delay_everything = {
+        fullscreen = "delay";
+      };
 
       urgency_critical = {
         background = "#16161D"; # Kanagawa Storm Gray

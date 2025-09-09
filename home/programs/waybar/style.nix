@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.waybar.style = ''
     @define-color background #1A1A1A;
     @define-color foreground #DCD7BA;

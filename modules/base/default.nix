@@ -3,9 +3,13 @@
   lib,
   username,
   ...
-}: {
+}:
+{
   nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     auto-optimise-store = true;
     warn-dirty = false;
   };
@@ -16,7 +20,10 @@
   users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.zsh;
   };
 
@@ -138,7 +145,10 @@
 
   # System wide packages
   environment.systemPackages = with pkgs; [
-    iperf # measure network performance
+    # Nix tools
+    nil
+    nixfmt-rfc-style
+    nh # nix helper tool
     slack
     curl
     wget
@@ -152,8 +162,6 @@
     python3
     python312Packages.pip
     jq
-    alejandra
-    nil
     spotify
     usbutils
     firefox
@@ -169,19 +177,21 @@
     hyprshot
     wl-clipboard
     kitty
+    ######################
+    iperf # measure network performance
     cyme # Modern "lsusb"
     caligula # TUI burning tool
-    nh # nix helper tool
     picocom # terminal emulator for serial
     protonvpn-gui # ProtonVPN GUI
     ripgrep # modern grep
     fd # modern find
     tailspin # modern tail
+    comma # runs software without installing it
   ];
 
   xdg.mime.defaultApplications = {
-    "text/html" = ["firefox.desktop"];
-    "x-scheme-handler/http" = ["firefox.desktop"];
-    "x-scheme-handler/https" = ["firefox.desktop"];
+    "text/html" = [ "firefox.desktop" ];
+    "x-scheme-handler/http" = [ "firefox.desktop" ];
+    "x-scheme-handler/https" = [ "firefox.desktop" ];
   };
 }

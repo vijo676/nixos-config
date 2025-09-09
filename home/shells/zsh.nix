@@ -3,11 +3,13 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   module_name = "zsh";
   cfg = config.configured.programs."${module_name}";
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.configured.programs."${module_name}" = {
     enable = mkEnableOption "Enable Zsh";
   };
@@ -44,11 +46,6 @@ in {
         nix-cleanup = "nix-collect-garbage -d";
       };
       plugins = [
-        # {
-        #   name = "vi-mode";
-        #   src = pkgs.zsh-vi-mode;
-        #   file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-        # }
       ];
 
       initContent = ''
@@ -58,8 +55,10 @@ in {
         setopt SHARE_HISTORY        # share history between shells
         setopt HIST_VERIFY          # show command with history expansion to user before running it
 
-        # Make Ctrl+L accept autosuggestion
-        bindkey '^L' autosuggest-accept
+        # Key bindings
+        bindkey '^P' up-line-or-history      # Ctrl+P for previous command
+        bindkey '^N' down-line-or-history    # Ctrl+N for next command
+        bindkey '^L' autosuggest-accept      # Ctrl+L accept autosuggestion
         export TERM=xterm-256color
       '';
     };
