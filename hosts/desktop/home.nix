@@ -35,7 +35,7 @@ in
     # desktop
     hyprland = {
       enable = true;
-      wallpaper_path = builtins.toPath ../../wallpapers/japanese_pedestrian_street.png;
+      wallpaper_path = builtins.toPath ../../wallpapers/japan1.png;
       monitors_config = [
         "DP-1, 2560x1440@165, 0x0, 1"
         "DP-2, 2560x1440@164, 2560x0,1"

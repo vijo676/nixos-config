@@ -25,7 +25,7 @@ Mainly used for consistent configurations and portability. `flake.nix` is the ba
 ## Repository Structure
 
 ```md
-📂nixOS-config/
+📂nixos-config/
 ├──📁hosts/                         # Hosts configurations
 ├──📁home/                          # Home-Manager modules
 ├──📁modules/                       # NixOS modules
