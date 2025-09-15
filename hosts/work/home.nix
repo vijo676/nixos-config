@@ -52,6 +52,7 @@ in
     btop.enable = true;
     # shell and terminals
     ghostty.enable = true;
+    alacritty.enable = true;
     bash.enable = true;
     zsh.enable = true;
 
