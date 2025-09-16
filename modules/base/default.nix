@@ -149,6 +149,8 @@
     nil
     nixfmt-rfc-style
     nh # nix helper tool
+    dbus # need for rust analyzer vs code
+    pkg-config # need for rust analyzer vs code
     slack
     curl
     wget

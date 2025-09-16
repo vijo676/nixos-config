@@ -16,7 +16,19 @@ in
     zen.enable = true;
     # editors
     vim.enable = true;
-    vscode.enable = true;
+    vscode = {
+      enable = true;
+      rustAnalyzerLinkedProjects = [
+        "./apps/rust/barcode/Cargo.toml"
+        "./apps/rust/calibration-rs/Cargo.toml"
+        "./apps/rust/eol-station-rs/Cargo.toml"
+        "./apps/rust/findveo-rs/Cargo.toml"
+        "./apps/rust/flashing-station-rs/Cargo.toml"
+        "./apps/rust/id-station-rs/Cargo.toml"
+        "./apps/rust/init_vc3_labels/Cargo.toml"
+        "./apps/rust/lib/ftdi_debug_boards/Cargo.toml"
+      ];
+    };
     zeditor.enable = true;
     # programs
     tmux.enable = true;
