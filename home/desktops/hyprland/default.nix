@@ -15,7 +15,7 @@ in
     enable = mkEnableOption "Enable Hyprland configuration";
     wallpaper_path = lib.mkOption {
       type = lib.types.path;
-      default = builtins.toPath ../../../wallpapers/japanese_pedestrian_street.png;
+      default = builtins.toPath ../../../wallpapers/japan1.png;
       description = "path to the wallpaper";
     };
     monitors_config = lib.mkOption {

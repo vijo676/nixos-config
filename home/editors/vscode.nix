@@ -52,7 +52,7 @@ in
           "markdown" = true;
         };
         "workbench.sideBar.location" = "right";
-        "workbench.iconTheme" = "material-icon-theme";
+        "workbench.iconTheme" = "icons";
         "workbench.colorTheme" = "Gruvbox Dark Hard";
 
         # Enable auto-formatting on save
@@ -60,7 +60,6 @@ in
         "zig.zls.enabled" = "on";
         "[zig]" = {
           "editor.formatOnSave" = true;
-          "editor.defaultFormatter" = "ziglang.vscode-zig";
           "editor.stickyScroll.defaultModel" = "foldingProviderModel";
           "files.eol" = "\n";
         };
