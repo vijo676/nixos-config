@@ -50,7 +50,7 @@ in
       enable = true;
       wallpaper_path = builtins.toPath ../../wallpapers/japan2.jpg;
       monitors_config = [
-        "DP-1, 2560x1440@165, 0x0, 1"
+        "DP-1, 2560x1440@165, 0x0, 1, bitdepth,10"
         "DP-2, 2560x1440@164, 2560x0,1"
       ];
     };
