@@ -54,6 +54,8 @@ in
         };
         load_direnv = "shell_hook";
         vim_mode = true;
+        relative_line_numbers = true;
+        cursor_blinking = false;
         base_keymap = "VSCode";
         theme = {
           mode = "dark";
@@ -63,12 +65,21 @@ in
         shell = "system";
         line_height = "comfortable";
         font_family = "CaskaydiaCove Nerd Font";
-        font_size = 15;
-        ui_font_size = 15;
-        buffer_font_size = 15;
+        font_size = 13;
+        ui_font_size = 13;
+        buffer_font_size = 13;
         hour_format = "hour24";
         env = {
           TERM = "xterm-ghostty";
+        };
+        project_panel = {
+          dock = "right";
+        };
+        agent_panel = {
+          dock = "left";
+        };
+        collaboration_panel = {
+          button = false;
         };
         languages = {
           Python = {
