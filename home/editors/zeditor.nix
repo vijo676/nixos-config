@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  inputs,
   pkgsUnstable,
   ...
 }:
@@ -34,49 +33,46 @@ in
         "toml"
         "kanagawa-themes"
         "ruff"
+        "material-icon-theme"
       ];
       userSettings = {
-        features = {
-          copilot = true;
-        };
-        assistants = {
-          enable = true;
-          version = "2";
-          default_open_ai_model = null;
-          default_model = {
-            provider = "copilot_chat";
-            model = "gpt-4";
-          };
-        };
         node = {
           path = lib.getExe pkgs.nodejs;
           npm_path = lib.getExe' pkgs.nodejs "npm";
         };
+        features = {
+          edit_prediction_provider = "copilot";
+        };
         load_direnv = "shell_hook";
         vim_mode = true;
         relative_line_numbers = true;
-        cursor_blinking = false;
+        cursor_blink = false;
+        format_on_save = "on";
         base_keymap = "VSCode";
         theme = {
           mode = "dark";
           dark = "Kanagawa Dragon";
           light = "Kanagawa Dragon";
         };
-        shell = "system";
-        line_height = "comfortable";
-        font_family = "CaskaydiaCove Nerd Font";
-        font_size = 13;
-        ui_font_size = 13;
-        buffer_font_size = 13;
-        hour_format = "hour24";
-        env = {
-          TERM = "xterm-ghostty";
+        icon_theme = {
+          mode = "dark";
+          dark = "Material Icon Theme";
+          light = "Material Icon Theme";
+        };
+        buffer_font_family = "CaskaydiaCove Nerd Font";
+        buffer_font_size = 14;
+        ui_font_size = 14;
+        tabs = {
+          show_diagnostics = "all";
+          git_status = true;
         };
         project_panel = {
           dock = "right";
         };
-        agent_panel = {
+        agent = {
           dock = "left";
+          default_width = 250;
+          button = true;
         };
         collaboration_panel = {
           button = false;
@@ -86,27 +82,31 @@ in
             language_servers = [ "ruff" ];
             format_on_save = "on";
           };
+          Rust = {
+            language_servers = [ "rust-analyzer" ];
+            format_on_save = "on";
+          };
+          Nix = {
+            language_servers = [
+              "nixd"
+              "!nil"
+            ];
+            format_on_save = "on";
+          };
         };
         lsp = {
           rust-analyzer = {
             binary = {
-              path_lookup = true;
+              path = lib.getExe pkgs.rust-analyzer;
             };
             initialization_options = {
               linkedProjects = cfg.rustAnalyzerLinkedProjects;
             };
-          };
-          nixd = {
-            binary = {
-              path_lookup = true;
-            };
-            initialization_options = {
-              formatting = {
-                command = [
-                  "alejandra"
-                  "--quiet"
-                  "--"
-                ];
+            nixd = {
+              settings = {
+                formatting = {
+                  command = [ "nixfmt" ];
+                };
               };
             };
           };
@@ -116,16 +116,10 @@ in
         {
           context = "Pane";
           bindings = {
-            # Close editor
-            "ctrl-w" = [
-              "pane::CloseActiveItem"
-              { "close_pinned" = false; }
-            ];
-            "ctrl-shift-w" = [
+            "alt-shift-w" = [
               "pane::CloseAllItems"
               { "close_pinned" = false; }
             ];
-
             # Split windows
             "alt-s" = "pane::SplitRight";
             "alt-v" = "pane::SplitDown";
@@ -146,10 +140,7 @@ in
             "alt-shift-k" = "workspace::SwapPaneUp";
             "alt-shift-l" = "workspace::SwapPaneRight";
 
-            # Search and navigation
-            "ctrl-alt-f" = "pane::DeploySearch";
-            "alt-e" = "file_finder::Toggle";
-            "ctrl-alt-e" = "project_panel::ToggleFocus";
+            "ctrl-alt-a" = "assistant::ToggleFocus";
           };
         }
         {
