@@ -34,6 +34,7 @@ in
         "kanagawa-themes"
         "ruff"
         "material-icon-theme"
+        "zig"
       ];
       userSettings = {
         node = {
@@ -79,7 +80,7 @@ in
         };
         languages = {
           Python = {
-            language_servers = [ "ruff" ];
+            language_servers = [ "basedpyright" ];
             format_on_save = "on";
           };
           Rust = {
