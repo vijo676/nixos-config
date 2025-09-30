@@ -2,6 +2,8 @@
   pkgs,
   lib,
   config,
+  inputs,
+  pkgsUnstable,
   ...
 }:
 let
@@ -26,6 +28,7 @@ in
   config = mkIf cfg.enable {
     programs.zed-editor = {
       enable = true;
+      package = pkgsUnstable.zed-editor;
       extensions = [
         "nix"
         "toml"
