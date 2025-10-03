@@ -147,7 +147,7 @@
   environment.systemPackages = with pkgs; [
     # Nix tools
     nil
-    nixfmt-rfc-style
+    alejandra
     nh # nix helper tool
     dbus # need for rust analyzer vs code
     pkg-config # need for rust analyzer vs code

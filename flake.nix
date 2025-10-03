@@ -89,6 +89,6 @@
           modules = [ host.home ];
         }
       ) hosts;
-      formatter.${system} = pkgs.nixfmt-tree;
+      formatter.${system} = pkgs.alejandra;
     };
 }
