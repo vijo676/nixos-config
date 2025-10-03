@@ -3,13 +3,11 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   module_name = "rofi";
   cfg = config.configured.programs."${module_name}";
   inherit (lib) mkEnableOption mkIf;
-in
-{
+in {
   options.configured.programs."${module_name}" = {
     enable = mkEnableOption "Enable Rofi App Launcher";
     theme_path = lib.mkOption {

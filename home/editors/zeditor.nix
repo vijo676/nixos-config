@@ -4,19 +4,17 @@
   config,
   pkgsUnstable,
   ...
-}:
-let
+}: let
   module_name = "zeditor";
   cfg = config.configured.programs."${module_name}";
   inherit (lib) mkEnableOption mkIf;
-in
-{
+in {
   options.configured.programs."${module_name}" = {
     enable = mkEnableOption "Enable Zed";
     # Add an option for rust-analyzer linkedProjects
     rustAnalyzerLinkedProjects = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [ ];
+      default = [];
       description = "List of linked projects for rust-analyzer.";
       example = [
         "path/to/project1.toml"
@@ -80,11 +78,11 @@ in
         };
         languages = {
           Python = {
-            language_servers = [ "basedpyright" ];
+            language_servers = ["basedpyright"];
             format_on_save = "on";
           };
           Rust = {
-            language_servers = [ "rust-analyzer" ];
+            language_servers = ["rust-analyzer"];
             format_on_save = "on";
           };
           Nix = {
@@ -103,11 +101,11 @@ in
             initialization_options = {
               linkedProjects = cfg.rustAnalyzerLinkedProjects;
             };
-            nixd = {
-              settings = {
-                formatting = {
-                  command = [ "nixfmt" ];
-                };
+          };
+          nixd = {
+            settings = {
+              formatting = {
+                command = ["alejandra"];
               };
             };
           };
@@ -119,7 +117,7 @@ in
           bindings = {
             "alt-shift-w" = [
               "pane::CloseAllItems"
-              { "close_pinned" = false; }
+              {"close_pinned" = false;}
             ];
             # Split windows
             "alt-s" = "pane::SplitRight";

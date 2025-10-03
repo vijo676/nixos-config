@@ -3,8 +3,7 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   module_name = "yazi";
   kanagawa-yazi = (
     pkgs.fetchFromGitHub {
@@ -16,8 +15,7 @@ let
   );
   cfg = config.configured.programs."${module_name}";
   inherit (lib) mkEnableOption mkIf;
-in
-{
+in {
   options.configured.programs."${module_name}" = {
     enable = mkEnableOption "Enable Yazi FileManager";
   };
@@ -89,11 +87,11 @@ in
         keymap = {
           mgr.prepend_keymap = [
             {
-              on = [ "e" ];
+              on = ["e"];
               run = "vim ";
             }
             {
-              on = [ "d" ];
+              on = ["d"];
               run = "remove --force";
             }
             {

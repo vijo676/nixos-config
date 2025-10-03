@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-let
-in
-{
+{pkgs, ...}: let
+in {
   home.username = "vijo";
   home.homeDirectory = "/home/vijo";
   home.stateVersion = "24.11";

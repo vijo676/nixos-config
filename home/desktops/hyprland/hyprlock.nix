@@ -1,8 +1,4 @@
-{
-  cfg,
-  ...
-}:
-{
+{cfg, ...}: {
   programs.hyprlock = {
     enable = true;
     settings = {

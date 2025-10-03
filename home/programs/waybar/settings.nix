@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.waybar.settings.mainBar = {
     position = "top";
     layer = "top";
@@ -171,7 +170,7 @@
     };
     "battery" = {
       orientation = "horizontal";
-      modules = [ "battery" ];
+      modules = ["battery"];
       states = {
         good = 95;
         warning = 30;

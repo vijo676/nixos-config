@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -21,10 +20,10 @@
         "hyprland"
         "gtk"
       ];
-      "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
-      "org.freedesktop.impl.portal.OpenURI" = [ "gtk" ];
-      "org.freedesktop.impl.portal.Settings" = [ "gtk" ];
+      "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
+      "org.freedesktop.impl.portal.OpenURI" = ["gtk"];
+      "org.freedesktop.impl.portal.Settings" = ["gtk"];
     };
   };
-  security.pam.services.hyprlock = { };
+  security.pam.services.hyprlock = {};
 }

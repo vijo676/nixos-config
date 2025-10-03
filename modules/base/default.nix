@@ -3,8 +3,7 @@
   lib,
   username,
   ...
-}:
-{
+}: {
   nix.settings = {
     experimental-features = [
       "nix-command"
@@ -192,8 +191,8 @@
   ];
 
   xdg.mime.defaultApplications = {
-    "text/html" = [ "firefox.desktop" ];
-    "x-scheme-handler/http" = [ "firefox.desktop" ];
-    "x-scheme-handler/https" = [ "firefox.desktop" ];
+    "text/html" = ["firefox.desktop"];
+    "x-scheme-handler/http" = ["firefox.desktop"];
+    "x-scheme-handler/https" = ["firefox.desktop"];
   };
 }

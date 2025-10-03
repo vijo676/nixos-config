@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./btop
     ./direnv

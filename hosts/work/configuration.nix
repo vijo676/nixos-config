@@ -2,8 +2,7 @@
   pkgs,
   lib,
   ...
-}:
-{
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -24,7 +23,7 @@
 
   # Networking
   networking.hostName = "work";
-  networking.firewall.trustedInterfaces = [ "enp195s0f3u2" ];
+  networking.firewall.trustedInterfaces = ["enp195s0f3u2"];
 
   # System wide packages
   environment.systemPackages = with pkgs; [
