@@ -31,7 +31,6 @@ in {
     bash.enable = true;
     zsh.enable = true;
     # desktop
-    dankMaterialShell.enable = true;
     hyprland = {
       enable = true;
       wallpaper_path = builtins.toPath ../../wallpapers/zen2.jpg;

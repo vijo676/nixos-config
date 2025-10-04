@@ -2,7 +2,7 @@
   pkgs,
   lib,
   config,
-  # inputs,
+  inputs,
   ...
 }: let
   module_name = "hyprland";
@@ -38,6 +38,8 @@ in {
         wallpaper = ", ${cfg.wallpaper_path}";
       };
     };
+    # Dank Material Shell
+    programs.dankMaterialShell.enable = true;
 
     # Themes
     services.xsettingsd.enable = true;
@@ -179,6 +181,7 @@ in {
       // (import ./style.nix);
   };
   imports = [
+    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
     # NOT needed when using dankMaterialShell
     # ../../programs/waybar
     # (import ../../programs/dunst {inherit pkgs;})
