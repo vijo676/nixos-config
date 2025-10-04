@@ -150,6 +150,7 @@
     nh # nix helper tool
     dbus # need for rust analyzer vs code
     pkg-config # need for rust analyzer vs code
+    mate.mate-polkit # needed for dankMaterialShell
     slack
     curl
     wget

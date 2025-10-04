@@ -5,38 +5,37 @@
     nixpkgs-stable = {
       url = "github:NixOS/nixpkgs/nixos-25.05";
     };
-    nixpkgs-unstable = {
+    nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    dankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
     self,
-    nixpkgs-stable,
-    nixpkgs-unstable,
+    nixpkgs,
     home-manager,
     zen-browser,
     ...
   }: let
-    lib = nixpkgs-stable.lib;
+    lib = nixpkgs.lib;
     system = "x86_64-linux";
     username = "vijo";
-    pkgs = import nixpkgs-stable {
+    pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
       config.allowUnsupportedSystem = true;
-    };
-    pkgsUnstable = import nixpkgs-unstable {
-      inherit system;
-      config.allowUnfree = true;
     };
     mkHost = name: {
       config = ./hosts/${name}/configuration.nix;
@@ -73,7 +72,9 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.${username} = import host.home;
-                home-manager.extraSpecialArgs = {inherit inputs pkgsUnstable;};
+                home-manager.extraSpecialArgs = {
+                  inherit inputs;
+                };
               }
             ];
           }
@@ -85,7 +86,9 @@
         name: host:
           home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
-            extraSpecialArgs = {inherit inputs pkgsUnstable;};
+            extraSpecialArgs = {
+              inherit inputs;
+            };
             modules = [host.home];
           }
       )

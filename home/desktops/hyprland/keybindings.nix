@@ -18,14 +18,19 @@
       "$mod, q, killactive"
       "$mod, b, exec, firefox"
       "$mod, RETURN, exec, alacritty"
-      "$mod, d, exec, rofi -show drun || pkill rofi"
       "$mod, v, togglefloating"
       "$mod, f, fullscreen"
       "$mod, e, exec, nautilus"
-      "$mod, ESCAPE, exec, hyprlock"
+      # "$mod, d, exec, rofi -show drun || pkill rofi"
+      "$mod, d, exec, dms ipc call spotlight toggle"
+      "$mod, m, exec, dms ipc call processlist toggle"
+      "$mod, c, exec, dms ipc call control-center toggle"
+      "$mod, x, exec, dms ipc call powermenu toggle"
+      "$mod, comma, exec, dms ipc call settings toggle"
+      "$mod, ESCAPE, exec, dms ipc call lock lock"
+      # Screenshot
       "$mod, s, exec, hyprshot -m region"
       "$mod SHIFT, s, exec, hyprshot -m window"
-      # Screenshot a monitor
       ", PRINT, exec, hyprshot -m output"
 
       # Move focus

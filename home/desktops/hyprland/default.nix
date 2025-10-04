@@ -115,10 +115,12 @@ in {
         exec-once = [
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "systemctl --user enable --now hypridle.service"
-          "systemctl --user enable --now hyprpaper.service"
-          "systemctl --user enable --now hyprpolkitagent.service"
-          "systemctl --user enable --now waybar.service"
+          # "systemctl --user enable --now hypridle.service"
+          # "systemctl --user enable --now hyprpaper.service"
+          # "systemctl --user enable --now waybar.service"
+          # "systemctl --user enable --now hyprpolkitagent.service"
+          "bash -c 'wl-paste --watch cliphist store &'"
+          "dms run"
         ];
 
         ################
@@ -177,10 +179,11 @@ in {
       // (import ./style.nix);
   };
   imports = [
-    ../../programs/waybar
-    (import ../../programs/dunst {inherit pkgs;})
-    (import ./hyprlock.nix {inherit pkgs cfg;})
-    (import ./hypridle.nix {inherit pkgs;})
-    (import ./wlogout.nix {inherit pkgs;})
+    # NOT needed when using dankMaterialShell
+    # ../../programs/waybar
+    # (import ../../programs/dunst {inherit pkgs;})
+    # (import ./hyprlock.nix {inherit pkgs cfg;})
+    # (import ./hypridle.nix {inherit pkgs;})
+    # (import ./wlogout.nix {inherit pkgs;})
   ];
 }

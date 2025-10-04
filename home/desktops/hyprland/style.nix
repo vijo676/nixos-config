@@ -67,9 +67,7 @@
   };
 
   render = {
-    explicit_sync = 2; # 0 = off, 1 = on, 2 = auto based on gpu driver.
-    explicit_sync_kms = 2; # 0 = off, 1 = on, 2 = auto based on gpu driver.
-    direct_scanout = 2; # 0 = off, 1 = on, 2 = auto (on with content type ‘game’)
+    direct_scanout = 2; # 0 = off, 1 = on, 2 = auto (on with content type 'game')
   };
 
   misc = {
@@ -81,9 +79,19 @@
     vrr = 1; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only)
   };
 
+  input = {
+    touchpad = {
+      disable_while_typing = true;
+      natural_scroll = true;
+      clickfinger_behavior = true;
+      middle_button_emulation = false;
+      tap-to-click = true;
+    };
+  };
+
   gestures = {
-    workspace_swipe = true;
-    workspace_swipe_fingers = 3;
+    workspace_swipe_distance = 300;
+    workspace_swipe_cancel_ratio = 0.5;
   };
 
   windowrule = [

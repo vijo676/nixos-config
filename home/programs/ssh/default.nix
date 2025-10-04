@@ -14,7 +14,6 @@ in {
   config = mkIf cfg.enable {
     programs.ssh = {
       enable = true;
-      addKeysToAgent = "yes";
       extraConfig = ''
         Host vc3-*
           User root

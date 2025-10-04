@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  pkgsUnstable,
   ...
 }: let
   module_name = "zeditor";
@@ -25,7 +24,6 @@ in {
   config = mkIf cfg.enable {
     programs.zed-editor = {
       enable = true;
-      package = pkgsUnstable.zed-editor;
       extensions = [
         "nix"
         "toml"
