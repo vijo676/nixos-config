@@ -27,19 +27,18 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    # Wallpaper
-    services.hyprpaper = {
-      enable = true;
-      settings = {
-        ipc = "on";
-        splash = false;
-        splash_offset = 2.0;
-        preload = [cfg.wallpaper_path];
-        wallpaper = ", ${cfg.wallpaper_path}";
-      };
-    };
     # Dank Material Shell
-    programs.dankMaterialShell.enable = true;
+    programs.dankMaterialShell = {
+      enable = true;
+      enableSystemd = true;
+      enableSystemMonitoring = true;
+      enableClipboard = true;
+      enableVPN = true;
+      enableBrightnessControl = true;
+      enableNightMode = true;
+      enableDynamicTheming = true;
+      enableAudioWavelength = true;
+    };
 
     # Themes
     services.xsettingsd.enable = true;
@@ -95,7 +94,7 @@ in {
     wayland.windowManager.hyprland.extraConfig = ''
       monitor= , preferred, auto, 1
 
-      $terminal=xterm-ghostty
+      $terminal=alacritty
 
       binds {
           workspace_back_and_forth=1
@@ -122,7 +121,6 @@ in {
           # "systemctl --user enable --now waybar.service"
           # "systemctl --user enable --now hyprpolkitagent.service"
           "bash -c 'wl-paste --watch cliphist store &'"
-          "dms run"
         ];
 
         ################
@@ -186,6 +184,7 @@ in {
     # ../../programs/waybar
     # (import ../../programs/dunst {inherit pkgs;})
     # (import ./hyprlock.nix {inherit pkgs cfg;})
+    # (import ./hyprpaper.nix {inherit cfg;})
     # (import ./hypridle.nix {inherit pkgs;})
     # (import ./wlogout.nix {inherit pkgs;})
   ];

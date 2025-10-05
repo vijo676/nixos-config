@@ -11,6 +11,11 @@
     ", switch:on:Lid Switch, exec, hyprctl keyword monitor eDP-1, disable"
     # switch is turning off
     ", switch:off:Lid Switch, exec, hyprctl keyword monitor eDP-1, preferred, 0x0, 1"
+    # Audio controls
+    ", XF86AudioRaiseVolume, exec, dms ipc call audio increment 3"
+    ", XF86AudioLowervolume, exec, dms ipc call audio decrement 3"
+    ", XF86AudioAudioMute, exec, dms ipc call audio mute"
+    ", XF86AudioMicMute, exec, dms ipc call audio micmute"
   ];
   bind =
     [
@@ -28,6 +33,7 @@
       "$mod, x, exec, dms ipc call powermenu toggle"
       "$mod, comma, exec, dms ipc call settings toggle"
       "$mod, ESCAPE, exec, dms ipc call lock lock"
+      "$mod SHIFT, n, exec, dms ipc call night toggle"
       # Screenshot
       "$mod, s, exec, hyprshot -m region"
       "$mod SHIFT, s, exec, hyprshot -m window"

@@ -22,6 +22,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "audio"
     ];
     shell = pkgs.zsh;
   };
@@ -142,53 +143,88 @@
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
 
-  # System wide packages
+  # System-wide packages
   environment.systemPackages = with pkgs; [
-    # Nix tools
-    nil
-    alejandra
-    nh # nix helper tool
-    dbus # need for rust analyzer vs code
-    pkg-config # need for rust analyzer vs code
-    mate.mate-polkit # needed for dankMaterialShell
-    slack
-    curl
-    wget
+    # Core Development Tools
+    git
+    nil # Nix language server
+    nixd # Nix language server
+    alejandra # Nix code formatter
+    nh # Nix helper tool
+    lazygit
+
+    # Programming Languages & Tools
     rustup
+    rust-analyzer
     cargo
     gcc
-    zig
-    zls
-    git
     libgcc
+    zig
+    zls # Zig lsp
+    ruff
+    protobuf
     python3
     python312Packages.pip
-    jq
-    spotify
-    usbutils
-    firefox
-    discord
-    fastfetch
-    imv
-    mpv
-    # needed for hyprland
-    nautilus
-    hyprpolkitagent
-    nwg-hello
-    nixd
-    hyprshot
-    wl-clipboard
-    kitty
-    ######################
-    iperf # measure network performance
-    cyme # Modern "lsusb"
-    caligula # TUI burning tool
-    picocom # terminal emulator for serial
-    protonvpn-gui # ProtonVPN GUI
-    ripgrep # modern grep
-    fd # modern find
-    tailspin # modern tail
-    comma # runs software without installing it
+
+    # System Libraries & Dependencies
+    dbus # D-Bus system message bus
+    pkg-config # Package configuration tool
+
+    # Audio System
+    alsa-utils # ALSA command-line utilities
+    pulseaudio # PulseAudio utilities (pactl)
+    wireplumber # Session manager for PipeWire
+    pwvucontrol # GUI PipeWire volume control
+
+    # Desktop Environment & Window Manager
+    mate.mate-polkit # PolicyKit authentication agent
+    nautilus # File manager (needed for Hyprland)
+    hyprpolkitagent # Hyprland PolicyKit agent
+    hyprshot # Screenshot utility for Hyprland
+    wl-clipboard # Wayland clipboard utilities
+
+    # Terminal & Shell Tools
+    kitty # Terminal emulator
+    fastfetch # System information tool
+    bluetui # Bluetooth TUI
+
+    # Network Tools
+    curl
+    wget
+    networkmanagerapplet # NetworkManager GUI
+    iperf # Network performance measurement
+    protonvpn-gui # ProtonVPN GUI client
+
+    # System Utilities
+    usbutils # USB utilities (lsusb)
+    cyme # Modern lsusb replacement
+    caligula # TUI disk burning tool
+    picocom # Terminal emulator for serial ports
+
+    # Modern CLI Replacements
+    ripgrep # Modern grep (rg)
+    fd # Modern find
+    tailspin # Modern tail with syntax highlighting
+    comma # Run software without installing
+    tldr # Simplified man pages
+    ncdu # Disk usage analyzer
+
+    # Media & Communication
+    firefox # Web browser
+    discord # Chat application
+    slack # Team communication
+    spotify # Music streaming
+    imv # Image viewer
+    mpv # Media player
+    bruno
+    d-spy
+
+    # System Control
+    playerctl # Media player control
+    brightnessctl # Screen brightness control
+
+    # Development Utilities
+    jq # JSON processor
   ];
 
   xdg.mime.defaultApplications = {

@@ -57,24 +57,6 @@ in {
 
   # Home packages
   home.packages = with pkgs; [
-    xsel
-    lazygit
-    rust-analyzer
-    youtube-music
-    tldr
-    nmap
-    poetry
-    ncdu
-    bluetui
-    ruff
-    protobuf
-    d-spy
-    bruno
-    bruno-cli
-    pavucontrol
-    networkmanagerapplet
-    playerctl
-    brightnessctl
   ];
   home.file = {
   };
