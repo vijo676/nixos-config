@@ -3,9 +3,7 @@
     enable = true;
     settings = {
       default_session = {
-        # command = "Hyprland -c ${pkgs.nwg-hello}/bin/nwg-hello";
         command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland";
-        # command = "${pkgs.hyprland}/bin/Hyprland -c ${pkgs.nwg-hello}/etc/nwg-hello/hyprland.conf";
         user = "greeter";
       };
     };
