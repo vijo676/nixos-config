@@ -30,7 +30,7 @@ in {
     # Dank Material Shell
     programs.dankMaterialShell = {
       enable = true;
-      enableSystemd = true;
+      enableSystemd = false;
       enableSystemMonitoring = true;
       enableClipboard = true;
       enableVPN = true;
@@ -114,13 +114,14 @@ in {
         #################
 
         exec-once = [
-          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           # "systemctl --user enable --now hypridle.service"
           # "systemctl --user enable --now hyprpaper.service"
           # "systemctl --user enable --now waybar.service"
           # "systemctl --user enable --now hyprpolkitagent.service"
+          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "bash -c 'wl-paste --watch cliphist store &'"
+          "dms run"
         ];
 
         ################
