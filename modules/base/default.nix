@@ -173,7 +173,6 @@
     # Audio System
     alsa-utils # ALSA command-line utilities
     pulseaudio # PulseAudio utilities (pactl)
-    wireplumber # Session manager for PipeWire
     pwvucontrol # GUI PipeWire volume control
 
     # Desktop Environment & Window Manager
