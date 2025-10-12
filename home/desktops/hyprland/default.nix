@@ -96,6 +96,13 @@ in {
 
       $terminal=alacritty
 
+      input {
+        kb_layout = us,dk
+        repeat_delay = 300
+        sensitivity = 0
+        follow_mouse = 1
+      }
+
       binds {
           workspace_back_and_forth=1
           #allow_workspace_cycles=1
@@ -162,19 +169,6 @@ in {
           "NIXPKGS_ALLOW_UNFREE,1"
           "HYPRSHOT_DIR,${config.home.homeDirectory}/Pictures"
         ];
-
-        #############
-        ### INPUT ###
-        #############
-
-        input = {
-          kb_layout = "us,dk";
-          kb_options = "grp:alt_caps_toggle";
-          repeat_delay = 300;
-          sensitivity = 0;
-          # force_no_accel = true;
-          follow_mouse = 1;
-        };
       }
       // (import ./keybindings.nix {inherit pkgs;})
       // (import ./style.nix);

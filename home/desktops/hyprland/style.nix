@@ -79,14 +79,12 @@
     vrr = 1; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only)
   };
 
-  input = {
-    touchpad = {
-      disable_while_typing = true;
-      natural_scroll = true;
-      clickfinger_behavior = true;
-      middle_button_emulation = false;
-      tap-to-click = true;
-    };
+  input.touchpad = {
+    disable_while_typing = true;
+    natural_scroll = true;
+    clickfinger_behavior = true;
+    middle_button_emulation = false;
+    tap-to-click = true;
   };
 
   gestures = {

@@ -19,6 +19,7 @@
   ];
   bind =
     [
+      "$mod, SPACE, exec, hyprctl switchxkblayout all next"
       "$mod, F1, exec, show-keybinds"
       "$mod, q, killactive"
       "$mod, b, exec, firefox"
