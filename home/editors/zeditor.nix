@@ -57,8 +57,8 @@ in {
           light = "Material Icon Theme";
         };
         buffer_font_family = "CaskaydiaCove Nerd Font";
-        buffer_font_size = 16;
-        ui_font_size = 16;
+        buffer_font_size = 20;
+        ui_font_size = 24;
         tabs = {
           show_diagnostics = "all";
           git_status = true;
