@@ -25,5 +25,11 @@
       "org.freedesktop.impl.portal.Settings" = ["gtk"];
     };
   };
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    XDG_SESSION_TYPE = "wayland";
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+  };
   security.pam.services.hyprlock = {};
 }

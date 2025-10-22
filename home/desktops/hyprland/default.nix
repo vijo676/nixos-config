@@ -146,14 +146,10 @@ in {
           "MOZ_WEBRENDER, 1" # for firefox to run on wayland
           "EDITOR, vim"
 
-          "XDG_CURRENT_DESKTOP,Hyprland"
-          "XDG_SESSION_DESKTOP,Hyprland"
-          "XDG_SESSION_TYPE,wayland"
           "GTK_USE_PORTAL,1"
           "NIXOS_XDG_OPEN_USE_PORTAL,1"
 
           "GDK_BACKEND,wayland,x11,*"
-          "NIXOS_OZONE_WL,1"
           "BROWSER,firefox"
 
           "MOZ_ENABLE_WAYLAND,1"
