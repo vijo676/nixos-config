@@ -22,7 +22,6 @@
     extraPackages = with pkgs; [
       intel-media-driver
       nvidia-vaapi-driver
-      libvdpau-va-gl
     ];
   };
   services.xserver = {
