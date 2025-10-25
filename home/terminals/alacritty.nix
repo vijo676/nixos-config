@@ -23,7 +23,7 @@ in {
           normal = {
             family = "CaskaydiaCove Nerd Font";
           };
-          size = 14;
+          size = 11;
         };
         colors = {
           # Gruvbox Dark Hard theme colors

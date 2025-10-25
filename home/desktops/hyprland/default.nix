@@ -35,7 +35,6 @@ in {
       enableClipboard = true;
       enableVPN = true;
       enableBrightnessControl = true;
-      enableNightMode = true;
       enableDynamicTheming = true;
       enableAudioWavelength = true;
     };
