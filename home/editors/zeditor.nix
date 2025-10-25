@@ -44,6 +44,7 @@ in {
         vim_mode = true;
         relative_line_numbers = true;
         cursor_blink = false;
+        current_line_highlight = "none";
         format_on_save = "on";
         base_keymap = "VSCode";
         theme = {
@@ -56,15 +57,23 @@ in {
           dark = "Material Icon Theme";
           light = "Material Icon Theme";
         };
-        buffer_font_family = "CaskaydiaCove Nerd Font";
+        buffer_font_family = "RobotoMono Nerd Font Mono";
         buffer_font_size = 18;
+        ui_font_family = "RobotoMono Nerd Font Mono";
         ui_font_size = 18;
+        git = {
+          inline_blame = {
+            enable = false;
+          };
+        };
         tabs = {
           show_diagnostics = "all";
           git_status = true;
+          file_icons = true;
         };
         project_panel = {
           dock = "right";
+          entry_spacing = "standard";
         };
         agent = {
           dock = "left";

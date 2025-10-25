@@ -80,6 +80,7 @@
       # nerd font
       nerd-fonts.caskaydia-cove
       nerd-fonts.jetbrains-mono
+      nerd-fonts.roboto-mono
     ];
     # disable this to use specified fonts by user instead of default ones
     # enableDefaultPackages = false;
