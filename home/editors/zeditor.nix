@@ -63,7 +63,7 @@ in {
         ui_font_size = 18;
         git = {
           inline_blame = {
-            enable = false;
+            enabled = false;
           };
         };
         tabs = {
