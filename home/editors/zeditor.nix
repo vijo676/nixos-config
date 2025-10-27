@@ -85,7 +85,7 @@ in {
         };
         languages = {
           Python = {
-            language_servers = ["basedpyright"];
+            language_servers = ["basedpyright" "ruff"];
             format_on_save = "on";
           };
           Rust = {
