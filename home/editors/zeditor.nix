@@ -61,6 +61,11 @@ in {
         buffer_font_size = 18;
         ui_font_family = "RobotoMono Nerd Font Mono";
         ui_font_size = 18;
+        inlay_hints = {
+          enabled = true;
+          show_parameter_hints = true;
+          show_other_hints = true;
+        };
         git = {
           inline_blame = {
             enabled = false;
