@@ -22,6 +22,7 @@
       efi /EFI/Microsoft/Boot/bootmgfw.efi
     '';
   };
+  boot.supportedFilesystems = ["ntfs"];
 
   environment.systemPackages = with pkgs; [
     obs-studio
