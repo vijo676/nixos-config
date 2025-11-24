@@ -15,13 +15,6 @@
     ../../modules/hyprland
   ];
 
-  # Boot configuration for dual boot with Windows
-  boot.loader.systemd-boot.extraEntries = {
-    "windows.conf" = ''
-      title Windows
-      efi /EFI/Microsoft/Boot/bootmgfw.efi
-    '';
-  };
   boot.supportedFilesystems = ["ntfs"];
 
   environment.systemPackages = with pkgs; [
