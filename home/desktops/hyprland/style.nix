@@ -94,9 +94,8 @@
 
   windowrule = [
     "opacity 1.00 1.00,class:^(firefox)$"
-    "opacity 0.70 0.70,class:^(spotify)$"
-    "opacity 0.70 0.70,class:^(code)$"
-    "opacity 0.70 0.70,class:^(dev.zed.Zed)$"
-    "opacity 0.80 0.80,class: ^(rofi)$"
+    "opacity 0.80 0.80,class:^(spotify)$"
+    "opacity 0.80 0.80,class:^(code)$"
+    "opacity 0.80 0.80,class:^(dev.zed.Zed)$"
   ];
 }
