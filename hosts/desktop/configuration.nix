@@ -26,6 +26,7 @@
 
   environment.systemPackages = with pkgs; [
     obs-studio
+    sbctl
   ];
 
   networking.hostName = "desktop";

@@ -30,12 +30,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.quickshell.follows = "quickshell";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.3";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
     home-manager,
+    lanzaboote,
     zen-browser,
     ...
   }: let
@@ -78,18 +83,30 @@
             specialArgs = {
               inherit inputs system;
             };
-            modules = [
-              host.config
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.${username} = import host.home;
-                home-manager.extraSpecialArgs = {
-                  inherit inputs;
-                };
-              }
-            ];
+            modules =
+              [
+                host.config
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.users.${username} = import host.home;
+                  home-manager.extraSpecialArgs = {
+                    inherit inputs;
+                  };
+                }
+              ]
+              ++ lib.optionals (name == "desktop") [
+                lanzaboote.nixosModules.lanzaboote
+                ({lib, ...}: {
+                  # Lanzaboote replaces systemd-boot
+                  boot.loader.systemd-boot.enable = lib.mkForce false;
+                  boot.lanzaboote = {
+                    enable = true;
+                    pkiBundle = "/var/lib/sbctl";
+                  };
+                })
+              ];
           }
       )
       hosts;
