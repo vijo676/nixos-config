@@ -1,8 +1,10 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -13,7 +15,18 @@
     ../../modules/greetd
     ../../modules/hyprland
     ../../home/desktops/hyprland/scripts/edot.nix
+    inputs.neovim.nixosModules.default
   ];
+
+  # Neovim
+  programs.neovim-monica = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    colorschemePackage = pkgs.vimPlugins.gruvbox-material;
+    colorschemeName = "gruvbox-material";
+  };
 
   # Udev rules
   services.udev.enable = true;
@@ -23,7 +36,7 @@
 
   # Networking
   networking.hostName = "work";
-  networking.firewall.trustedInterfaces = ["enp195s0f3u2"];
+  networking.firewall.trustedInterfaces = [ "enp195s0f3u2" ];
 
   # System wide packages
   environment.systemPackages = with pkgs; [
