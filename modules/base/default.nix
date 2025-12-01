@@ -225,6 +225,7 @@
 
     # Development Utilities
     jq # JSON processor
+    logseq
   ];
 
   xdg.mime.defaultApplications = {
