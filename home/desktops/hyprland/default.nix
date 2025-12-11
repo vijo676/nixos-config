@@ -30,11 +30,10 @@ in {
     # Dank Material Shell
     programs.dankMaterialShell = {
       enable = true;
-      enableSystemd = false;
+      systemd.enable = false;
       enableSystemMonitoring = true;
       enableClipboard = true;
       enableVPN = true;
-      enableBrightnessControl = true;
       enableDynamicTheming = true;
       enableAudioWavelength = true;
     };
