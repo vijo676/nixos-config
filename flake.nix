@@ -27,6 +27,7 @@
     dankMaterialShell = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.dgop.follows = "dgop";
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.3";

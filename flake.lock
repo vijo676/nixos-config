@@ -17,7 +17,9 @@
     },
     "dankMaterialShell": {
       "inputs": {
-        "dgop": "dgop",
+        "dgop": [
+          "dgop"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -38,27 +40,6 @@
       }
     },
     "dgop": {
-      "inputs": {
-        "nixpkgs": [
-          "dankMaterialShell",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1762835999,
-        "narHash": "sha256-UykYGrGFOFTmDpKTLNxj1wvd1gbDG4TkqLNSbV0TYwk=",
-        "owner": "AvengeMedia",
-        "repo": "dgop",
-        "rev": "799301991cd5dcea9b64245f9d500dcc76615653",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AvengeMedia",
-        "repo": "dgop",
-        "type": "github"
-      }
-    },
-    "dgop_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -403,7 +384,7 @@
     "root": {
       "inputs": {
         "dankMaterialShell": "dankMaterialShell",
-        "dgop": "dgop_2",
+        "dgop": "dgop",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "neovim": "neovim",

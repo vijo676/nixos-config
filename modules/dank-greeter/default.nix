@@ -22,7 +22,7 @@ in {
       configHome = "/home/vijo";
       logs = {
         save = true;
-        path = "tmp/dms-greeter.log";
+        path = "/tmp/dms-greeter.log";
       };
     };
   };
