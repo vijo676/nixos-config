@@ -3,8 +3,7 @@
   lib,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -17,6 +16,8 @@
     ../../home/desktops/hyprland/scripts/edot.nix
     inputs.neovim.nixosModules.default
   ];
+
+  modules.dank-greeter.enable = false;
 
   # Neovim
   programs.neovim-monica = {
@@ -36,7 +37,7 @@
 
   # Networking
   networking.hostName = "work";
-  networking.firewall.trustedInterfaces = [ "enp195s0f3u2" ];
+  networking.firewall.trustedInterfaces = ["enp195s0f3u2"];
 
   # System wide packages
   environment.systemPackages = with pkgs; [
