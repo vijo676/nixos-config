@@ -27,17 +27,6 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    # Dank Material Shell
-    programs.dankMaterialShell = {
-      enable = true;
-      systemd.enable = false;
-      enableSystemMonitoring = true;
-      enableClipboard = true;
-      enableVPN = true;
-      enableDynamicTheming = true;
-      enableAudioWavelength = true;
-    };
-
     # Themes
     services.xsettingsd.enable = true;
     gtk = {
@@ -168,8 +157,7 @@ in {
       // (import ./style.nix);
   };
   imports = [
-    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
-    # NOT needed when using dankMaterialShell
+    # NOT needed when using quickshell
     # ../../programs/waybar
     # (import ../../programs/dunst {inherit pkgs;})
     # (import ./hyprlock.nix {inherit pkgs cfg;})

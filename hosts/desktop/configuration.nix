@@ -12,11 +12,8 @@
     })
     ../../modules/steam
     ../../modules/greetd
-    ../../modules/dank-greeter
     ../../modules/hyprland
   ];
-
-  modules.dank-greeter.enable = true;
 
   boot.supportedFilesystems = ["ntfs"];
 

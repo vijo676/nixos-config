@@ -4,6 +4,16 @@
     withUWSM = true;
     xwayland.enable = true;
   };
+  # Dank Material Shell
+  programs.dms-shell = {
+    enable = true;
+    enableSystemMonitoring = true; # System monitoring widgets (dgop)
+    enableClipboard = true; # Clipboard history manager
+    enableVPN = true; # VPN management widget
+    enableDynamicTheming = true; # Wallpaper-based theming (matugen)
+    enableAudioWavelength = true; # Audio visualizer (cava)
+    enableCalendarEvents = true; # Calendar integration (khal)
+  };
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;

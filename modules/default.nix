@@ -3,7 +3,6 @@
     ./base
     ./steam
     ./greetd
-    ./dank-greeter
     ./hyprland
   ];
 }

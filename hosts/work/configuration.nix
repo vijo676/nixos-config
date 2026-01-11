@@ -18,7 +18,6 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
-  modules.dank-greeter.enable = false;
 
   # Neovim
   programs.neovim-monica = {
