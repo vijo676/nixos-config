@@ -7,6 +7,10 @@
   # Dank Material Shell
   programs.dms-shell = {
     enable = true;
+    systemd = {
+      enable = true;
+      restartIfChanged = true;
+    };
     enableSystemMonitoring = true; # System monitoring widgets (dgop)
     enableClipboard = true; # Clipboard history manager
     enableVPN = true; # VPN management widget
