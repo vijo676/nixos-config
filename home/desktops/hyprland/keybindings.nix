@@ -28,6 +28,7 @@
       "$mod, f, fullscreen"
       "$mod, e, exec, nautilus"
       # "$mod, d, exec, rofi -show drun || pkill rofi"
+      "bind = $mod, O, exec, dms ipc call hypr toggleOverview"
       "$mod, d, exec, dms ipc call spotlight toggle"
       "$mod, m, exec, dms ipc call processlist toggle"
       "$mod, c, exec, dms ipc call control-center toggle"
