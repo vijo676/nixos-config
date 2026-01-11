@@ -34,9 +34,6 @@
   };
 
   layerrule = [
-    "blur, rofi"
-    "ignorezero, rofi"
-    "ignorealpha 0.7, rofi"
   ];
 
   animations = {
@@ -93,9 +90,5 @@
   };
 
   windowrule = [
-    "opacity 1.00 1.00,class:^(firefox)$"
-    "opacity 0.80 0.80,class:^(spotify)$"
-    "opacity 0.80 0.80,class:^(code)$"
-    "opacity 0.90 0.90,class:^(dev.zed.Zed)$"
   ];
 }
