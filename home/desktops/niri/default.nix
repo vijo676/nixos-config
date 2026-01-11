@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  extraConfig,
   inputs,
   ...
 }: let
@@ -15,6 +16,11 @@ in {
   config = mkIf cfg.enable {
     # Niri-specific configuration goes here
     # Theme and dankMaterialShell are now in ../theme.nix
+  xdg.configFile."niri/config.kdl".source = pkgs.runCommandLocal "niri-config" {} ''
+    cp ${./config.kdl} $out
+    chmod +w $out
+
+  '';
   };
   imports = [
     ../theme.nix
