@@ -4,6 +4,5 @@
     ./steam
     ./greetd
     ./dank-greeter
-    ./hyprland
   ];
 }

@@ -7,10 +7,6 @@
 with lib; let
   cfg = config.modules.dank-greeter;
 in {
-  options.modules.dank-greeter = {
-    enable = mkEnableOption "dank-greeter";
-  };
-
   config = {
     services.greetd = {
       enable = true;

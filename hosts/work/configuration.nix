@@ -12,7 +12,7 @@
       username = "vijo";
     })
     ../../modules/greetd
-    ../../modules/hyprland
+    ../../modules/desktop/hyprland
     ../../home/desktops/hyprland/scripts/edot.nix
     inputs.neovim.nixosModules.default
   ];

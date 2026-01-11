@@ -13,7 +13,7 @@
     })
     ../../modules/steam
     ../../modules/greetd
-    ../../modules/hyprland
+    ../../modules/desktop/hyprland
   ];
 
   # Nvidia stuff

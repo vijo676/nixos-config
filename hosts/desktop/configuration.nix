@@ -13,7 +13,7 @@
     ../../modules/steam
     ../../modules/greetd
     ../../modules/dank-greeter
-    ../../modules/hyprland
+    ../../modules/desktop/niri
   ];
 
   modules.dank-greeter.enable = true;
