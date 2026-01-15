@@ -112,10 +112,9 @@ in {
           # "systemctl --user enable --now hyprpaper.service"
           # "systemctl --user enable --now waybar.service"
           # "systemctl --user enable --now hyprpolkitagent.service"
-          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "systemctl --user start hyprland-session.target"
           "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "bash -c 'wl-paste --watch cliphist store &'"
+          "dms run"
         ];
 
         ################

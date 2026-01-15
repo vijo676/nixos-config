@@ -12,9 +12,7 @@
     auto-optimise-store = true;
     warn-dirty = false;
   };
-
   programs.zsh.enable = true;
-
   # Remember to set password with passwd
   users.users.${username} = {
     isNormalUser = true;
@@ -56,7 +54,6 @@
   security = {
     rtkit.enable = true;
   };
-
   # Enable dconf for home-manager
   programs.dconf.enable = true;
 
@@ -82,16 +79,6 @@
       nerd-fonts.jetbrains-mono
       nerd-fonts.roboto-mono
     ];
-    # disable this to use specified fonts by user instead of default ones
-    # enableDefaultPackages = false;
-
-    # user fonts
-    # fontconfig.defaultFonts = {
-    #   serif = ["Noto Serif"];
-    #   sansSerif = ["Noto Sans"];
-    #   monospace = ["CaskaydiaCove Nerd Font"];
-    #   emoji = ["Noto Color Emoji"];
-    # };
   };
 
   # Enable the OpenSSH daemon.
