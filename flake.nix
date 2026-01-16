@@ -12,6 +12,10 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     quickshell = {
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,7 +78,7 @@
           lib.nixosSystem {
             inherit system pkgs;
             specialArgs = {
-              inherit inputs system;
+              inherit inputs system username;
             };
             modules =
               [

@@ -1,9 +1,14 @@
 {
+  inputs,
   pkgs,
   lib,
   username,
   ...
 }: {
+  imports = [
+    inputs.nix-index-database.nixosModules.nix-index
+  ];
+
   nix.settings = {
     experimental-features = [
       "nix-command"
@@ -13,6 +18,7 @@
     warn-dirty = false;
   };
   programs.zsh.enable = true;
+  programs.nix-index-database.comma.enable = true;
   # Remember to set password with passwd
   users.users.${username} = {
     isNormalUser = true;
@@ -192,7 +198,6 @@
     ripgrep # Modern grep (rg)
     fd # Modern find
     tailspin # Modern tail with syntax highlighting
-    comma # Run software without installing
     tldr # Simplified man pages
     ncdu # Disk usage analyzer
 

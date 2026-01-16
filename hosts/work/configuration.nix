@@ -7,10 +7,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    (import ../../modules/base {
-      inherit pkgs lib;
-      username = "vijo";
-    })
+    ../../modules/base
     ../../modules/greetd
     ../../modules/hyprland
     ../../home/desktops/hyprland/scripts/edot.nix
