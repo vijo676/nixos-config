@@ -6,6 +6,7 @@
   };
   # Dank Material Shell
   programs.dms-shell = {
+    systemd.enable = false;
     enable = true;
     enableSystemMonitoring = true; # System monitoring widgets (dgop)
     enableClipboard = true; # Clipboard history manager
