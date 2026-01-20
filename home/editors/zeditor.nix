@@ -112,6 +112,14 @@ in {
             };
             initialization_options = {
               linkedProjects = cfg.rustAnalyzerLinkedProjects;
+              files.watcher = "server";
+              files.exclude = [
+                "**/target/**"
+                "**/.git/**"
+                "**/out/**"
+                "**/dist/**"
+              ];
+              cargo.targetDir = "target/ra";
             };
           };
           nixd = {
