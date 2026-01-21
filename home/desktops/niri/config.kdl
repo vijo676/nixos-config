@@ -272,7 +272,7 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 // spawn-at-startup "waybar"
-spawn-at-startup "noctalia-shell"
+// spawn-at-startup "noctalia-shell"  # Managed by home-manager instead
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -368,16 +368,16 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return hotkey-overlay-title="Terminal" { spawn "foot"; }
+    Mod+Return hotkey-overlay-title="Terminal" { spawn "alacritty"; }
     Mod+B hotkey-overlay-title="Browser" { spawn "firefox"; }
 
     // Noctalia Binds
-    // Mod+D hotkey-overlay-title="Application Launcher" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-    // Mod+X hotkey-overlay-title="Power Menu" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
-    // Mod+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
-    // Mod+S hotkey-overlay-title="Noctalia Control Center" { spawn "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
-    // Mod+Ctrl+S hotkey-overlay-title="Noctalia Settings" { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
-    // Mod+W hotkey-overlay-title="Wallpaper Manager" { spawn "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
+    Mod+D hotkey-overlay-title="Application Launcher" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Mod+X hotkey-overlay-title="Power Menu" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
+    Mod+ESCAPE hotkey-overlay-title="Lock the Screen" { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    Mod+S hotkey-overlay-title="Noctalia Control Center" { spawn "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
+    Mod+Ctrl+S hotkey-overlay-title="Noctalia Settings" { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
+    Mod+W hotkey-overlay-title="Wallpaper Manager" { spawn "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
 
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
@@ -593,7 +593,7 @@ binds {
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
-    // Toggle tabbed column display mode.
+    // Toggle tabbed column mode.
     // Windows in this column will appear as vertical tabs,
     // rather than stacked on top of each other.
     Mod+T { toggle-column-tabbed-display; }
