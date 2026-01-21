@@ -20,6 +20,10 @@
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -39,6 +43,7 @@
     nixpkgs,
     home-manager,
     lanzaboote,
+    noctalia,
     ...
   }: let
     lib = nixpkgs.lib;
@@ -82,12 +87,18 @@
             };
             modules =
               [
+                noctalia.nixosModules.default
                 host.config
                 home-manager.nixosModules.home-manager
                 {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
-                  home-manager.users.${username} = import host.home;
+                  home-manager.users.${username} = {
+                    imports = [
+                      host.home
+                      noctalia.homeModules.default
+                    ];
+                  };
                   home-manager.extraSpecialArgs = {
                     inherit inputs;
                   };
@@ -118,7 +129,10 @@
             extraSpecialArgs = {
               inherit inputs;
             };
-            modules = [host.home];
+            modules = [
+              host.home
+              noctalia.homeModules.default
+            ];
           }
       )
       hosts;

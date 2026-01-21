@@ -52,6 +52,23 @@ in {
         "DP-2, 2560x1440@164, 2560x0,1"
       ];
     };
+    niri = {
+      enable = true;
+      monitors_config = ''
+        output "DP-1" {
+                mode "2560x1440@165"
+                scale 1
+                transform "normal"
+                position x=0 y=0
+            }
+        output "DP-2" {
+                mode "2560x1440@165"
+                scale 1
+                transform "normal"
+                position x=2560 y=0
+            }
+      '';
+    };
     rofi.enable = true;
   };
 

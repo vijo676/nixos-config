@@ -9,7 +9,6 @@
     ./hardware-configuration.nix
     ../../modules/base
     ../../modules/steam
-    ../../modules/greetd
     ../../modules/hyprland
   ];
 

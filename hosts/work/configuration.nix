@@ -8,7 +8,6 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/base
-    ../../modules/greetd
     ../../modules/hyprland
     ../../home/desktops/hyprland/scripts/edot.nix
     inputs.neovim.nixosModules.default
