@@ -1,24 +1,9 @@
-// This config is in the KDL format: https://kdl.dev
-// "/-" comments out the following node.
-// Check the wiki for a full description of the configuration:
-// https://yalter.github.io/niri/Configuration:-Introduction
-
-// Input device configuration.
-// Find the full list of options on the wiki:
-// https://yalter.github.io/niri/Configuration:-Input
 input {
     keyboard {
         xkb {
-            // You can set rules, model, layout, variant and options.
-            // For more information, see xkeyboard-config(7).
-
             // For example:
             layout "us,dk"
-            options "grp:alt_caps_toggle"
-
-            // If this section is empty, niri will fetch xkb settings
-            // from org.freedesktop.locale1. You can control these using
-            // localectl set-x11-keymap.
+            options "grp:super_space_toggle"
         }
 
         repeat-delay 200
@@ -65,49 +50,12 @@ input {
     }
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
-    // warp-mouse-to-focus
+    warp-mouse-to-focus
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
     focus-follows-mouse max-scroll-amount="0%"
 }
-
-// You can configure outputs by their name, which you can find
-// by running `niri msg outputs` while inside a niri instance.
-// The built-in laptop monitor is usually called "eDP-1".
-// Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
-//output "DP-3" {
-//    // Uncomment this line to disable this output.
-//    // off
-//
-//    // Resolution and, optionally, refresh rate of the output.
-//    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
-//    // If the refresh rate is omitted, niri will pick the highest refresh rate
-//    // for the resolution.
-//    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
-//    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-//    mode "2560x1440@239.970"
-//
-//    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-//    scale 1
-//
-//    // Transform allows to rotate the output counter-clockwise, valid values are:
-//    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-//    transform "normal"
-//
-//    // Position of the output in the global coordinate space.
-//    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-//    // The cursor can only move between directly adjacent outputs.
-//    // Output scale and rotation has to be taken into account for positioning:
-//    // outputs are sized in logical, or scaled, pixels.
-//    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-//    // so to put another output directly adjacent to it on the right, set its x to 1920.
-//    // If the position is unset or results in an overlap, the output is instead placed
-//    // automatically.
-//    //position x=1280 y=0
-//}
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -265,23 +213,9 @@ layout {
     }
 }
 
-// Add lines like this to spawn processes at startup.
-// Note that running niri as a session supports xdg-desktop-autostart,
-// which may be more convenient to use.
-// See the binds section below for more spawn examples.
-
-// This line starts waybar, a commonly used bar for Wayland compositors.
-// spawn-at-startup "waybar"
-// spawn-at-startup "noctalia-shell"  # Managed by home-manager instead
-
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
-
-// spawn-sh-at-startup "${pkgs.swaybg} -i ${wallpaper} -m fill"
-
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-    // skip-at-startup
+    skip-at-startup
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -296,9 +230,6 @@ prefer-no-csd
 // The path is formatted with strftime(3) to give you the screenshot date and time.
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-// You can also set this to null to disable saving screenshots to disk.
-// screenshot-path null
-
 // Animation settings.
 // The wiki explains how to configure individual animations:
 // https://yalter.github.io/niri/Configuration:-Animations
@@ -309,20 +240,6 @@ animations {
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     slowdown 0.5
 }
-
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Window-Rules
-
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-//window-rule {
-//    // This regular expression is intentionally made as specific as possible,
-//    // since this is the default config, and we want no false positives.
-//    // You can get away with just app-id="wezterm" if you want.
-//    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-//    default-column-width {}
-//}
 
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
@@ -353,16 +270,6 @@ window-rule {
 }
 
 binds {
-    // Keys consist of modifiers separated by + signs, followed by an XKB key name
-    // in the end. To find an XKB name for a particular key, you may use a program
-    // like wev.
-    //
-    // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
-    // when running as a winit window.
-    //
-    // Most actions that you can bind here can also be invoked programmatically with
-    // `niri msg action do-something`.
-
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
@@ -374,7 +281,7 @@ binds {
     // Noctalia Binds
     Mod+D hotkey-overlay-title="Application Launcher" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     Mod+X hotkey-overlay-title="Power Menu" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
-    Mod+ESCAPE hotkey-overlay-title="Lock the Screen" { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    Mod+escape hotkey-overlay-title="Lock the Screen" { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
     Mod+S hotkey-overlay-title="Noctalia Control Center" { spawn "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
     Mod+Ctrl+S hotkey-overlay-title="Noctalia Settings" { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
     Mod+W hotkey-overlay-title="Wallpaper Manager" { spawn "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
@@ -618,7 +525,7 @@ binds {
     //
     // The allow-inhibiting=false property can be applied to other binds as well,
     // which ensures niri always processes them, even when an inhibitor is active.
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Mod+Shift+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E { quit; }
@@ -627,4 +534,7 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+
 }
+
+spawn-at-startup "noctalia-shell"
