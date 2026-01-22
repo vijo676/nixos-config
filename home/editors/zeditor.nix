@@ -31,6 +31,7 @@ in {
         "ruff"
         "material-icon-theme"
         "zig"
+        "kdl"
       ];
       userSettings = {
         node = {
