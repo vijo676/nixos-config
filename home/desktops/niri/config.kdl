@@ -57,12 +57,19 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
+layer-rule {
+    place-within-backdrop true
+}
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
     gaps 0
+
+    // Set the workspace background color
+    background-color "transparent"
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -110,7 +117,7 @@ layout {
         off
 
         // How many logical pixels the ring extends out from the windows.
-        width 2
+        width 3
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -118,7 +125,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        active-color "#4eaea6"
 
         // Color of the ring on inactive monitors.
         //
@@ -281,10 +288,11 @@ binds {
     // Noctalia Binds
     Mod+D hotkey-overlay-title="Application Launcher" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     Mod+X hotkey-overlay-title="Power Menu" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
-    Mod+escape hotkey-overlay-title="Lock the Screen" { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    Mod+Escape hotkey-overlay-title="Lock the Screen" { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
     Mod+S hotkey-overlay-title="Noctalia Control Center" { spawn "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
-    Mod+Ctrl+S hotkey-overlay-title="Noctalia Settings" { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
     Mod+W hotkey-overlay-title="Wallpaper Manager" { spawn "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
+    Mod+N hotkey-overlay-title="Notification Center" { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
+    Mod+Comma hotkey-overlay-title="Noctalia Settings" { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
 
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
@@ -460,9 +468,9 @@ binds {
     Mod+BracketRight { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
-    Mod+Comma  { consume-window-into-column; }
+    // Mod+Comma  { consume-window-into-column; }
     // Expel the bottom window from the focused column to the right.
-    Mod+Period { expel-window-from-column; }
+    // Mod+Period { expel-window-from-column; }
 
     Mod+R { switch-preset-column-width; }
     // Cycling through the presets in reverse order is also possible.
