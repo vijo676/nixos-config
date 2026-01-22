@@ -1,7 +1,6 @@
 input {
     keyboard {
         xkb {
-            // For example:
             layout "us,dk"
             options "grp:win_space_toggle"
         }
@@ -66,7 +65,7 @@ layer-rule {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 0
+    gaps 2 
 
     // Set the workspace background color
     background-color "transparent"
@@ -117,7 +116,7 @@ layout {
         off
 
         // How many logical pixels the ring extends out from the windows.
-        width 3
+        width 3 
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -155,8 +154,8 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         // off
 
-        width 1
-        active-color "#7fc8ff"
+        width 3
+        active-color "#4eaea6"
         inactive-color "#505050"
 
         // Color of the border around windows that request your attention.
@@ -230,7 +229,7 @@ hotkey-overlay {
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
 // This option will also fix border/focus ring drawing behind some semitransparent windows.
 // After enabling or disabling this, you need to restart the apps for this to take effect.
-prefer-no-csd
+// prefer-no-cs
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
@@ -259,20 +258,20 @@ window-rule {
 
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
-    block-out-from "screen-capture"
-
-    // Use this instead if you want them visible on third-party screenshot tools.
-    // block-out-from "screencast"
-}
+// /-window-rule {
+//     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+//     match app-id=r#"^org\.gnome\.World\.Secrets$"#
+//
+//     block-out-from "screen-capture"
+//
+//     // Use this instead if you want them visible on third-party screenshot tools.
+//     // block-out-from "screencast"
+// }
 
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    geometry-corner-radius 12
+window-rule {
+    geometry-corner-radius 12 
     clip-to-geometry true
 }
 
