@@ -1,4 +1,4 @@
-{pkgs, ...}: let
+{...}: let
 in {
   home.username = "vijo";
   home.homeDirectory = "/home/vijo";
@@ -42,13 +42,6 @@ in {
     rofi.enable = true;
   };
 
-  # Home packages
-  home.packages = with pkgs; [
-  ];
-  home.file = {
-  };
-  home.sessionVariables = {
-  };
   services.ssh-agent.enable = true;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
