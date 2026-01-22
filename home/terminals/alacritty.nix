@@ -16,7 +16,7 @@ in {
       enable = true;
       settings = {
         window = {
-          opacity = 0.55;
+          opacity = 1;
           decorations = "none";
         };
         font = {

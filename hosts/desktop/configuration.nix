@@ -4,8 +4,8 @@
     ./hardware-configuration.nix
     ../../modules/base
     ../../modules/steam
-    ../../modules/greetd
-    ../../modules/hyprland
+    # ../../modules/hyprland
+    ../../modules/niri
   ];
 
   boot.supportedFilesystems = ["ntfs"];

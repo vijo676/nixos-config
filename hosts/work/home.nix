@@ -1,4 +1,4 @@
-{pkgs, ...}: let
+{...}: let
 in {
   home.username = "vijo";
   home.homeDirectory = "/home/vijo";
@@ -63,12 +63,25 @@ in {
         "HDMI-A-1, 3840x2160@60,3200x-900,1.20, transform,1"
       ];
     };
+    niri = {
+      enable = true;
+      monitors_config = ''
+        output "DP-2" {
+                mode "3840x2160@60"
+                scale 1.2
+                transform "normal"
+                position x=0 y=0
+            }
+        output "HDMI-A-1" {
+                mode "3840x2160@60"
+                scale 1.2
+                transform "90"
+                position x=2560 y=0
+            }
+      '';
+    };
     rofi.enable = true;
   };
-
-  # Home packages
-  home.packages = with pkgs; [
-  ];
 
   programs.home-manager.enable = true;
 }

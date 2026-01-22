@@ -4,6 +4,21 @@
     withUWSM = true;
     xwayland.enable = true;
   };
+  # Display manager
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland";
+        user = "greeter";
+      };
+    };
+  };
+  security.pam.services.greetd.gnupg = {
+    enable = true;
+    noAutostart = true;
+  };
+
   # Dank Material Shell
   programs.dms-shell = {
     systemd.enable = false;
