@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -6,7 +10,17 @@
     ../../modules/steam
     # ../../modules/hyprland
     ../../modules/niri
+    inputs.neovim.nixosModules.default
   ];
+  # Neovim
+  programs.neovim-monica = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    colorschemePackage = pkgs.vimPlugins.gruvbox-material;
+    colorschemeName = "gruvbox-material";
+  };
 
   boot.supportedFilesystems = ["ntfs"];
 

@@ -76,7 +76,7 @@ in {
                 mode "3840x2160@60"
                 scale 1.2
                 transform "90"
-                position x=2560 y=0
+                position x=2560 y=2160
             }
       '';
     };

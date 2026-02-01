@@ -64,8 +64,8 @@ in {
         output "DP-2" {
                 mode "2560x1440@165"
                 scale 1
-                transform "normal"
-                position x=2560 y=0
+                transform "90"
+                position x=2560 y=-400
             }
       '';
     };
