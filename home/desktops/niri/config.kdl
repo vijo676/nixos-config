@@ -44,8 +44,16 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
+// Set the regular wallpaper on the backdrop
 layer-rule {
     place-within-backdrop true
+}
+
+// disable the workspace shadows in the overview.
+overview {
+    workspace-shadow {
+        off
+    }
 }
 
 layout {
