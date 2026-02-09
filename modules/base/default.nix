@@ -59,6 +59,7 @@
   };
   security = {
     rtkit.enable = true;
+    polkit.enable = true;
   };
   # Enable dconf for home-manager
   programs.dconf.enable = true;

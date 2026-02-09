@@ -29,6 +29,7 @@
   services.udev.enable = true;
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", MODE="0666"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="04f9", ATTRS{idProduct}=="209b", MODE="0666"
   '';
 
   # Networking
