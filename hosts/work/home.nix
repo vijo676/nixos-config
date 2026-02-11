@@ -49,8 +49,8 @@ in {
     zoxide.enable = true;
     btop.enable = true;
     # shell and terminals
-    ghostty.enable = true;
     alacritty.enable = true;
+    foot.enable = true;
     bash.enable = true;
     zsh.enable = true;
 
