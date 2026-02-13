@@ -39,44 +39,117 @@ in {
           widgets = {
             left = [
               {
-                id = "ControlCenter";
-                useDistroLogo = true;
-              }
-              {
-                id = "ScreenRecorder";
-              }
-              {
-                id = "Tray";
+                focusColor = "primary";
+                enableScrollWheel = true;
+                emptyColor = "secondary";
+                colorizeIcons = false;
+                id = "Workspace";
+                labelMode = "index";
+                occupiedColor = "secondary";
               }
             ];
             center = [
               {
-                id = "Workspace";
-                labelMode = "none";
+                compactMode = false;
+                compactShowAlbumArt = true;
+                compactShowVisualizer = false;
+                hideMode = "hidden";
+                hideWhenIdle = false;
+                id = "MediaMini";
+                maxWidth = 155;
+                panelShowAlbumArt = true;
+                panelShowVisualizer = true;
+                scrollingMode = "hover";
+                showAlbumArt = true;
+                showArtistFirst = true;
+                showProgressRing = true;
+                showVisualizer = true;
+                useFixedWidth = false;
+                visualizerType = "linear";
+              }
+              {
+                clockColor = "none";
+                customFont = "";
+                formatHorizontal = "MMM dd, hh:mm";
+                formatVertical = "HH mm - dd MM";
+                id = "Clock";
+                tooltipFormat = "HH:mm ddd, MMM dd";
+                useCustomFont = false;
+              }
+              {
+                displayMode = "onhover";
+                id = "NotificationHistory";
               }
             ];
             right = [
               {
-                id = "WiFi";
+                colorizeIcons = false;
+                hideMode = "hidden";
+                id = "ActiveWindow";
+                maxWidth = 145;
+                scrollingMode = "hover";
+                showIcon = true;
+                useFixedWidth = false;
               }
               {
+                compactMode = false;
+                diskPath = "/";
+                id = "SystemMonitor";
+                showCpuFreq = false;
+                showCpuTemp = true;
+                showCpuUsage = true;
+                showDiskAvailable = false;
+                showDiskUsage = true;
+                showDiskUsageAsPercent = false;
+                showGpuTemp = false;
+                showLoadAverage = false;
+                showMemoryAsPercent = false;
+                showMemoryUsage = true;
+                showNetworkStats = false;
+                showSwapUsage = false;
+                useMonospaceFont = true;
+                usePrimaryColor = false;
+              }
+              {
+                displayMode = "onhover";
+                id = "Network";
+              }
+              {
+                displayMode = "onhover";
                 id = "Bluetooth";
               }
               {
+                displayMode = "onhover";
                 id = "Volume";
               }
               {
-                id = "NotificationHistory";
+                deviceNativePath = "BAT0";
+                displayMode = "icon-always";
+                hideIfIdle = false;
+                hideIfNotDetected = true;
+                id = "Battery";
+                showNoctaliaPerformance = true;
+                showPowerProfiles = true;
               }
               {
-                id = "Clock";
+                id = "ControlCenter";
+                useDistroLogo = true;
               }
             ];
           };
         };
+        ui = {
+          fontDefault = "Caskaydia Cove Nerd Font";
+          fontDefaultScale = 1;
+          tooltipsEnabled = true;
+        };
+        colorSchemes = {
+          useWallpapersColors = true;
+          predefinedScheme = "Monochrome";
+          darkMode = true;
+          generationMethod = "tonal-spot";
+        };
         dock.enabled = false;
-        colorSchemes.predefinedScheme = "Monochrome";
-        #radiusRatio = 0.2;
         dimDesktop = false;
         enableShadows = false;
         location = {
@@ -88,7 +161,7 @@ in {
         };
         network.wifiEnabled = false;
         notifications.alwaysOnTop = true;
-        nightLight.enabled = true;
+        nightLight.enabled = false;
       };
     };
   };
