@@ -147,6 +147,7 @@
     alejandra # Nix code formatter
     nh # Nix helper tool
     lazygit
+    lazyjj
 
     # Programming Languages & Tools
     rustup

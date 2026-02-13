@@ -38,6 +38,7 @@ in {
         "...." = "cd ../../..";
         yz = "yazi";
         lzg = "lazygit";
+        lzj = "lazyjj";
         man = "batman";
         gs = "git status";
         nix-cleanup = "nix-collect-garbage -d";
@@ -56,6 +57,12 @@ in {
         bindkey '^P' up-line-or-history      # Ctrl+P for previous command
         bindkey '^N' down-line-or-history    # Ctrl+N for next command
         bindkey '^L' autosuggest-accept      # Ctrl+L accept autosuggestion
+        bindkey '^A' vi-beginning-of-line
+        bindkey '^E' vi-end-of-line
+        bindkey '^B' vi-backward-word
+        bindkey '^W' vi-forward-word
+
+
         export TERM=xterm-256color
       '';
     };

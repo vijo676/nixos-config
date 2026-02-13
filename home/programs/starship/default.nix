@@ -14,6 +14,7 @@ in {
   config = mkIf cfg.enable {
     programs.starship = {
       enable = true;
+      enableZshIntegration = true;
       settings = {
         format = lib.concatStrings [
           "$os"

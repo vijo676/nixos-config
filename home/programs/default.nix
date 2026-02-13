@@ -4,6 +4,7 @@
     ./direnv
     ./fzf
     ./git
+    ./jujutsu
     ./rofi
     ./ssh
     ./starship

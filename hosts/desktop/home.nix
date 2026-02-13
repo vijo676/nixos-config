@@ -35,6 +35,7 @@ in {
     direnv.enable = true;
     fzf.enable = true;
     git.enable = true;
+    jujutsu.enable = true;
     ssh.enable = true;
     zoxide.enable = true;
     btop.enable = true;
