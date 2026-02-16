@@ -25,6 +25,7 @@ in {
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
+      shellWrapperName = "y";
 
       plugins = {
         bypass = pkgs.yaziPlugins.bypass;

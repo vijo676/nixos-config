@@ -18,8 +18,8 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    colorschemePackage = pkgs.vimPlugins.gruvbox-material;
-    colorschemeName = "gruvbox-material";
+    colorschemePackage = pkgs.vimPlugins.kanagawa-paper-nvim;
+    colorschemeName = "kanagawa-paper";
   };
 
   boot.supportedFilesystems = ["ntfs"];

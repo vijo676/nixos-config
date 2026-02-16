@@ -50,8 +50,8 @@ in {
         base_keymap = "VSCode";
         theme = {
           mode = "dark";
-          dark = "Kanagawa Dragon";
-          light = "Kanagawa Dragon";
+          dark = "Kanagawa Wave";
+          light = "Kanagawa Wave";
         };
         icon_theme = {
           mode = "dark";
@@ -69,7 +69,6 @@ in {
         };
         git = {
           inline_blame = {
-            enabled = false;
           };
         };
         tabs = {
