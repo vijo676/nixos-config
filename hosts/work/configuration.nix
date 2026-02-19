@@ -21,8 +21,8 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    colorschemePackage = pkgs.vimPlugins.gruvbox-material;
-    colorschemeName = "gruvbox-material";
+    colorschemePackage = pkgs.vimPlugins.kanagawa-paper-nvim;
+    colorschemeName = "kanagawa-paper";
   };
 
   # Udev rules
@@ -31,6 +31,9 @@
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", MODE="0666"
     SUBSYSTEM=="usb", ATTRS{idVendor}=="04f9", ATTRS{idProduct}=="209b", MODE="0666"
   '';
+
+  # Tailscale for remote access
+  services.tailscale.enable = true;
 
   # Networking
   networking.hostName = "work";
