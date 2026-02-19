@@ -136,7 +136,7 @@
 
   # Networking
   networking.networkmanager.enable = true;
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   # System-wide packages
   environment.systemPackages = with pkgs; [
