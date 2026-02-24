@@ -172,7 +172,6 @@
     pwvucontrol # GUI PipeWire volume control
 
     # Desktop Environment & Window Manager
-    mate.mate-polkit # PolicyKit authentication agent
     nautilus # File manager (needed for Hyprland)
     hyprpolkitagent # Hyprland PolicyKit agent
     hyprshot # Screenshot utility for Hyprland

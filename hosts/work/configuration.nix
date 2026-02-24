@@ -43,7 +43,6 @@
   environment.systemPackages = with pkgs; [
     _1password-gui-beta
     pkg-config
-    marktext
   ];
 
   system.stateVersion = "24.11";
