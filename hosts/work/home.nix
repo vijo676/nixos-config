@@ -65,7 +65,7 @@ in {
       enable = true;
       monitors_config = ''
         output "DP-2" {
-                mode "3440x1440@99.98"
+                mode "3440x1440@99.982"
                 scale 1.0
                 transform "normal"
                 position x=0 y=0
