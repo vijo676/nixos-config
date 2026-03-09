@@ -21,8 +21,8 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    colorschemePackage = pkgs.vimPlugins.kanagawa-paper-nvim;
-    colorschemeName = "kanagawa-paper";
+    colorschemePackage = pkgs.vimPlugins.everforest;
+    colorschemeName = "everforest";
   };
 
   # Udev rules
