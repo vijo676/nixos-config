@@ -9,6 +9,9 @@
     inputs.nix-index-database.nixosModules.nix-index
   ];
 
+  # this is needed for the noctalia battery widget to work
+  services.upower.enable = true;
+
   nix.settings = {
     experimental-features = [
       "nix-command"
