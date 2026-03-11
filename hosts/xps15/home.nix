@@ -31,15 +31,11 @@ in {
     bash.enable = true;
     zsh.enable = true;
     # desktop
-    hyprland = {
+    niri = {
       enable = true;
-      wallpaper_path = builtins.toPath ../../wallpapers/zen2.jpg;
-      monitors_config = [
-        "eDP-1, 1920x1200@59.95, 0x1440, 1"
-        "DP-2, 2560x1440@164, 0x0,1"
-      ];
+      monitors_config = ''
+      '';
     };
-    rofi.enable = true;
   };
 
   services.ssh-agent.enable = true;

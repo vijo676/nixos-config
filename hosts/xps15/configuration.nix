@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   config,
   ...
 }: {
@@ -8,9 +9,19 @@
     ./hardware-configuration.nix
     ../../modules/base
     ../../modules/steam
-    ../../modules/hyprland
+    ../../modules/niri
+    inputs.neovim.nixosModules.default
   ];
 
+  # Neovim
+  programs.neovim-monica = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    colorschemePackage = pkgs.vimPlugins.everforest;
+    colorschemeName = "everforest";
+  };
   # Nvidia stuff
   hardware.graphics = {
     enable = true;
@@ -50,7 +61,7 @@
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     __VK_LAYER_NV_optimus = "NVIDIA_only";
   };
-  networking.hostName = "xps";
+  networking.hostName = "xps15";
 
   system.stateVersion = "24.11";
 }

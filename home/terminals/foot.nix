@@ -8,7 +8,7 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   options.configured.programs."${module_name}" = {
-    enable = mkEnableOption "Enable Alacritty";
+    enable = mkEnableOption "Enable Foot Terminal";
   };
 
   config = mkIf cfg.enable {
