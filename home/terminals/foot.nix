@@ -19,7 +19,7 @@ in {
           font = "CaskaydiaCove Nerd Font:size=11";
           dpi-aware = "yes";
         };
-        colors = {
+        colors-dark = {
           alpha = 0.9;
           # Kanagawa Dragon
           foreground = "c5c9c5";
