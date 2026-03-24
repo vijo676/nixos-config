@@ -63,7 +63,7 @@ in {
                 position x=0 y=0
             }
         output "DP-2" {
-                mode "2560x1440@165"
+                mode "2560x1440@170"
                 scale 1
                 transform "90"
                 position x=2560 y=-400
