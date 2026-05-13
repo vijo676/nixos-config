@@ -80,9 +80,9 @@
       lib.mapAttrs (
         name: host:
           lib.nixosSystem {
-            inherit system pkgs;
+            inherit pkgs;
             specialArgs = {
-              inherit inputs system username;
+              inherit inputs username;
             };
             modules =
               [

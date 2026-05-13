@@ -31,6 +31,7 @@
   };
   qt.style.name = "Everforest-Dark-BL";
   home.sessionVariables.GTK_THEME = "Everforest-Dark-BL";
+  gtk.gtk4.theme = null;
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;

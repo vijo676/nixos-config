@@ -22,7 +22,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    inputs.noctalia.packages.${system}.default
+    inputs.noctalia.packages.${pkgs.system}.default
     xwayland-satellite # Needed for Niri's XWayland support
   ];
   xdg.portal = {

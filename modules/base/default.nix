@@ -19,6 +19,7 @@
     ];
     auto-optimise-store = true;
     warn-dirty = false;
+    allowed-users = ["@wheel"];
   };
   programs.zsh.enable = true;
   programs.nix-index-database.comma.enable = true;
@@ -190,7 +191,7 @@
     wget
     networkmanagerapplet # NetworkManager GUI
     iperf # Network performance measurement
-    protonvpn-gui # ProtonVPN GUI client
+    proton-vpn # ProtonVPN GUI client
 
     # System Utilities
     usbutils # USB utilities (lsusb)
