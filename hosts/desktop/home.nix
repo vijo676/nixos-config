@@ -49,24 +49,17 @@ in {
       enable = true;
       wallpaper_path = builtins.toPath ../../wallpapers/japan2.jpg;
       monitors_config = [
-        "DP-1, 2560x1440@165, 0x0, 1, bitdepth,10"
-        "DP-2, 2560x1440@164, 2560x0,1"
+        "DP-2, 2560x1440@164, 0x0,1"
       ];
     };
     niri = {
       enable = true;
       monitors_config = ''
-        output "DP-1" {
-                mode "2560x1440@165"
+        output "DP-2" {
+                mode "2560x1440@170.001"
                 scale 1
                 transform "normal"
                 position x=0 y=0
-            }
-        output "DP-2" {
-                mode "2560x1440@170"
-                scale 1
-                transform "90"
-                position x=2560 y=-400
             }
       '';
     };
