@@ -29,7 +29,24 @@
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", MODE="0666"
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", MODE="0666"
     SUBSYSTEM=="usb", ATTRS{idVendor}=="04f9", ATTRS{idProduct}=="209b", MODE="0666"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0955", ATTR{idProduct}=="7c18", MODE="0666"
   '';
+  networking.firewall.interfaces."usb+".allowedUDPPorts = [67];
+  networking.networkmanager.ensureProfiles.profiles.usb-dhcp = {
+    connection = {
+      id = "usb-dhcp";
+      type = "ethernet";
+      autoconnect = true;
+    };
+    match = {
+      driver = "cdc_ether";
+      interface-name = "usb*";
+    };
+    ipv4 = {
+      method = "shared";
+      address1 = "10.42.0.1/24";
+    };
+  };
 
   # Tailscale for remote access
   services.tailscale.enable = true;
