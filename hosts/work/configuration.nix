@@ -6,6 +6,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./disko.nix
     ../../modules/base
     ../../modules/niri
     inputs.neovim.nixosModules.default

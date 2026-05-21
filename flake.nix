@@ -36,6 +36,8 @@
       url = "github:Maroka-chan/nvim-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
@@ -43,6 +45,7 @@
     home-manager,
     lanzaboote,
     noctalia,
+    disko,
     ...
   }: let
     lib = nixpkgs.lib;
@@ -86,6 +89,7 @@
             };
             modules =
               [
+                disko.nixosModules.disko
                 noctalia.nixosModules.default
                 host.config
                 home-manager.nixosModules.home-manager
