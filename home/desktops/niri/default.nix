@@ -64,6 +64,8 @@ in {
           widget_spacing = 10;
           scale = 1;
           thickness = 34;
+          radius = 0;
+          background_opacity = 0.5;
         };
         location.address = "Copenhagen, Denmark";
         nightlight.enabled = false;
