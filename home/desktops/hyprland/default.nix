@@ -28,6 +28,7 @@ in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
+      configType = "hyprlang";
       xwayland.enable = true;
       systemd.enable = true;
       package = null;

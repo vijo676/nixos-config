@@ -22,7 +22,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    inputs.noctalia.packages.${pkgs.system}.default
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite # Needed for Niri's XWayland support
   ];
   xdg.portal = {
@@ -40,12 +40,6 @@
         "org.freedesktop.impl.portal.Screenshot" = ["gnome"];
       };
     };
-  };
-
-  home-manager.extraSpecialArgs = {
-    imports = [
-      inputs.noctalia.homeModules.default
-    ];
   };
 
   environment.sessionVariables = {

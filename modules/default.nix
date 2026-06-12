@@ -4,5 +4,6 @@
     ./steam
     ./hyprland
     ./niri
+    ./noctalia
   ];
 }

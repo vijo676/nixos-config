@@ -5,12 +5,12 @@
   ...
 }: let
   module_name = "yazi";
-  kanagawa-yazi = (
+  kanagawa-paper-yazi = (
     pkgs.fetchFromGitHub {
-      owner = "marcosvnmelo";
-      repo = "kanagawa-dragon.yazi";
-      rev = "49055274ff53772a13a8c092188e4f6d148d1694";
-      hash = "sha256-gkzJytN0TVgz94xIY3K08JsOYG/ny63Oj2eyGWiWH4s=";
+      owner = "melindachang";
+      repo = "kanagawa-paper.yazi";
+      rev = "7f3cd1d8a579cc8a38fca67fcb3cb018e4d7171c";
+      hash = "sha256-QSDcHvQwUABGM76OYW2rrFcSkpo/q7e0bBZLbpCIiqw=";
     }
   );
   cfg = config.configured.programs."${module_name}";
@@ -26,7 +26,6 @@ in {
       enableBashIntegration = true;
       enableZshIntegration = true;
       shellWrapperName = "y";
-
       plugins = {
         bypass = pkgs.yaziPlugins.bypass;
         git = pkgs.yaziPlugins.git;
@@ -57,33 +56,6 @@ in {
           image_quality = 90;
         };
         plugin = {
-          # prepend_preloaders = [
-          #   {
-          #     mime = "{audio,video,image}/*";
-          #     run = "mediainfo";
-          #   }
-          #   {
-          #     mime = "application/subrip";
-          #     run = "mediainfo";
-          #   }
-          # ];
-
-          # prepend_previewers = [
-          #   {
-          #     mime = "{audio,video,image}/*";
-          #     run = "mediainfo";
-          #   }
-
-          #   {
-          #     mime = "application/subrip";
-          #     run = "mediainfo";
-          #   }
-
-          #   {
-          #     name = "*.md";
-          #     run = "piper";
-          #   }
-          # ];
         };
         keymap = {
           mgr.prepend_keymap = [
@@ -115,12 +87,12 @@ in {
         };
       };
       flavors = {
-        kanagawa-dragon = "${kanagawa-yazi}";
+        kanagawa-paper = "${kanagawa-paper-yazi}";
       };
       theme = {
         flavor = {
-          dark = "kanagawa-dragon";
-          light = "kanagawa-dragon";
+          dark = "kanagawa-paper";
+          light = "kanagawa-paper";
         };
         status = {
           separator_open = "";

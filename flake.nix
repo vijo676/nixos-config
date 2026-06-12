@@ -2,9 +2,6 @@
   description = "vijo NixOS configuration";
 
   inputs = {
-    nixpkgs-stable = {
-      url = "github:NixOS/nixpkgs/nixos-25.11";
-    };
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
@@ -16,17 +13,9 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    quickshell = {
-      url = "github:outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.3";
@@ -38,6 +27,10 @@
     };
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    vijo-keys = {
+      url = "https://github.com/vijo676.keys";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
@@ -90,7 +83,6 @@
             modules =
               [
                 disko.nixosModules.disko
-                noctalia.nixosModules.default
                 host.config
                 home-manager.nixosModules.home-manager
                 {

@@ -31,137 +31,62 @@ in {
       ${cfg.monitors_config}
       EOF
     '';
-    programs.noctalia-shell = {
+    programs.noctalia = {
       enable = true;
       settings = {
-        bar = {
-          outerCorners = false;
-          widgets = {
-            left = [
-              {
-                focusColor = "primary";
-                enableScrollWheel = true;
-                emptyColor = "secondary";
-                colorizeIcons = false;
-                id = "Workspace";
-                labelMode = "index";
-                occupiedColor = "secondary";
-              }
-            ];
-            center = [
-              {
-                compactMode = false;
-                compactShowAlbumArt = true;
-                compactShowVisualizer = false;
-                hideMode = "hidden";
-                hideWhenIdle = false;
-                id = "MediaMini";
-                maxWidth = 155;
-                panelShowAlbumArt = true;
-                panelShowVisualizer = true;
-                scrollingMode = "hover";
-                showAlbumArt = true;
-                showArtistFirst = true;
-                showProgressRing = true;
-                showVisualizer = true;
-                useFixedWidth = false;
-                visualizerType = "linear";
-              }
-              {
-                clockColor = "none";
-                customFont = "";
-                formatHorizontal = "MMM dd, hh:mm";
-                formatVertical = "HH mm - dd MM";
-                id = "Clock";
-                tooltipFormat = "HH:mm ddd, MMM dd";
-                useCustomFont = false;
-              }
-              {
-                displayMode = "onhover";
-                id = "NotificationHistory";
-              }
-            ];
-            right = [
-              {
-                colorizeIcons = false;
-                hideMode = "hidden";
-                id = "ActiveWindow";
-                maxWidth = 145;
-                scrollingMode = "hover";
-                showIcon = true;
-                useFixedWidth = false;
-              }
-              {
-                compactMode = false;
-                diskPath = "/";
-                id = "SystemMonitor";
-                showCpuFreq = false;
-                showCpuTemp = true;
-                showCpuUsage = true;
-                showDiskAvailable = false;
-                showDiskUsage = true;
-                showDiskUsageAsPercent = false;
-                showGpuTemp = false;
-                showLoadAverage = false;
-                showMemoryAsPercent = false;
-                showMemoryUsage = true;
-                showNetworkStats = false;
-                showSwapUsage = false;
-                useMonospaceFont = true;
-                usePrimaryColor = false;
-              }
-              {
-                displayMode = "onhover";
-                id = "Network";
-              }
-              {
-                displayMode = "onhover";
-                id = "Bluetooth";
-              }
-              {
-                displayMode = "onhover";
-                id = "Volume";
-              }
-              {
-                deviceNativePath = "BAT0";
-                displayMode = "icon-always";
-                hideIfIdle = false;
-                hideIfNotDetected = true;
-                id = "Battery";
-                showNoctaliaPerformance = true;
-                showPowerProfiles = true;
-              }
-              {
-                id = "ControlCenter";
-                useDistroLogo = true;
-              }
-            ];
-          };
+        shell = {
+          font_family = "Caskaydia Cove Nerd Font";
+          panel.shadow = false;
         };
-        ui = {
-          fontDefault = "Caskaydia Cove Nerd Font";
-          fontDefaultScale = 1;
-          tooltipsEnabled = true;
+        theme = {
+          mode = "dark";
+          source = "wallpaper";
+          wallpaper_scheme = "m3-tonal-spot";
         };
-        colorSchemes = {
-          useWallpapersColors = true;
-          predefinedScheme = "Monochrome";
-          darkMode = true;
-          generationMethod = "tonal-spot";
+        bar.main = {
+          shadow = false;
+          start = ["workspaces"];
+          center = ["media" "clock" "notifications"];
+          end = [
+            "cpu"
+            "temp"
+            "ram"
+            "disk"
+            "network"
+            "bluetooth"
+            "volume"
+            "battery"
+            "session"
+          ];
+          position = "left";
+          margin_edge = 0;
+          margin_ends = 0;
+          widget_spacing = 10;
+          scale = 1;
+          thickness = 38;
         };
         dock.enabled = false;
-        dimDesktop = false;
-        enableShadows = false;
-        location = {
-          name = "Copenhagen, Denmark";
-        };
+        backdrop.enabled = false;
         wallpaper = {
           enabled = true;
           directory = builtins.toPath ../../../wallpapers;
         };
-        network.wifiEnabled = false;
-        notifications.alwaysOnTop = true;
-        nightLight.enabled = false;
+        location.address = "Copenhagen, Denmark";
+        notification.layer = "top";
+        nightlight.enabled = false;
+        widget = {
+          clock = {
+            format = "{:%b %d, %H:%M}";
+            tooltip_format = "{:%H:%M  %a, %b %d}";
+          };
+          media.max_length = 155;
+          active_window.max_length = 145;
+          disk = {
+            type = "sysmon";
+            stat = "disk_pct";
+            path = "/";
+          };
+        };
       };
     };
   };

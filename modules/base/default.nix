@@ -11,6 +11,8 @@
 
   # this is needed for the noctalia battery widget to work
   services.upower.enable = true;
+  # power profiles daemon for noctalia's power-profile widget / control center
+  services.power-profiles-daemon.enable = true;
 
   nix.settings = {
     experimental-features = [
@@ -139,8 +141,15 @@
   services.blueman.enable = true;
 
   # Networking
-  networking.networkmanager.enable = true;
-  networking.firewall.enable = true;
+  networking = {
+    networkmanager.enable = true;
+    nameservers = [
+      "1.1.1.2"
+      "1.0.0.2"
+    ];
+    dhcpcd.extraConfig = "nohook resolv.conf";
+    firewall.enable = true;
+  };
 
   # System-wide packages
   environment.systemPackages = with pkgs; [
@@ -222,7 +231,7 @@
 
     # Development Utilities
     jq # JSON processor
-    logseq
+    # logseq # disabled: pins electron_39 (39.8.10), now EOL/insecure in nixpkgs. Re-enable once bumped.
   ];
 
   xdg.mime.defaultApplications = {
