@@ -63,20 +63,23 @@ in {
           margin_ends = 0;
           widget_spacing = 10;
           scale = 1;
-          thickness = 38;
+          thickness = 34;
         };
+        location.address = "Copenhagen, Denmark";
+        nightlight.enabled = false;
         dock.enabled = false;
         backdrop.enabled = false;
         wallpaper = {
           enabled = true;
           directory = builtins.toPath ../../../wallpapers;
         };
-        location.address = "Copenhagen, Denmark";
-        notification.layer = "top";
-        nightlight.enabled = false;
+        notification = {
+          layer = "top";
+          position = "top_center";
+        };
         widget = {
           clock = {
-            format = "{:%b %d, %H:%M}";
+            format = "{:%H:%M}";
             tooltip_format = "{:%H:%M  %a, %b %d}";
           };
           media.max_length = 155;
