@@ -9,6 +9,7 @@
     ./ssh
     ./starship
     ./tmux
+    ./television
     ./yazi
     ./zoxide
   ];

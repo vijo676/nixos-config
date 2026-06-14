@@ -11,8 +11,6 @@ in {
 
   # Enable specific modules
   configured.programs = {
-    zen.enable = true;
-    # editors
     vim.enable = true;
     vscode = {
       enable = true;
@@ -34,6 +32,7 @@ in {
     starship.enable = true;
     direnv.enable = true;
     fzf.enable = true;
+    # television.enable = true;
     git.enable = true;
     jujutsu.enable = true;
     ssh.enable = true;
@@ -63,14 +62,7 @@ in {
             }
       '';
     };
-    rofi.enable = true;
-  };
-
-  home.file = {
-  };
-  home.sessionVariables = {
   };
   services.ssh-agent.enable = true;
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

@@ -20,8 +20,8 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    colorschemePackage = pkgs.vimPlugins.everforest;
-    colorschemeName = "everforest";
+    colorschemePackage = pkgs.vimPlugins.kanagawa-paper-nvim;
+    colorschemeName = "kanagawa-paper-ink";
   };
 
   boot.supportedFilesystems = ["ntfs"];

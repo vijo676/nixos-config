@@ -10,7 +10,6 @@ in {
 
   # Enable specific modules
   configured.programs = {
-    # editors
     vim.enable = true;
     vscode = {
       enable = true;
