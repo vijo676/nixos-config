@@ -57,6 +57,7 @@
       desktop = mkHost "desktop";
       work = mkHost "work";
       xps15 = mkHost "xps15";
+      t14 = mkHost "t14";
     };
   in {
     # Dev shells
