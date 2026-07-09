@@ -33,6 +33,7 @@
   home.sessionVariables.GTK_THEME = "Everforest-Dark-BL";
   gtk.gtk4.theme = null;
   home.pointerCursor = {
+    enable = true;
     gtk.enable = true;
     x11.enable = true;
     package = pkgs.bibata-cursors;

@@ -47,6 +47,7 @@ in {
     ssh.enable = true;
     zoxide.enable = true;
     btop.enable = true;
+    television.enable = true;
     # shell and terminals
     alacritty.enable = true;
     foot.enable = true;
