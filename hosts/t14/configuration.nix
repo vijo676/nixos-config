@@ -24,6 +24,9 @@
     colorschemeName = "kanagawa-paper-ink";
   };
 
+  # FUSE (needed by fuse-overlayfs)
+  programs.fuse.enable = true;
+
   # Udev rules
   services.udev.enable = true;
   services.udev.extraRules = ''
