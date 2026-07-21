@@ -15,7 +15,7 @@ in {
     programs.git = {
       enable = true;
       settings.user.name = "vijo676";
-      settings.user.email = "vitale.jorgensen@gmail.com";
+      settings.user.email = "59100908+vijo676@users.noreply.github.com";
     };
   };
 }
