@@ -5,14 +5,6 @@
     enable = true;
     font.name = "Caskaydia Cove Nerd Font";
     font.size = 11;
-    theme = {
-      package = pkgs.everforest-gtk-theme;
-      name = "Everforest-Dark-BL";
-    };
-    iconTheme = {
-      package = pkgs.everforest-gtk-theme;
-      name = "Everforest-Dark";
-    };
     gtk2.extraConfig = "
       gtk-application-prefer-dark-theme=1
     ";
@@ -29,8 +21,6 @@
       enable-hot-corners = false;
     };
   };
-  qt.style.name = "Everforest-Dark-BL";
-  home.sessionVariables.GTK_THEME = "Everforest-Dark-BL";
   gtk.gtk4.theme = null;
   home.pointerCursor = {
     enable = true;
