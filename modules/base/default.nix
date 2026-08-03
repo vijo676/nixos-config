@@ -74,10 +74,13 @@
   services.printing = {
     enable = true;
     drivers = with pkgs; [
-      cups-filters
-      cups-browsed
+      gutenprint
+      # cups-filters
+      # cups-browsed
     ];
+    browsing = true;
   };
+  services.ipp-usb.enable = true;
   services.avahi = {
     enable = true;
     nssmdns4 = true;
