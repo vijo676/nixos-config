@@ -34,6 +34,8 @@
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", MODE="0666"
     SUBSYSTEM=="usb", ATTRS{idVendor}=="04f9", ATTRS{idProduct}=="209b", MODE="0666"
     SUBSYSTEM=="usb", ATTR{idVendor}=="0955", ATTR{idProduct}=="7c18", MODE="0666"
+
+    SUBSYSTEM=="net", ACTION=="add|change", ENV{ID_VENDOR_ID}=="1d6b", ENV{ID_MODEL_ID}=="0104", ENV{ID_USB_DRIVER}=="rndis_host", ENV{NM_UNMANAGED}="1"
   '';
   networking.firewall.interfaces."usb+".allowedUDPPorts = [67];
   networking.networkmanager.ensureProfiles.profiles.usb-dhcp = {
@@ -49,6 +51,9 @@
     ipv4 = {
       method = "shared";
       address1 = "10.42.0.1/24";
+    };
+    ipv6 = {
+      method = "ignore";
     };
   };
 

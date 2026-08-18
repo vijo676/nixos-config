@@ -39,7 +39,6 @@ in {
           npm_path = lib.getExe' pkgs.nodejs "npm";
         };
         features = {
-          edit_prediction_provider = "copilot";
         };
         load_direnv = "shell_hook";
         vim_mode = true;

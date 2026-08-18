@@ -33,7 +33,6 @@ in {
         ms-python.vscode-pylance
         rust-lang.rust-analyzer
         vscodevim.vim
-        github.copilot
         github.vscode-github-actions
         tamasfe.even-better-toml
         usernamehw.errorlens
