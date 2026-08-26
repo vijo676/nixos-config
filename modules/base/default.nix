@@ -203,6 +203,7 @@
     kitty # Terminal emulator
     fastfetch # System information tool
     bluetui # Bluetooth TUI
+    sqlit-tui # TUI for sql server etc.
 
     # Network Tools
     curl
